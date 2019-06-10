@@ -1,4 +1,8 @@
 class AddressesController < ApplicationController
+
+  before_action :authenticate_user!,  only: [:new, :create, :show, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :show, :update, :destroy]
+
   def new
   end
 

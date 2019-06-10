@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
-  def indax
+
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+
+  def index
   end
 
   def show
