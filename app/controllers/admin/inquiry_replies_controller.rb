@@ -1,4 +1,4 @@
-class InquiryRepliesController < ApplicationController
+class Admin::InquiryRepliesController < ApplicationController
 
   before_action :authenticate_admin!, only: [:new, :create, :show]
 
