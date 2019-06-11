@@ -1,8 +1,6 @@
 class OrdersController < ApplicationController
 
   before_action :authenticate_user!,  only: [:new, :create, :index, :show]
-  before_action :authenticate_admin!, only: [:index, :show, :update]
-
 
   def new
   end
