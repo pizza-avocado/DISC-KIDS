@@ -1,20 +1,37 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  devise_for :admins
+  devise_for :admins, controllers:{
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
+
+  devise_for :users, controllers:{
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  namespace :admin do
+	resources :users,           only:[:index]
+  	resources :items,           only:[:new, :create, :edit, :update, :destroy]
+  	resources :inquiries,       only:[:index]
+  	resources :inquiry_replies, only:[:new, :create, :show]
+  	resources :orders,          only:[:index, :update]
+ 	resources :reviews,         only:[:destroy]
+  end
 
-  resources :users,           only:[:show, :edit, :update, :resign, :destroy, :index]
-  resources :items,           only:[:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :addresses,       only:[:new, :create, :show, :update, :destroy]
-  resources :address_names,   only:[:new, :create ,:show ,:update, :destroy]
-  resources :carts,           only:[:create, :index, :destroy]
-  resources :inquiries,       only:[:new, :create, :index]
-  resources :inquiry_replies, only:[:new, :create, :show]
-  resources :likes,           only:[:create, :destroy]
-  resources :orders,          only:[:new, :create, :index, :show, :update]
-  resources :reviews,         only:[:new, :create, :edit, :update, :destroy]
+	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
+  	resources :items,           only:[:index, :show]
+  	resources :addresses,       only:[:new, :create, :show, :update, :destroy]
+  	resources :address_names,   only:[:new, :create ,:show ,:update, :destroy]
+  	resources :carts,           only:[:create, :index, :destroy]
+  	resources :inquiries,       only:[:new, :create]
+  	resources :likes,           only:[:create, :destroy]
+  	resources :orders,          only:[:new, :create, :show]
+ 	resources :reviews,         only:[:new, :create, :edit, :update]
+
 
 
   root "items#index"
