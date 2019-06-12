@@ -12,4 +12,9 @@ class User < ApplicationRecord
   has_many :reviews, 		dependent: :destroy
   has_many :likes, 			dependent: :destroy
 
+  def self.search(search)
+      return User.all unless search
+      User.where(['lastname LIKE ?', "%#{search}%"])
+  end
+
 end
