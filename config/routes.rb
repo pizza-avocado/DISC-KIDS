@@ -38,7 +38,11 @@ Rails.application.routes.draw do
  	  resources :reviews,         only:[:new, :create, :edit, :update]
 
 
+ 	post "users" => "addresses#create"
+ 	post "users" => "addresses#update"
+ 	post "users" => "address_names#create"
+ 	post "users" => "address_names#update"
 
-  root "items#index"
+    root "items#index"
 
 end
