@@ -2,10 +2,6 @@ class Admin::ItemsController < ApplicationController
 
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
-
-  def show
-  end
-
   def new
   end
 
@@ -20,4 +16,5 @@ class Admin::ItemsController < ApplicationController
 
   def destoy
   end
+
 end

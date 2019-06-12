@@ -8,6 +8,7 @@
 
 		<h4> メールアドレス： <%= current_user.email %> </h4>
   		<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  		<<%= link_to "mypage" , user_path(current_user) %>
 
 	<% elsif  admin_signed_in? %>
 
