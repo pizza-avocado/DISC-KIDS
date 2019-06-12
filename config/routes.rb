@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
+	  get "search" => "users#search",as: 'search'
     # get "search" => "items#search",as: 'search'
-	  resources :users,           only:[:index]
+	resources :users,           only:[:index]
+	resources :items,           only:[:new, :create, :edit, :update, :destroy]
     resources :artists,         only:[:new, :create, :index, :edit, :update, :destroy]
     resources :labels,          only:[:new, :create, :index, :edit, :update, :destroy]
     resources :genres,          only:[:new, :create, :index, :edit, :update, :destroy]
@@ -24,10 +26,10 @@ Rails.application.routes.draw do
   	resources :inquiries,       only:[:index]
   	resources :inquiry_replies, only:[:new, :create, :show]
   	resources :orders,          only:[:index, :update]
- 	  resources :reviews,         only:[:destroy]
+ 	resources :reviews,         only:[:destroy]
   end
 
-	  resources :users,           only:[:show, :edit, :update, :resign, :destroy]
+	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
   	resources :items,           only:[:index, :show]
   	resources :addresses,       only:[:new, :create, :show, :update, :destroy]
   	resources :address_names,   only:[:new, :create ,:show ,:update, :destroy]
@@ -35,13 +37,12 @@ Rails.application.routes.draw do
   	resources :inquiries,       only:[:new, :create]
   	resources :likes,           only:[:create, :destroy]
   	resources :orders,          only:[:new, :create, :show]
- 	  resources :reviews,         only:[:new, :create, :edit, :update]
+ 	resources :reviews,         only:[:new, :create, :edit, :update]
 
 
  	post "users" => "addresses#create"
- 	post "users" => "addresses#update"
  	post "users" => "address_names#create"
- 	post "users" => "address_names#update"
+
 
     root "items#index"
 
