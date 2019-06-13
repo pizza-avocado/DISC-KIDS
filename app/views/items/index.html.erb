@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <h1>Items#index</h1>
 <p>Find me in app/views/items/index.html.erb</p>
 
@@ -19,4 +20,66 @@
   		<h2> 現在ログインしていません </h2>
   		<%= link_to "ログイン", new_user_session_path %>
   		<%= link_to "新規登録", new_user_registration_path %>
+  		<%= link_to "管理者ログイン", new_admin_session_path %>
 	<% end %>
+=======
+<!-- <div class="item-box">
+  <div class="image"></div>
+  <TABLE border="1">
+  	<tr>
+      <td>ＣＤ名：</td><td>金額：</td>
+  	</tr>
+  	<tr>
+  	  <td>アーティスト名：</td><td>在庫数：</td>
+  	</tr>
+  	<tr>
+  	  <td>レーベル名：</td><td>ステータス：</td>
+  	</tr>
+  	<tr>
+  	  <td>ジャンル名：</td><td></td>
+  	</tr>
+</div>
+
+<%# @items.each do |item| %>
+
+<%#= f.attachment_field :image %>
+<div class="item">
+  <div class="image"></div>
+  <div class="date"></div>
+</div>
+
+<%# end %> -->
+
+<% @items.each do |item| %>
+	<div class="row">
+      <div class="col-xs-1"></div>
+        <div class="col-xs-3">
+	 	<%= attachment_image_tag :jacket_image, class: "", fallback: "", size:'250x250'%>
+	    </div>
+	      <div class="col-xs-1"></div>
+            <div class="col-xs-6">
+	          <table border="1">
+			    <tr>
+			      <td><%= item.name %></td>
+			      <td><%= item.price %></td>
+			    </tr>
+			    <tr>
+	              <td><%= item.artist_id %></td>
+                  <td><%= item.stock %></td>
+                </tr>
+                <tr>
+                  <td><%= item.label_id %></td>
+                  <td><%= item.status %></td>
+                </tr>
+                <tr>
+                  <td><%= item.genre_id %></td>
+                  <td></td>
+                </tr>
+                <div class="col-xs-1"></div>
+              </table>
+            </div>
+    </div>
+	  <span class="border-bottom"></span>
+<% end %>
+<%= paginate @items %>
+>>>>>>> Stashed changes
