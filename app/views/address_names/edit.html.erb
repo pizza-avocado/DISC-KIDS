@@ -1,0 +1,13 @@
+<h1>Addresse_names#edit</h1>
+
+
+<%= form_for(@address_name) do |f| %>
+
+<p> 宛名 </p>
+<%= f.text_area :address_name, placeholder:"宛名"%>
+
+<br>
+
+<%= f.submit "submit" %>
+
+<% end %>

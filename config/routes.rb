@@ -24,8 +24,8 @@ Rails.application.routes.draw do
 
 	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
   	resources :items,           only:[:index, :show]
-  	resources :addresses,       only:[:new, :create, :show, :update, :destroy]
-  	resources :address_names,   only:[:new, :create ,:show ,:update, :destroy]
+  	resources :addresses,       only:[:new, :create, :show, :edit, :update, :destroy]
+  	resources :address_names,   only:[:new, :create ,:show, :edit, :update, :destroy]
   	resources :carts,           only:[:create, :index, :destroy]
   	resources :inquiries,       only:[:new, :create]
   	resources :likes,           only:[:create, :destroy]
@@ -34,9 +34,7 @@ Rails.application.routes.draw do
 
 
  	post "users" => "addresses#create"
- 	post "users" => "addresses#update"
  	post "users" => "address_names#create"
- 	post "users" => "address_names#update"
 
     root "items#index"
 
