@@ -1,0 +1,9 @@
+<%= link_to "レーベル登録" ,new_admin_label_path %>
+
+<h1> レーベル一覧</h1>
+
+<% @labels.each do |label| %>
+
+	<p><%= label.label %> </p>
+	<% end %>
+  
