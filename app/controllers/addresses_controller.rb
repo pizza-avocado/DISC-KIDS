@@ -14,13 +14,17 @@ class AddressesController < ApplicationController
   end
 
   def show
-    @addresses = Address.all
+  end
+
+  def edit
+    @address = Address.find(params[:id])
   end
 
   def update
-    address = address.find(params[:id])
-    if address.update
+    address = Address.find(params[:id])
+    if address.update(address_params)
       redirect_to user_path(current_user)
+    end
   end
 
   def destroy
