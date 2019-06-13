@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins, controllers:{
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -14,12 +15,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
-	resources :users,           only:[:index]
-  	resources :items,           only:[:new, :create, :edit, :update, :destroy]
+	  resources :users,           only:[:index]
+    resources :artists,         only:[:new, :create, :index, :edit, :update, :destroy]
+    resources :labels,          only:[:new, :create, :index, :edit, :update, :destroy]
+    resources :genres,          only:[:new, :create, :index, :edit, :update, :destroy]
+    resources :items,           only:[:new, :create, :edit, :update, :destroy]
   	resources :inquiries,       only:[:index]
   	resources :inquiry_replies, only:[:new, :create, :show]
   	resources :orders,          only:[:index, :update]
- 	resources :reviews,         only:[:destroy]
+ 	  resources :reviews,         only:[:destroy]
   end
 
 	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
@@ -30,7 +34,7 @@ Rails.application.routes.draw do
   	resources :inquiries,       only:[:new, :create]
   	resources :likes,           only:[:create, :destroy]
   	resources :orders,          only:[:new, :create, :show]
- 	resources :reviews,         only:[:new, :create, :edit, :update]
+ 	  resources :reviews,         only:[:new, :create, :edit, :update]
 
 
 
