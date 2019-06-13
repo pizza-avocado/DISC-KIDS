@@ -23,7 +23,7 @@ Rails.application.routes.draw do
  	  resources :reviews,         only:[:destroy]
   end
 
-	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
+	  resources :users,           only:[:show, :edit, :update, :resign, :destroy]
   	resources :items,           only:[:index, :show]
   	resources :addresses,       only:[:new, :create, :show, :update, :destroy]
   	resources :address_names,   only:[:new, :create ,:show ,:update, :destroy]
