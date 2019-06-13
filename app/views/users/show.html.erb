@@ -21,6 +21,8 @@
 
 <p>宛名： <%= address_name.address_name %> </p>
 
+<%= link_to "edit", edit_address_name_path(address_name) %>
+
 <% end %>
 
 
@@ -30,5 +32,7 @@
 
 <p>郵便番号： <%= address.postalcode %> </p>
 <p>住所：<%= address.address %> </p>
+
+<%= link_to "edit", edit_address_path(address) %>
 
 <% end %>
