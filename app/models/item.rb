@@ -10,6 +10,12 @@ class Item < ApplicationRecord
 	belongs_to :label
 	belongs_to :artist
 
-
+	def self.search(search)
+	    unless search
+	      return Item.all
+	    else
+	      return Item.where(['lastname LIKE ?', "%#{search}%"])
+	    end
+	end
 
 end

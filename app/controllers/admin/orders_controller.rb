@@ -2,13 +2,6 @@ class Admin::OrdersController < ApplicationController
 
   before_action :authenticate_admin!, only: [:index, :show, :update]
 
-
-  def new
-  end
-
-  def create
-  end
-
   def index
   end
 
@@ -17,4 +10,5 @@ class Admin::OrdersController < ApplicationController
 
   def update
   end
+
 end
