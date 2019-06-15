@@ -1,6 +1,6 @@
 class AddressNamesController < ApplicationController
 
-  before_action :authenticate_user!,  only: [:new, :create, :show, :update, :destroy]
+  before_action :authenticate_user!,  only: [:new, :create, :show, :edit, :update, :destroy]
 
   def new
   end
@@ -16,9 +16,13 @@ class AddressNamesController < ApplicationController
   def show
   end
 
+  def edit
+     @address_name = AddressName.find(params[:id])
+  end
+
   def update
-    address_name = address_name.find(params[:id])
-    if address_name.update
+    address_name = AddressName.find(params[:id])
+    if address_name.update(address_name_params)
       redirect_to user_path(current_user)
     end
   end

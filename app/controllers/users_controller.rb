@@ -10,8 +10,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @addresses = current_user.addresses
-    @address_names = current_user.address_names
     @address = Address.new
     @address_name = AddressName.new
   end
@@ -34,7 +32,7 @@ private
 
   def user_params
 	params.require(:user).permit(:email, :lastname, :firstname, :lastname_kana, :firstname_kana,
-    								 :phonenumber, :postalcode, :address)
+    						     :phonenumber, :postalcode, :address)
   end
 
   def correct_user
