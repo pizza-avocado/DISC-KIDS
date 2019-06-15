@@ -26,11 +26,12 @@
             <a class="nav-link" href="#">問い合わせ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">検索枠</a>
-               <%#= form_tag(search_path,:method => 'get') do %>
-                <%#= text_field_tag :search %>
-　　　　　　　　   <%#= submit_tag 'Search', :name => nil %>
-　　　　　　　　　<%# end %>
+               <dl class="searchbox">
+                  <%= form_tag items_path, :method => 'get' do %>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", :name => nil %>
+                  <% end %>
+                </dl>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">ログアウト</a>
@@ -49,10 +50,14 @@
            </li>
           <li class="nav-item">
             <a class="nav-link" href="#">検索枠</a>
-              <%#= form_tag(search_path,:method => 'get') do %>
-                <%#= text_field_tag :search %>
-　　　　　　　　   <%#= submit_tag 'Search', :name => nil %>
- 　　　　　　　　　<%# end %>
+              <dl class="searchbox">
+                <%= form_tag items_path, :method => 'get' do %>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", :name => nil %>
+                  <% end %>
+                </dl>
+
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">カート</a>

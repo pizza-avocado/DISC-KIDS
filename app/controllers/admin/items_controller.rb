@@ -12,6 +12,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.search(params[:search])
     @items = Item.all
   end
 

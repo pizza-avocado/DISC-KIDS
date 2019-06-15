@@ -17,6 +17,13 @@ class Item < ApplicationRecord
 # 		Item.all
 # 	end
 
+def self.search(search)
+	unless search
+		Item.where(['name LIKE?' "%#{search}%"])
+	else
+		Item.all
+	end
+
 
 end
-
+end
