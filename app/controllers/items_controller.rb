@@ -17,5 +17,9 @@ def search
   def show
   end
 
+  def search
+    @items= Items.search(params[:search])
+  end
+
 
 end

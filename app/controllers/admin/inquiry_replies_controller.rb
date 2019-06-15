@@ -10,4 +10,5 @@ class Admin::InquiryRepliesController < ApplicationController
 
   def show
   end
+
 end
