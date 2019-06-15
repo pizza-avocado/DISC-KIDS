@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
+    # get "search" => "items#search",as: 'search'
 	  resources :users,           only:[:index]
     resources :artists,         only:[:new, :create, :index, :edit, :update, :destroy]
     resources :labels,          only:[:new, :create, :index, :edit, :update, :destroy]
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
  	  resources :reviews,         only:[:destroy]
   end
 
-	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
+	  resources :users,           only:[:show, :edit, :update, :resign, :destroy]
   	resources :items,           only:[:index, :show]
   	resources :addresses,       only:[:new, :create, :show, :update, :destroy]
   	resources :address_names,   only:[:new, :create ,:show ,:update, :destroy]

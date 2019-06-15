@@ -12,8 +12,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items= Item.all
+    @items = Item.all
   end
+
+  # def search
+  #   @items = Item.search(params[:serch])
+  # end
+
 
   def create
     item = Item.new(item_params)
