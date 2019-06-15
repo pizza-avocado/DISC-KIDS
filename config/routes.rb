@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   	resources :inquiries,       only:[:index]
   	resources :inquiry_replies, only:[:new, :create, :show]
   	resources :orders,          only:[:index, :update]
- 	resources :reviews,         only:[:destroy]
+ 	  resources :reviews,         only:[:destroy]
   end
 
 	  resources :users,           only:[:show, :edit, :update, :resign, :destroy]
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   	resources :inquiries,       only:[:new, :create]
   	resources :likes,           only:[:create, :destroy]
   	resources :orders,          only:[:new, :create, :show]
- 	resources :reviews,         only:[:new, :create, :edit, :update]
+ 	  resources :reviews,         only:[:new, :create, :edit, :update]
 
 
  	post "users" => "addresses#create"
