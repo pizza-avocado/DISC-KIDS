@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
+	  get "search" => "users#search",as: 'search'
     # get "search" => "items#search",as: 'search'
-	  resources :users,           only:[:index]
+	resources :users,           only:[:index]
+	resources :items,           only:[:new, :create, :edit, :update, :destroy]
     resources :artists,         only:[:new, :create, :index, :edit, :update, :destroy]
     resources :labels,          only:[:new, :create, :index, :edit, :update, :destroy]
     resources :genres,          only:[:new, :create, :index, :edit, :update, :destroy]
@@ -29,8 +31,8 @@ Rails.application.routes.draw do
 
 	  resources :users,           only:[:show, :edit, :update, :resign, :destroy]
   	resources :items,           only:[:index, :show]
-  	resources :addresses,       only:[:new, :create, :show, :update, :destroy]
-  	resources :address_names,   only:[:new, :create ,:show ,:update, :destroy]
+  	resources :addresses,       only:[:new, :create, :show, :edit, :update, :destroy]
+  	resources :address_names,   only:[:new, :create ,:show, :edit, :update, :destroy]
   	resources :carts,           only:[:create, :index, :destroy]
   	resources :inquiries,       only:[:new, :create]
   	resources :likes,           only:[:create, :destroy]
@@ -38,7 +40,10 @@ Rails.application.routes.draw do
  	  resources :reviews,         only:[:new, :create, :edit, :update]
 
 
+ 	post "users" => "addresses#create"
+ 	post "users" => "address_names#create"
 
-  root "items#index"
+
+    root "items#index"
 
 end

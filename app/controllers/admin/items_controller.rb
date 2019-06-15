@@ -2,10 +2,6 @@ class Admin::ItemsController < ApplicationController
 
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
-
-  def show
-  end
-
   def new
     @item = Item.new
     # @artist = Artist.new
@@ -35,6 +31,7 @@ class Admin::ItemsController < ApplicationController
   def destoy
   end
 
+
 private
   def item_params
     params.require(:item).permit(:name, :price, :stock, :status, :artist_id, :label_id, :genre_id)
@@ -43,5 +40,7 @@ private
   # def artist_params
   #   params.require(:artist).permit(:id, :artist,items_attributes: [:name, :price, :stock, :status, :id])
   # end
+
+
 
 end
