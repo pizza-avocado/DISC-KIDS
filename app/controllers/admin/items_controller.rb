@@ -12,13 +12,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.search(params[:search])
     @items = Item.all
+    @items = Item.page(params[:page]).reverse_order
   end
 
   def search
     @items = Item.search(params[:serch])
-    render :index
+    render :search
   end
 
 
