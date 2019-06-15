@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   	resources :items,           only:[:index, :show]
   	resources :addresses,       only:[:new, :create, :show, :edit, :update, :destroy]
   	resources :address_names,   only:[:new, :create ,:show, :edit, :update, :destroy]
-  	resources :carts,           only:[:create, :index, :destroy]
+  	resources :carts,           only:[:create, :index, :update, :destroy]
   	resources :inquiries,       only:[:new, :create]
   	resources :likes,           only:[:create, :destroy]
   	resources :orders,          only:[:new, :create, :show]

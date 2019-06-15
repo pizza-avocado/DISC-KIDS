@@ -1,6 +1,6 @@
 class Cart < ApplicationRecord
 
 	belongs_to :item
-	belomgs_to :user
+	belongs_to :user
 
 end
