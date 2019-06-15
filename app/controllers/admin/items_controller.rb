@@ -9,11 +9,13 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @items = Item.page(params[:page]).reverse_order
   end
 
-  # def search
-  #   @items = Item.search(params[:serch])
-  # end
+  def search
+    @items = Item.search(params[:serch])
+    render :search
+  end
 
 
   def create

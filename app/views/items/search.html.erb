@@ -1,0 +1,29 @@
+<% @items.each do |item| %>
+	<div class="row">
+      <div class="col-xs-1"></div>
+
+	      <div class="col-xs-1"></div>
+            <div class="col-xs-6">
+	          <table border="1">
+			    <tr>
+			      <td><%= item.name %></td>
+			      <td><%= item.price %></td>
+			    </tr>
+			    <tr>
+	              <td><%= item.artist.artist %></td>
+                  <td><%= item.stock %></td>
+                </tr>
+                <tr>
+                  <td><%= item.label.label %></td>
+                  <td><%= item.status %></td>
+                </tr>
+                <tr>
+                  <td><%= item.genre.genre %></td>
+                  <td></td>
+                </tr>
+                <div class="col-xs-1"></div>
+              </table>
+            </div>
+    </div>
+	  <span class="border-bottom"></span>
+<% end %>
