@@ -14,6 +14,57 @@
  *= require_self
  */
 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+header {
+  height: 50px;
+  width: 100%;
+}
 
+.container {
+  height: 200px;
+}
+
+.nav-ber {
+  line-height: 80px;
+}
+
+.nav-item {
+  color: #f9fbfc;
+  list-style: none;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: .3s;
+}
+
+.nav-item:hover {
+  text-decoration: none;
+}
+
+.nav-item::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: .3s;
+  transform: translateX(-50%);
+}
+
+.nav-item:hover::after{
+  width: 100%;
+}
+
+.margin{
+  margin-top: 100px;
+}

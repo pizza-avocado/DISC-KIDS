@@ -1,6 +1,7 @@
-class Admin::ArtistsController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :authenticate_admin!, only: [:new, :create, :index, :edit, :update, :destroy]
+class Admin::ArtistsController < ApplicationController
+  before_action :authenticate_admin!, only: %i[new create index edit update destroy]
 
   def index
     @artists = Artist.all
@@ -17,23 +18,15 @@ class Admin::ArtistsController < ApplicationController
     redirect_to new_admin_item_path
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
-
-
-
+  def destroy; end
 
   private
 
   def artist_params
     params.require(:artist).permit(:artist)
   end
-
 end
-

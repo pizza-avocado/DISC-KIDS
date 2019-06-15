@@ -1,10 +1,9 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
+  before_action :authenticate_user!, only: %i[create destroy]
 
-  before_action :authenticate_user!,  only: [:create, :destroy]
+  def create; end
 
-  def create
-  end
-
-  def destroy
-  end
+  def destroy; end
 end

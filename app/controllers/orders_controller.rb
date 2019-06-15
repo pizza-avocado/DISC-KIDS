@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create index show]
 
-  before_action :authenticate_user!,  only: [:new, :create, :index, :show]
-
+<<<<<<< HEAD
   def new
   	@order = Order.new
   	@carts = current_user.carts
@@ -47,4 +49,15 @@ class OrdersController < ApplicationController
   end
 
 
+=======
+  def new; end
+
+  def create; end
+
+  def index; end
+
+  def show; end
+
+  def update; end
+>>>>>>> header,index
 end

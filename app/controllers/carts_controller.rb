@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create index destroy]
 
-  before_action :authenticate_user!,  only: [:create, :index, :destroy]
-
+<<<<<<< HEAD
   def create
 
   if current_user.carts.any? { |cart| cart.item_id == params[:item_id].to_i }
@@ -44,4 +46,11 @@ class CartsController < ApplicationController
 
 
 
+=======
+  def create; end
+
+  def index; end
+
+  def destroy; end
+>>>>>>> header,index
 end

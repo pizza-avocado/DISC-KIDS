@@ -4,12 +4,17 @@
     <title>DISC_KIDS</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <div class="social">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    </div>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
     <nav>
       <% if admin_signed_in? %>
         <ul class="navbar-nav">
@@ -17,14 +22,14 @@
             <%= link_to "ユーザー一覧", admin_users_path %>
           </li>
           <li class="nav-item">
-           <%= link_to "商品一覧",items_path %>
-           </li>
+            <a class="nav-link" href="#"> user index</a>
           <li class="nav-item">
-            <%= link_to "商品追加",new_admin_item_path %>
+            <%= link_to "disc index",items_path %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">問い合わせ</a>
-          </li>
+            <%= link_to "add item",new_admin_item_path %>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> inquiry</a>
           <li class="nav-item">
                <dl class="searchbox">
                   <%= form_tag search_items_path, :method => 'get' do %>
@@ -35,19 +40,17 @@
           </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-
           </li>
         </ul>
     </nav>
 
   <% elsif user_signed_in? %>
     <nav>
-        <ul class="navbar-nav">
           <li class="nav-item">
             <%= link_to "マイページ", user_path(current_user) %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">問い合わせ</a>
+            <a class="nav-link" href="#"> inquiry</a>
            </li>
           <li class="nav-item">
               <dl class="searchbox">
@@ -56,25 +59,17 @@
                   <%= submit_tag "Search", :name => nil %>
                   <% end %>
                 </dl>
-
-
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">カート</a>
+            <a class="nav-link" href="#"> cart</a>
           </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-
           </li>
-        </ul>
     </nav>
-
-
-
 
   <% else %>
     <nav>
-      <ul class="navbar-nav">
         <li class="nav-item">
           <%= link_to "ログイン", new_user_session_path %>
         </li>
@@ -82,7 +77,6 @@
           <%= link_to "新規登録", new_user_registration_path %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">問い合わせ</a>
         </li>
         <li>
           <%= form_tag search_items_path, :method => 'get' do %>
@@ -94,6 +88,12 @@
     </div>
     </nav>
   <% end %>
+      </div>
+    </header>
+
+  <div class='body'>
+    <div class='margin'></div>
+  </div>
 
 
 
@@ -101,5 +101,5 @@
   <main>
     <%= yield %>
   </main>
-  </body>
-</html>
+    </body>
+  </html>

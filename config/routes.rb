@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-
-
-  devise_for :admins, controllers:{
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
   }
 
-  devise_for :users, controllers:{
-  sessions:      'users/sessions',
-  passwords:     'users/passwords',
-  registrations: 'users/registrations'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -28,9 +26,6 @@ Rails.application.routes.draw do
  	  resources :reviews,         only:[:destroy]
   end
 
-
-
-
   get "search" => "items#search",as: 'search'
   get "search_items" => "items#search", as:'search_items'
 	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
@@ -43,13 +38,10 @@ Rails.application.routes.draw do
   resources :orders,          only:[:new, :create, :show, :index]
  	resources :reviews,         only:[:new, :create, :edit, :update]
 
-
-
   delete "carts" => "carts#destroy"
 
  	post "users" => "addresses#create"
  	post "users" => "address_names#create"
 
   root "items#index"
-
 end

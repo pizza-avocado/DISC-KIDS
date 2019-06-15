@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
-
-
   def index
   	# if cookies[:key].word.blank?
   	@items = Item.all
     @items = Item.page(params[:page]).reverse_order
   end
 
+<<<<<<< HEAD
   def search
     @items = Item.search(params[:search])
     render :search
@@ -24,6 +25,9 @@ class ItemsController < ApplicationController
 
   end
 
+=======
+  def show; end
+>>>>>>> header,index
 end
 
 

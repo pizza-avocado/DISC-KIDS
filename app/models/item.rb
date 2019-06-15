@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Item < ApplicationRecord
 
   has_many :discs, dependent: :destroy
@@ -7,12 +8,9 @@ class Item < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-
   belongs_to :genre
   belongs_to :label
   belongs_to :artist
-
-
   attachment :jacket_image
 
   def self.search(search)
@@ -23,8 +21,4 @@ class Item < ApplicationRecord
 		Item.all
 	end
 end
-
-
-
-
 end

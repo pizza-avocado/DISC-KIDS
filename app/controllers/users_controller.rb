@@ -1,7 +1,6 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :authenticate_user!,  only: [:show, :edit, :update, :resign, :destroy]
-
+<<<<<<< HEAD
   def show
   	@user = User.find(params[:id])
   	@addresses = current_user.addresses
@@ -20,13 +19,20 @@ class UsersController < ApplicationController
     	redirect_to user_path(current_user)
     end
   end
+=======
+class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[show edit update resign destroy]
 
-  def resign
-  end
+  def show; end
 
-  def destroy
-  end
+  def edit; end
+>>>>>>> header,index
 
+  def update; end
+
+  def resign; end
+
+<<<<<<< HEAD
 
 private
 
@@ -40,4 +46,7 @@ private
    	redirect_to user_path(current_user) unless @user == current_user
   end
 
+=======
+  def destroy; end
+>>>>>>> header,index
 end
