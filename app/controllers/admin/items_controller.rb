@@ -16,9 +16,10 @@ class Admin::ItemsController < ApplicationController
     @items = Item.all
   end
 
-  # def search
-  #   @items = Item.search(params[:serch])
-  # end
+  def search
+    @items = Item.search(params[:serch])
+    render :index
+  end
 
 
   def create

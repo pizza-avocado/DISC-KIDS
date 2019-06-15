@@ -18,8 +18,8 @@ class Item < ApplicationRecord
 # 	end
 
 def self.search(search)
-	unless search
-		Item.where(['name LIKE?' "%#{search}%"])
+	if search.present?
+		Item.where(['name LIKE?',"%#{search}%"])
 	else
 		Item.all
 	end

@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item">
                <dl class="searchbox">
-                  <%= form_tag items_path, :method => 'get' do %>
+                  <%= form_tag search_items_path, :method => 'post' do %>
                   <%= text_field_tag :search, params[:search] %>
                   <%= submit_tag "Search", :name => nil %>
                   <% end %>
