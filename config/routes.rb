@@ -29,6 +29,7 @@ Rails.application.routes.draw do
  	resources :reviews,         only:[:destroy]
   end
 
+
   get "search" => "items#search",as: 'search'
   post "search_items" => "items#search", as:'search_items'
 	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
@@ -43,11 +44,8 @@ Rails.application.routes.draw do
 
   delete "carts" => "carts#destroy"
 
-
-
  	post "users" => "addresses#create"
  	post "users" => "address_names#create"
-
 
   root "items#index"
 
