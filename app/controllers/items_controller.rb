@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items= Items.search(params[:search])
+      @items= Items.search(params[:search])
   end
 
 

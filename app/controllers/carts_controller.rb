@@ -16,7 +16,9 @@ class CartsController < ApplicationController
   	cart.user_id = current_user.id
   	cart.save
   	redirect_to carts_path
+
   end
+
 
   def index
   	@carts = current_user.carts
@@ -29,11 +31,14 @@ class CartsController < ApplicationController
   end
 
   def destroy
+  	cart = Cart.find_by(item_id: params[:cart][:item_id], user_id: current_user.id)
+  	cart.destroy
+  	redirect_to carts_path
   end
 
 private
 
-  # def cart_params
-  #   params.require(:cart).permit(:item_id, :user_id)
-  # end
+  def cart_params
+    params.require(:cart).permit(:item_id, :user_id, :quantity)
+  end
 end
