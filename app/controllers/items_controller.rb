@@ -15,10 +15,11 @@ def search
   end
 
   def show
+  	  @item = Item.find(params[:id])
   end
 
   def search
-    @items= Items.search(params[:search])
+      @items= Items.search(params[:search])
   end
 
 
