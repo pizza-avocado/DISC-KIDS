@@ -44,4 +44,5 @@ private
    	redirect_to user_path(current_user) unless @user == current_user
   end
 
+
 end
