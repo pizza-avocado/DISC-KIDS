@@ -1,2 +1,41 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<h1>購入確認画面 Orders#new</h1>
+
+<% subtotal = 0 %>
+<% @carts.each do |cart| %>
+
+<p>商品名：<%= cart.item.name %></p>
+<p>単価：¥<%= cart.item.price %></p>
+<p>数量：<%= cart.quantity %>個</p>
+
+<% result = cart.item.price * cart.quantity %>
+<p> ¥<%= result %> </p>
+<% subtotal += result %>
+<br>
+<% end %>
+
+<p> 小計：¥<%= subtotal %> </p>
+<p> 送料：¥500 </p>
+
+<% total = subtotal + 500 %>
+
+<h4> 合計：¥<%= total %> </h4>
+
+<br>
+<br>
+<h3> 送付先の選択　</h3>
+
+<%= form_for @order do |f| %>
+
+<p> 宛名 </p>
+<p><%= f.select :address_name, current_user.address_names.map{|an| [an.address_name,an.address_name] } %></p>
+<p> 送付先住所 </p>
+<p><%= f.select :shipping_address, current_user.addresses.all.map{|a| [a.address,a.address] } %></p>
+
+<br>
+
+<p>支払方法</p>
+<p><%= f.select :payment,[["クレジットカード","クレジットカード"],["コンビニ支払い","コンビニ支払い"],["着払い","着払い"]] %> </p>
+
+<%= f.submit "購入する" %>
+
+<% end %>

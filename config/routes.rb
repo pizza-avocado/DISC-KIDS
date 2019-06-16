@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   resources :carts,           only:[:create, :index, :update, :destroy]
   resources :inquiries,       only:[:new, :create]
   resources :likes,           only:[:create, :destroy]
-  resources :orders,          only:[:new, :create, :show]
+  resources :orders,          only:[:new, :create, :show, :index]
  	resources :reviews,         only:[:new, :create, :edit, :update]
 
   delete "carts" => "carts#destroy"
