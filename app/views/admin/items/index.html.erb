@@ -21,4 +21,36 @@
   		<%= link_to "新規登録", new_user_registration_path %>
 	<% end %>
 
-	<%= item.name %>
+	<% @items.each do |item| %>
+	<div class="row">
+      <div class="col-xs-1"></div>
+
+	      <div class="col-xs-1"></div>
+	      
+            <div class="col-xs-6 hhhhhh">
+            	
+            	<%= attachment_image_tag item, :jacket_image %>
+	          <table border="1">
+			    <tr>
+			      <td><%= item.name %></td>
+			      <td><%= item.price %></td>
+			    </tr>
+			    <tr>
+	              <td><%= item.artist_id %></td>
+                  <td><%= item.stock %></td>
+                </tr>
+                <tr>
+                  <td><%= item.label_id %></td>
+                  <td><%= item.status %></td>
+                </tr>
+                <tr>
+                  <td><%= item.genre_id %></td>
+                  <td></td>
+                </tr>
+                <div class="col-xs-1"></div>
+              </table>
+            </div>
+    </div>
+	  <span class="border-bottom"></span>
+<% end %>
+<%= paginate @items %>

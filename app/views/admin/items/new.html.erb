@@ -2,6 +2,8 @@
 
 <%= form_for @item, url: admin_items_path do |f| %>
 
+<%= f.attachment_field :jacket_image %>
+
 <h4> アルバム名</h4>
 <%= f.text_field :name %>
 
@@ -33,6 +35,19 @@
 <h4> ジャンル名</h4>
 <p><%= link_to "ジャンル追加ページ", new_admin_genre_path %> </p>
 <%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
+
+
+
+<div class = "discs">
+<%= f.fields_for :discs do |disc| %>
+	<p>ディスク番号 <%= render "disc_fields", f: disc %> </p>
+<% end %>
+	<div class = "links">
+		<p><%= link_to_add_association "ディスク番号追加", f,:discs %> </p>
+	</div>
+</div>
+
+
 
 
 <br>
