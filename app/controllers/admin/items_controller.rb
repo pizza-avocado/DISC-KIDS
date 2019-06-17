@@ -1,10 +1,19 @@
 class Admin::ItemsController < ApplicationController
 
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy, :show]
 
   def new
     @item = Item.new
-    # @artist = Artist.new
+    @disc = @item.discs.build
+    @track = @disc.tracks.build
+    # disc.tracks.build
+# @artist = Artist.new
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    @artist = Artist.find(params[:id])
+    @label = Label.find(params[:id])
   end
 
   def index
@@ -36,7 +45,9 @@ class Admin::ItemsController < ApplicationController
 
 private
   def item_params
-    params.require(:item).permit(:name, :price, :stock, :status, :artist_id, :label_id, :genre_id)
+    params.require(:item).permit(:name, :price, :stock, :status, :jacket_image, :artist_id, :label_id, :genre_id,
+      discs_attributes: [:disc_id, :disc_number, :_destroy,
+      tracks_attributes: [:track_id, :track_number, :track_name, :_destroy]])
   end
 
   # def artist_params
