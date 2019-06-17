@@ -12,8 +12,8 @@ class Item < ApplicationRecord
   belongs_to :label
   belongs_to :artist
 
-  attachment :jacket_image
 
+  attachment :jacket_image
 
   def self.search(search)
 	if search.present?
