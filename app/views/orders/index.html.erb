@@ -7,13 +7,13 @@
 
 	<% order.order_items.each do |order_item| %>
 	<% sum_q += order_item.quantity %>
-	<% sum_p += order_item.purchaced_price %>
+	<% sum_p += order_item.purchaced_price * order_item.quantity %>
 	<% end %>
 
 
 <p>注文日時：<%= order.created_at.strftime('%Y/%m/%d') %></p>
 <p>購入点数：<%= sum_q %></p>
-<p>購入合計金額：¥<%= sum_p %></p>
+<p>購入合計金額：¥<%= sum_p + 500 %></p>
 <p>注文ステータス：<%= order.order_status %></p>
 <p>送付先住所：<%= order.shipping_address %></p>
 
