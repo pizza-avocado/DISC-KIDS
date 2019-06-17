@@ -1,5 +1,4 @@
-<h1>Carts#index</h1>
-<p>Find me in app/views/carts/index.html.erb</p>
+<h1>カート内容</h1>
 
 
 <% @carts.each do |cart| %>
@@ -19,3 +18,6 @@
 
 
 <% end %>
+
+
+<%= link_to "購入へ進む", new_order_path %>
