@@ -1,2 +1,21 @@
 <h1>Carts#index</h1>
 <p>Find me in app/views/carts/index.html.erb</p>
+
+
+<% @carts.each do |cart| %>
+<%= form_for cart do |f| %>
+
+<p> 商品名：<%= cart.item.name %> 数量：<%= f.text_field :quantity %></p>
+<%= f.hidden_field :item_id %>
+
+<%= f.submit "更新" %>
+<% end %>
+
+<%= form_for cart, method: :delete do |f| %>
+<%= f.submit "削除" %>
+<%= f.hidden_field :item_id %>
+
+<% end %>
+
+
+<% end %>

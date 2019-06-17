@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     render :search
   end
 
+
   def create
     item = Item.new(item_params)
     item.save
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+
   end
 
 end
