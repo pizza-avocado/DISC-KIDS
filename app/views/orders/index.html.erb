@@ -1,2 +1,25 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<h1>注文履歴</h1>
+
+
+<% @orders.each do |order| %>
+<% sum_q = 0 %>
+<% sum_p = 0 %>
+
+	<% order.order_items.each do |order_item| %>
+	<% sum_q += order_item.quantity %>
+	<% sum_p += order_item.purchaced_price * order_item.quantity %>
+	<% end %>
+
+
+<p>注文日時：<%= order.created_at.strftime('%Y/%m/%d') %></p>
+<p>購入点数：<%= sum_q %></p>
+<p>購入合計金額：¥<%= sum_p + 500 %></p>
+<p>注文ステータス：<%= order.order_status %></p>
+<p>送付先住所：<%= order.shipping_address %></p>
+
+
+<p> <%= link_to"詳細を確認する", order_path(order) %></p>
+
+<br>
+<p> -------------------------------- </p>
+<% end %>
