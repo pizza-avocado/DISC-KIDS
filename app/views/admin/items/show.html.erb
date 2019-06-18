@@ -1,3 +1,44 @@
+
 <h1> 商品詳細ページ</h1>
+
+<div><%= attachment_image_tag @item, :jacket_image,size: '100x100' %></div>
+<p>商品名: <%= @item.name %> </p>
+<p>アーティスト名: <%= @item.artist.artist %></p>
+<p>ジャンル名: <%= @item.genre.genre %></p>
+<p>レーベル名: <%= @item.label.label %></p>
+<p>価格: <%= @item.price %></p>
+<p>在庫数: <%= @item.stock %></p>
+<p>販売ステータス: <%= @item.status %></p>
+
+
+
+<br>
+
+<% @item.discs.each do |disc| %>
+<tr>
+	<td>ディスク番号<%= disc.disc_number %> </td>
+
+
+	<% disc.tracks.each do |track| %>
+	<td>トラック番号<%= track.track_number %> </td>
+	<td>曲名<%= track.track_name %> </td>
+</tr>
+	<% end %>
+
+<% end %>
+
+
+<br>
+
+
+<%= link_to "商品編集" , edit_admin_item_path %>
+
+
+<%= @item.name %>
+
+<%= button_to "カートに追加する", carts_path, params: { item_id: @item.id } %>
+
+
+
 
 

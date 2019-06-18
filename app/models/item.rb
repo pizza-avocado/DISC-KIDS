@@ -17,8 +17,12 @@ class Item < ApplicationRecord
 def self.search(search)
 	if search.present?
 		Item.where(['name LIKE?',"%#{search}%"])
+		# Artist.where(['artist LIKE?',"%#{search}%"])
 	else
 		Item.all
 	end
 end
+
+
+
 end

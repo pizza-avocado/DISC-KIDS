@@ -1,37 +1,10 @@
 
-<!-- <div class="item-box">
-  <div class="image"></div>
-  <TABLE border="1">
-  	<tr>
-      <td>ＣＤ名：</td><td>金額：</td>
-  	</tr>
-  	<tr>
-  	  <td>アーティスト名：</td><td>在庫数：</td>
-  	</tr>
-  	<tr>
-  	  <td>レーベル名：</td><td>ステータス：</td>
-  	</tr>
-  	<tr>
-  	  <td>ジャンル名：</td><td></td>
-  	</tr>
-</div>
-
-<%# @items.each do |item| %>
-
-<%#= f.attachment_field :image %>
-<div class="item">
-  <div class="image"></div>
-  <div class="date"></div>
-</div>
-
-<%# end %> -->
-
 <% @items.each do |item| %>
-	<div class="row">
-      <div class="col-xs-1"></div>
-	      <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-              <div class="image">
+	<div class = "row">
+      <div class = "col-xs-1"></div>
+	      <div class = "col-xs-1"></div>
+            <div class = "col-xs-6">
+              <div class = "image">
                 <%= attachment_image_tag item, :jacket_image,size: '100x100' %>
               </div>
 	          <table border="1">
@@ -55,7 +28,6 @@
               </table>
             </div>
     </div>
-	  <span class="border-bottom"></span>
-	  <%= link_to "商品詳細", item_path(item) %>
+	  <span class = "border-bottom"></span>
 <% end %>
 <%= paginate @items %>

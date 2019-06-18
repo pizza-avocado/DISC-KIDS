@@ -1,50 +1,28 @@
-<h1>Items#indexadmin</h1>
-<p>Find me in app/views/items/index.html.erb</p>
-
-
-<h1>ログインアプリ</h1>
-
-	<% if user_signed_in? %>
-
-		<h4> メールアドレス： <%= current_user.email %> </h4>
-  		<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-	<% elsif  admin_signed_in? %>
-
-		<h4> メールアドレス： <%= current_admin.email %> </h4>
-  		<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-
-
-	<% else %>
-  		<h2> 現在ログインしていません </h2>
-  		<%= link_to "ログイン", new_user_session_path %>
-  		<%= link_to "新規登録", new_user_registration_path %>
-	<% end %>
 
 	<% @items.each do |item| %>
 	<div class="row">
       <div class="col-xs-1"></div>
-
-	      <div class="col-xs-1"></div>
-	      
-            <div class="col-xs-6 hhhhhh">
-            	
-            	<%= attachment_image_tag item, :jacket_image %>
+          <div class="col-xs-1"></div>
+            <div class="col-xs-6 ">
+              <dic class = "image">
+            	<%= attachment_image_tag item, :jacket_image,size: '100x100' %>
+              </dic>
 	          <table border="1">
 			    <tr>
 			      <td><%= item.name %></td>
-			      <td><%= item.price %></td>
+			      <td>価格 :<%= item.price %></td>
 			    </tr>
 			    <tr>
-	              <td><%= item.artist_id %></td>
-                  <td><%= item.stock %></td>
+	              <td>アーティスト :<%= item.artist.artist %></td>
+                  <td>在庫数 :<%= item.stock %></td>
                 </tr>
                 <tr>
-                  <td><%= item.label_id %></td>
-                  <td><%= item.status %></td>
+                  <td>レーベル :<%= item.label.label %></td>
+                  <td>ステータス :<%= item.status %></td>
                 </tr>
                 <tr>
-                  <td><%= item.genre_id %></td>
+                  <td>ジャンル :<%= item.genre.genre %></td>
+                  <td><%= link_to "商品詳細" , admin_item_path(item) %></td>
                   <td></td>
                 </tr>
                 <div class="col-xs-1"></div>
