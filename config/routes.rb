@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :items,           only:[:new, :create, :edit, :update, :destroy]
   	resources :inquiries,       only:[:index]
   	resources :inquiry_replies, only:[:new, :create, :show]
-  	resources :orders,          only:[:index, :update]
+  	resources :orders,          only:[:index, :show, :update]
  	  resources :reviews,         only:[:destroy]
   end
 
