@@ -8,9 +8,10 @@ class User < ApplicationRecord
   has_many :address_names,  dependent: :destroy
   has_many :carts, 		    	dependent: :destroy
   has_many :orders, 		    dependent: :destroy
-  has_many :order_items,   	dependent: :destroy
   has_many :reviews, 		    dependent: :destroy
   has_many :likes, 			    dependent: :destroy
+
+  acts_as_paranoid
 
   def self.search(search)
     unless search
