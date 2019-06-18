@@ -1,18 +1,28 @@
 <%= form_for @genre, url: admin_genres_path do |f| %>
 
-<h1> ジャンル作成</h1>
-<p>ジャンル名</p>
-<%= f.text_field :genre %>
+<h1> Genre add・edit</h1>
+  <p> genre</p>
 
-<%= f.submit "登録" %>
+    <%= f.text_field :genre %>
+    <%= f.hidden_field :id, :value => "params[:id]" %>
+
+    <%= f.submit "add" %>
+
 <% end %>
 
-<h1> ジャンル一覧</h1>
+  <button id="back">edit</button>
+
+<h1> Genre index</h1>
 
 <% @genres.each do |genre| %>
 
-	<p><%= genre.genre %> </p>
-	<% end %>
+  <p> <%= genre.genre %></p>
 
+<% end %>
 
-
+<script>
+	let back = document.getElementById("back")
+	back.addEventListener("click", () => {
+		window.history.back()
+	})
+</script>

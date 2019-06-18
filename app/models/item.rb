@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Item < ApplicationRecord
 
   has_many :discs, dependent: :destroy
@@ -13,10 +12,9 @@ class Item < ApplicationRecord
   belongs_to :artist
   attachment :jacket_image
 
-  def self.search(search)
+def self.search(search)
 	if search.present?
 		Item.where(['name LIKE?',"%#{search}%"])
-		# Artist.where(['artist LIKE?',"%#{search}%"])
 	else
 		Item.all
 	end

@@ -43,7 +43,7 @@ class AddressNamesController < ApplicationController
 private
 
   def address_name_params
-  params.require(:address_name).permit(:address_name)
+      params.require(:address_name).permit(:address_name)
   end
 
 =======

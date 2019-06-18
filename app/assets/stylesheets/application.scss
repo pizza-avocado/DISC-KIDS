@@ -32,10 +32,6 @@ header {
   height: 200px;
 }
 
-.nav-ber {
-  line-height: 80px;
-}
-
 .nav-item {
   color: #f9fbfc;
   list-style: none;
@@ -67,4 +63,10 @@ header {
 
 .margin{
   margin-top: 100px;
+}
+
+.search-control {
+  display: inline-block;
+  width: 79%;
+  padding-top: 10px;
 }
