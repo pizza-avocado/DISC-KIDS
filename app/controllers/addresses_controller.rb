@@ -22,6 +22,7 @@ class AddressesController < ApplicationController
     if address.update
       redirect_to user_path(current_user)
   end
+end
 
   def destroy
   end

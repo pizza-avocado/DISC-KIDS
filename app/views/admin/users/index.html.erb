@@ -12,7 +12,7 @@
 <ul>
   <% @users.each do |user| %>
 
-  <p><%= link_to "マイページ", admin_users_path(user), class:"user_#{user.id}" %></p>
+  <p><%= link_to "マイページ", admin_user_path(user), class:"user_#{user.id}" %></p>
 
   <p><%= user.lastname %><%= user.firstname %></p>
 

@@ -15,13 +15,20 @@ Rails.application.routes.draw do
 
   namespace :admin do
 	  get "search" => "users#search",as: 'search'
-    resources :users,           only:[:index, :show, :edit, :update]
+    resources :users,           only:[:index, :show, :edit, :update, :destroy]
   	resources :items,           only:[:new, :create, :edit, :update, :destroy]
   	resources :inquiries,       only:[:index]
   	resources :inquiry_replies, only:[:new, :create, :show]
   	resources :orders,          only:[:index, :update]
  	  resources :reviews,         only:[:destroy]
-  end
+
+
+  post "users" => "addresses#create"
+  post "users" => "addresses#update"
+  post "users" => "address_names#create"
+  post "users" => "address_names#update"
+
+end
 
 	  resources :users,           only:[:show, :edit, :update, :resign, :destroy]
   	resources :items,           only:[:index, :show]
@@ -38,6 +45,7 @@ Rails.application.routes.draw do
  	post "users" => "addresses#update"
  	post "users" => "address_names#create"
  	post "users" => "address_names#update"
+
 
 
     root "items#index"
