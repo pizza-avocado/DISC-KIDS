@@ -1,29 +1,34 @@
-<% @items.each do |item| %>
-	<div class="row">
-      <div class="col-xs-1"></div>
+<h1> 検索結果</h1>
 
-	      <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-	          <table border="1">
-			    <tr>
-			      <td><%= item.name %></td>
-			      <td><%= item.price %></td>
-			    </tr>
-			    <tr>
-	              <td><%= item.artist.artist %></td>
-                  <td><%= item.stock %></td>
+<% @items.each do |item| %>
+  <div class="row">
+      <div class="col-xs-1"></div>
+          <div class="col-xs-1"></div>
+            <div class="col-xs-6 ">
+              <dic class = "image">
+              <%= attachment_image_tag item, :jacket_image,size: '100x100' %>
+              </dic>
+            <table border="1">
+          <tr>
+            <td><%= item.name %></td>
+            <td>価格 :<%= item.price %></td>
+          </tr>
+          <tr>
+                <td>アーティスト :<%= item.artist.artist %></td>
+                  <td>在庫数 :<%= item.stock %></td>
                 </tr>
                 <tr>
-                  <td><%= item.label.label %></td>
-                  <td><%= item.status %></td>
+                  <td>レーベル :<%= item.label.label %></td>
+                  <td>ステータス :<%= item.status %></td>
                 </tr>
                 <tr>
-                  <td><%= item.genre.genre %></td>
+                  <td>ジャンル :<%= item.genre.genre %></td>
+                  <td><%= link_to "商品詳細" , admin_item_path(item) %></td>
                   <td></td>
                 </tr>
                 <div class="col-xs-1"></div>
               </table>
             </div>
     </div>
-	  <span class="border-bottom"></span>
+    <span class="border-bottom"></span>
 <% end %>

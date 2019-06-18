@@ -5,4 +5,13 @@ class Artist < ApplicationRecord
 
 	default_scope -> { order(artist: :asc)}
 
+# 	def self.search(search)
+# 	if search.present?
+# 		Artist.joins(:items)where(['artist LIKE? OR name LIKE? ',"%#{search}%"])
+# 		# Artist.where(['artist LIKE?',"%#{search}%"])
+# 	else
+# 		Artist.all
+# 	end
+# end
+
 end

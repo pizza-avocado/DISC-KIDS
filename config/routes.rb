@@ -28,6 +28,9 @@ Rails.application.routes.draw do
  	  resources :reviews,         only:[:destroy]
   end
 
+
+
+
   get "search" => "items#search",as: 'search'
   get "search_items" => "items#search", as:'search_items'
 	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
@@ -39,6 +42,7 @@ Rails.application.routes.draw do
   resources :likes,           only:[:create, :destroy]
   resources :orders,          only:[:new, :create, :show, :index]
  	resources :reviews,         only:[:new, :create, :edit, :update]
+
 
 
   delete "carts" => "carts#destroy"
