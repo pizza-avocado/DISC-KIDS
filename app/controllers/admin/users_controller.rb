@@ -4,26 +4,29 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @addresses = current_user.addresses
-    @address_names = current_user.address_names
+    @addresses = @user.addresses
+    @address_names = @user.address_names
   end
 
   def edit
     @user = User.find(params[:id])
-    @addresses = current_user.addresses
-    @address_names = current_user.address_names
+    @addresses = @user.addresses
+    @address_names = @user.address_names
     @address = Address.new
     @address_name = AddressName.new
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-      redirect_to user_path(current_user)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user)
     end
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to admin_user_path(@user)
   end
 
   def index
@@ -34,4 +37,8 @@ class Admin::UsersController < ApplicationController
     @users = User.search(params[:search])
   end
 
+private
+  def user_params
+    params.require(:user).permit(:lastname, :firstname, :lastname_kana, :firstname_kana, :postalcode, :address, :phonenumber)
+  end
 end

@@ -26,6 +26,7 @@ class AddressesController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+end
 
   def destroy
   end

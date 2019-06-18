@@ -23,12 +23,18 @@ Rails.application.routes.draw do
     resources :labels,          only:[:new, :create, :index, :edit, :update, :destroy]
     resources :genres,          only:[:new, :create, :index, :edit, :update, :destroy]
     resources :items,           only:[:new, :create, :edit, :update, :destroy]
-
   	resources :inquiries,       only:[:index]
   	resources :inquiry_replies, only:[:new, :create, :show]
   	resources :orders,          only:[:index, :show, :update]
  	  resources :reviews,         only:[:destroy]
-  end
+
+
+  post "users" => "addresses#create"
+  post "users" => "addresses#update"
+  post "users" => "address_names#create"
+  post "users" => "address_names#update"
+
+end
 
 
 
@@ -53,5 +59,6 @@ Rails.application.routes.draw do
  	post "users" => "address_names#create"
 
   root "items#index"
+
 
 end
