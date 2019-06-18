@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   resources :orders,          only:[:new, :create, :show, :index]
  	resources :reviews,         only:[:new, :create, :edit, :update]
 
-
+  get "user/resign" => "users#resign"
 
   delete "carts" => "carts#destroy"
 
