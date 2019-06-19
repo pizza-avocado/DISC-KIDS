@@ -25,6 +25,8 @@ class Admin::GenresController < ApplicationController
   def update
       genre = Genre.find(params[:id])
       genre.update(genre_params)
+      redirect_to edit_admin_item_path
+
   end
 
   def destroy; end

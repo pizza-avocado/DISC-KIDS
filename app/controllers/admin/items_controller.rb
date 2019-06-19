@@ -10,8 +10,6 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
 
   def show
     @item = Item.find(params[:id])
-    @artist = Artist.find(params[:id])
-    @label = Label.find(params[:id])
   end
 
   def index
@@ -37,7 +35,7 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
   def update
       @item = Item.find(params[:id])
       @item.update(item_params)
-      redirect_to item_path(@item)
+      redirect_to admin_item_path(@item)
   end
 
   def destroy

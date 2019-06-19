@@ -3,14 +3,11 @@
 
 <p>名前： <%= current_user.lastname %>  <%= current_user.firstname %> </p>
 <p>名前(カナ)： <%= current_user.lastname_kana %>  <%= current_user.firstname_kana %>
-<p> email : <%= current_user.email %> </p>
 <p> 郵便番号 : <%= current_user.postalcode %> </p>
 <p> 住所 : <%= current_user.address %> </p>
-<p> 電話番号 : <%= current_user.phonenumber %> </p>
 <p> email : <%= current_user.email %> </p>
+<p> 電話番号 : <%= current_user.phonenumber %> </p>
 
-
-<p> <%= link_to"編集", edit_user_path(current_user) %> </p>
 
 
 
@@ -21,7 +18,7 @@
 
 <p>宛名： <%= address_name.address_name %> </p>
 
-<%= link_to "edit", edit_address_name_path(address_name) %>
+<%= link_to "宛名編集", edit_address_name_path(address_name) %>
 
 <% end %>
 
@@ -33,6 +30,12 @@
 <p>郵便番号： <%= address.postalcode %> </p>
 <p>住所：<%= address.address %> </p>
 
-<%= link_to "edit", edit_address_path(address) %>
+<%= link_to "送付先編集", edit_address_path(address) %>
 
 <% end %>
+
+<br>
+<br>
+
+<p> <%= link_to"プロフィール編集　宛名・送付先追加", edit_user_path(current_user) %> </p>
+<p> <%= link_to"購入履歴", orders_path %> </p>

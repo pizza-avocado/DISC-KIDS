@@ -1,5 +1,10 @@
 <h1> 商品追加</h1>
 
+<p><%= link_to "アーティスト追加ページ", new_admin_artist_path %> </p>
+<p><%= link_to "レーベル追加ページ", new_admin_label_path %> </p>
+<p><%= link_to "ジャンル追加ページ", new_admin_genre_path %> </p>
+
+
 <%= form_for @item, url: admin_items_path do |f| %>
 
 <%= f.attachment_field :jacket_image %>
@@ -8,14 +13,12 @@
 <%= f.text_field :name %>
 
 <h4> アーティスト追加</h4>
-<p><%= link_to "アーティスト追加ページ", new_admin_artist_path %> </p>
 <%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
 
 <h4> 価格</h4>
 <%= f.text_field :price %>
 
 <h4> レーベル名</h4>
-<p><%= link_to "レーベル追加ページ", new_admin_label_path %> </p>
 <%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
 
 <h4> 在庫数</h4>
@@ -26,7 +29,6 @@
 
 
 <h4> ジャンル名</h4>
-<p><%= link_to "ジャンル追加ページ", new_admin_genre_path %> </p>
 <%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
 
 
