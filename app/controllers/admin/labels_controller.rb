@@ -15,24 +15,22 @@ class Admin::LabelsController < ApplicationController
   def create
       label = Label.new(label_params)
       label.save
-    if params[:commit] == "add"
       redirect_to new_admin_item_path
-    else
-       redirect_to edit_admin_item_path(params[:artist][:id])
-    end
   end
 
   def edit
-      @lebel = Lebel.find(params[:id])
+      @label = Label.find(params[:id])
   end
 
-  def update; end
+  def update
+      label = Label.find(params[:id])
+      label.update(label_params)
+  end
 
   def destroy; end
 
   private
-
   def label_params
-    params.require(:label).permit(:label)
+      params.require(:label).permit(:label)
   end
 end

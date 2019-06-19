@@ -1,0 +1,14 @@
+<h2> Editing Artist</h2>
+  <%= form_for @artist, url:admin_artist_path do |f| %>
+    <strong> Artist</strong>
+    <p><%= f.text_field :artist, class:"form-control" %></p>
+    <%= f.hidden_field :id, :value => "params[:id]" %>
+    <%= f.submit 'update artist', id:"back" %>
+  <% end %>
+
+<script>
+	let back = document.getElementById("back")
+	back.addEventListener("click", () => {
+		window.history.back()
+	})
+</script>

@@ -15,23 +15,20 @@ class Admin::ArtistsController < ApplicationController
   def create
       artist = Artist.new(artist_params)
       artist.save
-    if params[:commit] == "add"
-      redirect_to new_admin_item_path
-    else
-       redirect_to edit_admin_item_path(params[:artist][:id])
-    end
   end
 
   def edit
       @artist = Artist.find(params[:id])
   end
 
-  def update; end
+  def update
+      artist = Artist.find(params[:id])
+      artist.update(artist_params)
+  end
 
   def destroy; end
 
   private
-
   def artist_params
       params.require(:artist).permit(:artist)
   end

@@ -15,24 +15,22 @@ class Admin::GenresController < ApplicationController
   def create
       genre = Genre.new(genre_params)
       genre.save
-    if params[:commit] == "add"
       redirect_to new_admin_item_path
-    else
-      redirect_to edit_admin_item_path(params[:artist][:id])
-    end
   end
 
   def edit
       @genre = Genre.find(params[:id])
   end
 
-  def update; end
+  def update
+      genre = Genre.find(params[:id])
+      genre.update(genre_params)
+  end
 
   def destroy; end
 
   private
-
   def genre_params
-    params.require(:genre).permit(:genre)
+      params.require(:genre).permit(:genre)
   end
 end

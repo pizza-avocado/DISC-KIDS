@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
     @items = Item.page(params[:page]).reverse_order
   end
 
-<<<<<<< HEAD
   def search
     @items = Item.search(params[:search])
     render :search
@@ -24,13 +23,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
   end
-
-=======
-  def show; end
->>>>>>> header,index
 end
-
-
 
 private
   def item_params

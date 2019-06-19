@@ -1,11 +1,4 @@
 <h1> 商品編集</h1>
-
-
-
-<p> <%= link_to "Artist edit", new_admin_artist_path %></p>
-<p> <%= link_to "Label edit", new_admin_label_path %></p>
-<p> <%= link_to "Genre edit", new_admin_genre_path  %></p>
-
 <%= form_for @item, url: admin_item_path(@item) do |f| %>
 
 <h4> Jacket image</h4>
@@ -17,6 +10,7 @@
 
 
 <h4> Artist</h4>
+<%= link_to "artist edit", edit_admin_artist_path(@item.artist.id) %>
 <%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
 
 
@@ -24,6 +18,7 @@
 <%= f.text_field :price %>
 
 <h4> Label</h4>
+<%= link_to "label edit", edit_admin_label_path(@item.label.id) %>
 <%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
 
 
@@ -36,6 +31,7 @@
 
 
 <h4> Genre</h4>
+<%= link_to "genre edit", edit_admin_genre_path(@item.genre.id) %>
 <%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
 
 

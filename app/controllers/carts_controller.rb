@@ -3,7 +3,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!, only: %i[create index destroy]
 
-<<<<<<< HEAD
   def create
 
   if current_user.carts.any? { |cart| cart.item_id == params[:item_id].to_i }
@@ -18,9 +17,7 @@ class CartsController < ApplicationController
   	cart.user_id = current_user.id
   	cart.save
   	redirect_to carts_path
-
   end
-
 
   def index
   	@carts = current_user.carts
@@ -43,14 +40,4 @@ class CartsController < ApplicationController
   def cart_params
     params.require(:cart).permit(:item_id, :user_id, :quantity)
   end
-
-
-
-=======
-  def create; end
-
-  def index; end
-
-  def destroy; end
->>>>>>> header,index
 end

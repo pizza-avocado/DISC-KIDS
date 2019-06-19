@@ -15,90 +15,79 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-    <nav>
-      <% if admin_signed_in? %>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= link_to "ユーザー一覧", admin_users_path %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> user index</a>
-          <li class="nav-item">
-            <%= link_to "disc index",items_path %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "add item",new_admin_item_path %>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> inquiry</a>
-          <li class="nav-item">
-<<<<<<< HEAD
-               <dl class="searchbox">
+        <nav>
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "USER LIST", admin_users_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "DISC INDEX",admin_items_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ADD DISC",new_admin_item_path %>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> INQUIRY</a>
+            <li class="nav-item">
+              <dl class="searchbox">
+                 <%= form_tag search_items_path, :method => 'get' do %>
+                   <%= text_field_tag :search, params[:search] %>
+                   <%= submit_tag "Search", :name => nil %>
+                 <% end %>
+              </dl>
+            </li>
+            <li class="nav-item">
+              <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete %>
+            </li>
+        </nav>
+
+          <% elsif user_signed_in? %>
+            <nav>
+              <li class="nav-item">
+                <%= link_to "MY PAGE", user_path(current_user) %>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> INQUIRY</a>
+              </li>
+              <li class="nav-item">
+                <dl class="searchbox">
                   <%= form_tag search_items_path, :method => 'get' do %>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search", :name => nil %>
                   <% end %>
                 </dl>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-          </li>
-        </ul>
-    </nav>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> CART</a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete %>
+              </li>
+            </nav>
 
-  <% elsif user_signed_in? %>
-    <nav>
-          <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user) %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> inquiry</a>
-           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> search</a>
-              <dl class="searchbox">
+          <% else %>
+            <nav>
+              <li class="nav-item">
+                <%= link_to "LOG IN", new_user_session_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "SIGN UP", new_user_registration_path %>
+              </li>
+              <li class="nav-item">
+              </li>
+              <li>
                 <%= form_tag search_items_path, :method => 'get' do %>
                   <%= text_field_tag :search, params[:search] %>
                   <%= submit_tag "Search", :name => nil %>
-                  <% end %>
-                </dl>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> cart</a>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
-    </nav>
-
-  <% else %>
-    <nav>
-        <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li class="nav-item">
-        </li>
-        <li>
-          <%= form_tag search_items_path, :method => 'get' do %>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil %>
-            <% end %>
-        </li>
-      </ul>
-    </div>
-    </nav>
-  <% end %>
-      </div>
+                <% end %>
+              </li>
+            </nav>
+          <% end %>
+        </div>
     </header>
 
   <div class='body'>
     <div class='margin'></div>
   </div>
-
-
-
 
   <main>
     <%= yield %>
