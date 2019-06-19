@@ -1,2 +1,41 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<h1> 商品編集</h1>
+<%= form_for @item, url: admin_item_path(@item) do |f| %>
+
+<h4> Jacket image</h4>
+    <%= f.label :jacket_image %>
+    <%= f.attachment_field :jacket_image %>
+
+<h4> Album</h4>
+<%= f.text_field :name %>
+
+
+<h4> Artist</h4>
+<%= link_to "artist edit", edit_admin_artist_path(@item.artist.id) %>
+<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
+
+
+<h4> Price</h4>
+<%= f.text_field :price %>
+
+<h4> Label</h4>
+<%= link_to "label edit", edit_admin_label_path(@item.label.id) %>
+<%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
+
+
+<h4> Stock</h4>
+<%= f.text_field :stock %>
+
+
+<h4> Status</h4>
+<%= f.select :status,[["Sale","Sale"],["Sold out","Sold out"],["Stop selling","Stop selling"]] %>
+
+
+<h4> Genre</h4>
+<%= link_to "genre edit", edit_admin_genre_path(@item.genre.id) %>
+<%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
+
+
+<%= f.submit "update" %>
+<%= link_to "Destroy", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"} %>
+
+<% end %>

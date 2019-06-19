@@ -1,13 +1,11 @@
 class Admin::ItemsController < ApplicationController
+before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy, :show]
 
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy, :show]
 
   def new
     @item = Item.new
     @disc = @item.discs.build
     @track = @disc.tracks.build
-    # disc.tracks.build
-# @artist = Artist.new
   end
 
   def show
@@ -17,43 +15,41 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
-    @items = Item.page(params[:page]).reverse_order
+      @items = Item.all
+      @items = Item.page(params[:page]).reverse_order
   end
 
   def search
-    @items = Item.search(params[:serch])
-    render :search
+      @items = Item.search(params[:serch])
+      render :search
   end
 
-
   def create
-    item = Item.new(item_params)
-    item.save
-    redirect_to items_path
+      item = Item.new(item_params)
+      item.save
+      redirect_to admin_items_path
   end
 
   def edit
+      @item = Item.find(params[:id])
   end
 
   def update
+      @item = Item.find(params[:id])
+      @item.update(item_params)
+      redirect_to item_path(@item)
   end
 
-  def destoy
+  def destroy
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to admin_items_path
   end
 
-
-private
+  private
   def item_params
     params.require(:item).permit(:name, :price, :stock, :status, :jacket_image, :artist_id, :label_id, :genre_id,
       discs_attributes: [:disc_id, :disc_number, :_destroy,
       tracks_attributes: [:track_id, :track_number, :track_name, :_destroy]])
   end
-
-  # def artist_params
-  #   params.require(:artist).permit(:id, :artist,items_attributes: [:name, :price, :stock, :status, :id])
-  # end
-
-
-
 end

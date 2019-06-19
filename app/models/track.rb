@@ -1,5 +1,5 @@
+# frozen_string_literal: true
+
 class Track < ApplicationRecord
-
-	belongs_to :disc
-
+  belongs_to :disc
 end

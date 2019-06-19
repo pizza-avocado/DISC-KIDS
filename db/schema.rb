@@ -93,11 +93,11 @@ ActiveRecord::Schema.define(version: 2019_06_18_093332) do
     t.string "name"
     t.integer "price", null: false
     t.integer "stock", null: false
+    t.text "jacket_image_id"
     t.string "status", null: false
     t.string "disctype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "jacket_image_id"
     t.index ["name"], name: "index_items_on_name"
   end
 

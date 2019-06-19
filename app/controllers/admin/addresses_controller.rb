@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class Admin::AddressesController < ApplicationController
+  before_action :authenticate_admin!, only: %i[new create show update destroy]
 
-  before_action :authenticate_admin!, only: [:new, :create, :show, :update, :destroy]
-
-  def new
-  end
+  def new; end
 
   def create
     address = Address.new(address_params)
@@ -11,9 +11,6 @@ class Admin::AddressesController < ApplicationController
     if address.save
       redirect_to admin_user_path(@user)
     end
-  end
-
-  def show
   end
 
   def update
@@ -31,5 +28,4 @@ private
   def address_params
   params.require(:address).permit(:postalcode, :address)
   end
-
 end

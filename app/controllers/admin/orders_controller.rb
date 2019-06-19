@@ -1,6 +1,6 @@
-class Admin::OrdersController < ApplicationController
 
-  before_action :authenticate_admin!, only: [:index, :show, :update, :show]
+class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!, only: %i[index show update]
 
   def index
   	@orders = Order.all
@@ -21,5 +21,4 @@ private
   def order_params
   params.require(:order).permit(:order_status)
   end
-
 end

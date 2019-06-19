@@ -1,6 +1,7 @@
-class CartsController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :authenticate_user!,  only: [:create, :index, :destroy]
+class CartsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create index destroy]
 
   def create
 
@@ -16,9 +17,7 @@ class CartsController < ApplicationController
   	cart.user_id = current_user.id
   	cart.save
   	redirect_to carts_path
-
   end
-
 
   def index
   	@carts = current_user.carts
@@ -41,7 +40,4 @@ class CartsController < ApplicationController
   def cart_params
     params.require(:cart).permit(:item_id, :user_id, :quantity)
   end
-
-
-
 end

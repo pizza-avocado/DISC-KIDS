@@ -1,6 +1,6 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
-
-
   def index
   	# if cookies[:key].word.blank?
   	@items = Item.all
@@ -23,10 +23,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
   end
-
 end
-
-
 
 private
   def item_params
