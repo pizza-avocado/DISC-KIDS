@@ -15,7 +15,7 @@ class Admin::LabelsController < ApplicationController
   def create
       label = Label.new(label_params)
       label.save
-      redirect_to new_admin_item_path
+      redirect_to admin_item_path
   end
 
   def edit
@@ -25,6 +25,8 @@ class Admin::LabelsController < ApplicationController
   def update
       label = Label.find(params[:id])
       label.update(label_params)
+      redirect_to new_admin_artist_path
+
   end
 
   def destroy; end

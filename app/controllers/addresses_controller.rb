@@ -1,11 +1,8 @@
-# frozen_string_literal: true
-
 class AddressesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create show update destroy]
 
   def new; end
 
-<<<<<<< HEAD
   def create
     address = Address.new(address_params)
     address.user_id = current_user.id
@@ -13,13 +10,10 @@ class AddressesController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-=======
-  def create; end
->>>>>>> header,index
+
 
   def show; end
 
-<<<<<<< HEAD
   def edit
     @address = Address.find(params[:id])
   end
@@ -30,7 +24,7 @@ class AddressesController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-end
+
 
   def destroy
   end
@@ -43,9 +37,5 @@ private
   params.require(:address).permit(:postalcode, :address)
   end
 
-=======
-  def update; end
 
-  def destroy; end
->>>>>>> header,index
 end
