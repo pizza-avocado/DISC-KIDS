@@ -9,18 +9,18 @@
   <%= submit_tag 'Search', :lastname => nil %>
 <% end %>
 
-<ul><% @users.each do |user| %>
- <li>
-    <%= link_to "マイページ", user_path(user), class:"user_#{user.id}" %>
+<ul>
+  <% @users.each do |user| %>
 
-    <%= user.lastname %><%= user.firstname %>
+  <p><%= link_to "マイページ", admin_user_path(user), class:"user_#{user.id}" %></p>
 
-    <%= user.lastname_kana %><%= user.firstname_kana %>
+  <p><%= user.lastname %><%= user.firstname %></p>
 
-    <%= user.phonenumber %>
+  <p><%= user.lastname_kana %><%= user.firstname_kana %></p>
 
-    <%= user.email %>
- </li>
+  <p><%= user.phonenumber %></p>
+
+  <p><%= user.email %></p>
 </ul>
 
 
