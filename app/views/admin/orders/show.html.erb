@@ -1,2 +1,73 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<% sum_q = 0 %>
+<% sum_p = 0 %>
+
+<% @order.order_items.each do |order_item| %>
+<% sum_q += order_item.quantity %>
+<% sum_p += order_item.purchaced_price * order_item.quantity %>
+<% end %>
+
+
+
+<h1>ご注文詳細</h1>
+
+<h4>注文者名</h4>
+<%= @order.user.lastname %> <%= @order.user.firstname %>
+
+<h4>ご注文日時</h4>
+<%= @order.created_at.strftime('%Y/%m/%d') %>
+
+<h4>宛名</h4>
+<%= @order.address_name %>
+
+<h4>お届け先住所</h4>
+<%= @order.shipping_address %>
+
+<h4>ご注文点数</h4>
+<%= sum_q %>
+<h4>小計</h4>
+<%= sum_p %>
+
+<h4>送料</h4>
+¥500
+
+<h4>合計金額</h4>
+<%= sum_p + 500 %>
+
+<h4>支払方法</h4>
+<%= @order.payment %>
+
+<h4>注文ステータス</h4>
+<%= form_for @order, url:admin_order_path(@order) do |f| %>
+<%= f.select :order_status,[["注文受付済","注文受付済"],["発送準備中","発送準備中"],["発送済","発送済"],["お届け済","お届け済"]] %>
+<%= f.submit"更新" %>
+<% end %>
+
+<%= @order.order_status %>
+
+<br>
+<p>==============================</p>
+<h3> 注文商品一覧　</h3>
+
+<% @order.order_items.each do |order_item| %>
+
+<h4>商品名</h4>
+<p> <%= order_item.item.name %></p>
+
+<h4>アーティスト名</h4>
+<p><%= order_item.item.artist.artist %></p>
+
+<h4>レーベル名</h4>
+<p><%= order_item.item.label.label %></p>
+
+<h4>ジャンル名</h4>
+<p><%= order_item.item.genre.genre %></p>
+
+<h4>購入時金額（一枚あたり）</h4>
+<p>¥<%= order_item.purchaced_price %></p>
+
+<h4>数量</h4>
+<p><%= order_item.quantity %>個</p>
+
+<br>
+<p>--------------------------</p>
+<% end %>

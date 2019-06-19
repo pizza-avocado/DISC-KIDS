@@ -1,2 +1,95 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>ユーザー情報編集</h1>
+
+  <%= form_for @user, url: admin_user_path(@user) do |f| %>
+
+<p> last name </p>
+  <%= f.text_field :lastname, placeholder:"lastname"%><br>
+
+<p> first name </p>
+  <%= f.text_field :firstname, placeholder:"firstname"%><br>
+
+
+<p> last name カナ</p>
+  <%= f.text_field :lastname_kana, placeholder:"lastname_kana"%><br>
+
+<p> first name カナ</p>
+  <%= f.text_field :firstname_kana, placeholder:"firstname_kana"%><br>
+
+<p> 郵便番号</p>
+  <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
+
+<p> 住所</p>
+  <%= f.text_field :address, placeholder:"住所"%><br>
+
+<p> 電話番号</p>
+  <%= f.text_field :phonenumber, placeholder:"電話番号"%><br>
+
+<p> mail </p>
+  <%= f.text_field :email, placeholder:"email"%><br>
+
+<br>
+<br>
+
+  <%= f.submit "submit" %>
+
+<% end %>
+
+
+
+<h2> 宛名を編集する </h2>
+
+  <% @address_names.each do |address_name| %>
+  <%= form_for @address_name do |f| %>
+
+<p> 郵便番号 </p>
+  <%= f.text_field :address_name, placeholder:"宛名" %><br>
+
+  <%= f.submit "submit" %>
+
+<% end %>
+<% end %>
+
+<h2> 送付先を編集する </h2>
+
+  <% @addresses.each do |address| %>
+  <%= form_for @address do |f| %>
+
+<p> 郵便番号 </p>
+  <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
+
+<p> 住所 </p>
+  <%= f.text_area :address, placeholder:"住所"%><br>
+
+  <%= f.submit "submit" %>
+
+<% end %>
+<% end %>
+
+<br>
+<p> ----------------------------------</p>
+<br>
+
+<h2> 宛名を追加する </h2>
+  <%= form_for @address_name do |f| %>
+
+<p> 宛名 </p>
+  <%= f.text_field :address_name, placeholder:"宛名"%><br>
+
+  <%= f.submit "submit" %>
+
+<% end %>
+
+
+<h2> 送付先を追加する </h2>
+
+  <%= form_for @address do |f| %>
+
+<p> 郵便番号 </p>
+  <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
+
+<p> 住所 </p>
+  <%= f.text_area :address, placeholder:"住所"%><br>
+
+  <%= f.submit "submit" %>
+
+<% end %>
