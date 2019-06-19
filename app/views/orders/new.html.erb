@@ -26,10 +26,20 @@
 
 <%= form_for @order do |f| %>
 
+<% ad_nm = current_user.address_names.map{|an| [an.address_name,an.address_name]} %>
+<% ad_nm.unshift([current_user.lastname + current_user.firstname , current_user.lastname + current_user.firstname])  %>
+
+<% pc_ad = current_user.addresses.map{|pc_ad| [pc_ad.postalcode + pc_ad.address , pc_ad.postalcode + pc_ad.address]} %>
+<% pc_ad.unshift([current_user.postalcode + current_user.address, current_user.postalcode + current_user.address])  %>
+
+
+
 <p> 宛名 </p>
-<p><%= f.select :address_name, current_user.address_names.map{|an| [an.address_name,an.address_name] } %></p>
-<p> 送付先住所 </p>
-<p><%= f.select :shipping_address, current_user.addresses.all.map{|a| [a.address,a.address] } %></p>
+<p><%= f.select :address_name, ad_nm %></p>
+<br>
+<p> 送付先 </p>
+<p><%= f.select :shipping_address, pc_ad %></p>
+
 
 <br>
 
