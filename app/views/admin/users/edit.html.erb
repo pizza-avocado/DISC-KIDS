@@ -36,41 +36,12 @@
 
 
 
-<h2> 宛名を編集する </h2>
-
-  <% @address_names.each do |address_name| %>
-  <%= form_for @address_name do |f| %>
-
-<p> 郵便番号 </p>
-  <%= f.text_field :address_name, placeholder:"宛名" %><br>
-
-  <%= f.submit "submit" %>
-
-<% end %>
-<% end %>
-
-<h2> 送付先を編集する </h2>
-
-  <% @addresses.each do |address| %>
-  <%= form_for @address do |f| %>
-
-<p> 郵便番号 </p>
-  <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
-
-<p> 住所 </p>
-  <%= f.text_area :address, placeholder:"住所"%><br>
-
-  <%= f.submit "submit" %>
-
-<% end %>
-<% end %>
-
 <br>
 <p> ----------------------------------</p>
 <br>
 
 <h2> 宛名を追加する </h2>
-  <%= form_for @address_name do |f| %>
+  <%= form_for ([:admin, @user, @address_name]) do |f| %>
 
 <p> 宛名 </p>
   <%= f.text_field :address_name, placeholder:"宛名"%><br>
@@ -82,7 +53,7 @@
 
 <h2> 送付先を追加する </h2>
 
-  <%= form_for @address do |f| %>
+  <%= form_for ([:admin, @user, @address]) do |f| %>
 
 <p> 郵便番号 </p>
   <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>

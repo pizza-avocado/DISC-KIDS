@@ -34,6 +34,9 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
 
   def update
       @item = Item.find(params[:id])
+      if params[:item][:stock].to_i == 0
+        params[:item][:status] = "Sold out"
+      end
       @item.update(item_params)
       redirect_to admin_item_path(@item)
   end
