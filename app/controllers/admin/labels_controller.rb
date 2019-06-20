@@ -26,7 +26,6 @@ class Admin::LabelsController < ApplicationController
       label = Label.find(params[:id])
       label.update(label_params)
       redirect_to new_admin_artist_path
-
   end
 
   def destroy; end

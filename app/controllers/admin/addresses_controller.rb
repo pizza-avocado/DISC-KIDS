@@ -7,20 +7,27 @@ class Admin::AddressesController < ApplicationController
 
   def create
     address = Address.new(address_params)
-    address.user_id = @user.id
+    address.user_id = params[:user_id]
     if address.save
-      redirect_to admin_user_path(@user)
+      redirect_to admin_user_path(address.user_id)
     end
   end
 
+  def edit
+    @address = Address.find(params[:id])
+  end
+
   def update
-    address = address.find(params[:id])
-    if address.update
-       redirect_to admin_user_path(@user)
+    address = Address.find(params[:id])
+    if address.update(address_params)
+       redirect_to admin_user_path(address.user_id)
     end
   end
 
   def destroy
+    address = Address.find(params[:id])
+    address.destroy
+    redirect_to admin_user_path(address.user_id)
   end
 
 private

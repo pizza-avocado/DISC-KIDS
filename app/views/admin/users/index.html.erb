@@ -1,28 +1,32 @@
 <h1>ユーザーリスト</h1>
 
-<%= link_to "logout", destroy_admin_session_path, method: :delete %>
 
-
-<p>検索</p>
+<h2>検索</h2>
   <%= form_tag(admin_search_path,:method => 'get') do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :lastname => nil %>
 <% end %>
 
-<ul>
-  <% @users.each do |user| %>
+<p> ------------------- </p>
 
-  <p><%= link_to "マイページ", admin_user_path(user), class:"user_#{user.id}" %></p>
 
-  <p><%= user.lastname %><%= user.firstname %></p>
+<% @users.each do |user| %>
 
-  <p><%= user.lastname_kana %><%= user.firstname_kana %></p>
+<h4>ユーザー名</h4>
+<p>  <%= user.lastname %><%= user.firstname %></p>
 
-  <p><%= user.phonenumber %></p>
+<h4>ユーザー名（カナ）</h4>
+<p>  <%= user.lastname_kana %><%= user.firstname_kana %></p>
 
-  <p><%= user.email %></p>
-</ul>
+<h4>電話番号</h4>
+<p>  <%= user.phonenumber %></p>
 
+<h4>email</h4>
+<p>  <%= user.email %></p>
+
+<p>  <%= link_to "マイページ", admin_user_path(user), class:"user_#{user.id}" %></p>
+
+<p> -------------------- </p>
 
 <% end %>
 
