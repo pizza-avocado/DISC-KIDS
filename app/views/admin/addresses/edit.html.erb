@@ -1,0 +1,14 @@
+<h1>Addresses#edit</h1>
+
+
+<%= form_for @address, url: admin_user_address_path do |f| %>
+
+<p> 郵便番号 </p>
+<%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
+
+<p> 住所 </p>
+<%= f.text_area :address, placeholder:"住所"%><br>
+
+<%= f.submit "submit" %>
+
+<% end %>
