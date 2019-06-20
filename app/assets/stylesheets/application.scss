@@ -17,6 +17,16 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+/*@font-face {
+  font-family: "foge"
+  src: font-url('disclaimer-classic.ttf') format('truetype');
+ }*/
+
+li {
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Patua One', cursive;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,7 +34,7 @@
 }
 
 header {
-  height: 50px;
+  height: 80px;
   width: 100%;
 }
 
@@ -32,8 +42,26 @@ header {
   height: 100px;
 }
 
+.container nav {
+  text-align: right;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.logo {
+  float: left;
+  padding: 0 0 0 0;
+  margin-right: 0px;
+}
+
+li {
+  margin-right: 10px;
+  margin-top: 30px;
+}
+
 .nav-item {
-  color: #f9fbfc;
   list-style: none;
   text-decoration: none;
   position: relative;
@@ -44,6 +72,7 @@ header {
 .nav-item:hover {
   text-decoration: none;
 }
+
 
 .nav-item::after {
   position: absolute;
@@ -61,7 +90,7 @@ header {
   width: 100%;
 }
 
-.margin{
+.margin {
   margin-top: 100px;
 }
 
