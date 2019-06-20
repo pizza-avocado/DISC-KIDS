@@ -28,9 +28,11 @@ class OrdersController < ApplicationController
   	# cart delete
   	current_user.carts.each do |cart|
   	cart.destroy
+
   	end
 
     redirect_to orders_path
+    flash[:success] = "購入が確定されました！"
   end
 
   def index
