@@ -26,7 +26,7 @@
             <li class="nav-item">
               <%= link_to "ADD DISC",new_admin_item_path %>
             <li class="nav-item">
-              <a class="nav-link" href="#"> INQUIRY</a>
+              <%= link_to "INQUIRY", admin_inquiries_path %>
             <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag search_items_path, :method => 'get' do %>
@@ -46,7 +46,7 @@
                 <%= link_to "MY PAGE", user_path(current_user) %>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"> INQUIRY</a>
+                <%= link_to "INQUIRY", new_inquiry_path %>
               </li>
               <li class="nav-item">
                 <dl class="searchbox">
@@ -71,6 +71,9 @@
               </li>
               <li class="nav-item">
                 <%= link_to "SIGN UP", new_user_registration_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "INQUIRY", new_inquiry_path %>
               </li>
               <li class="nav-item">
               <dl class="searchbox">
