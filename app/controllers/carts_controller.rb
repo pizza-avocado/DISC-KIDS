@@ -13,10 +13,18 @@ class CartsController < ApplicationController
   	cart.quantity = 1
   end
 
-  	cart.item_id = params[:item_id]
-  	cart.user_id = current_user.id
+  cart.item_id = params[:item_id]
+  cart.user_id = current_user.id
+
+  if cart.quantity < cart.item.stock
   	cart.save
-  	redirect_to carts_path
+    redirect_to carts_path
+    flash[:add] = cart.item.name + "をカートに追加しました"
+  else
+    redirect_to item_path(cart.item_id)
+    flash[:error] = "在庫数以上の注文はできません"
+  end
+
   end
 
   def index
@@ -25,14 +33,21 @@ class CartsController < ApplicationController
 
   def update
   	cart = Cart.find_by(item_id: params[:cart][:item_id], user_id: current_user.id)
-  	cart.update(quantity: params[:cart][:quantity])
-  	redirect_to carts_path
+    if params[:cart][:quantity].to_i < cart.item.stock
+  	  cart.update(quantity: params[:cart][:quantity])
+  	  redirect_to carts_path
+      flash[:update] = cart.item.name + "の数量を" + params[:cart][:quantity] +"個に変更しました"
+    else
+      redirect_to carts_path
+      flash[:error] = cart.item.name + "の在庫数以上はカートに追加できません"
+    end
   end
 
   def destroy
   	cart = Cart.find_by(item_id: params[:cart][:item_id], user_id: current_user.id)
   	cart.destroy
   	redirect_to carts_path
+    flash[:remove] = cart.item.name + "をカートから削除しました"
   end
 
   private
