@@ -1,6 +1,6 @@
-# frozen_string_literal: true
+class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[show edit update resign destroy]
 
-<<<<<<< HEAD
   def show
   	@user = User.find(params[:id])
   	@addresses = current_user.addresses
@@ -19,34 +19,26 @@
     	redirect_to user_path(current_user)
     end
   end
-=======
-class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[show edit update resign destroy]
 
-  def show; end
+  def resign
+    @user = current_user
+  end
 
-  def edit; end
->>>>>>> header,index
-
-  def update; end
-
-  def resign; end
-
-<<<<<<< HEAD
+  def destroy
+    user = current_user
+    user.destroy
+    redirect_to root_path
+  end
 
 private
-
   def user_params
-	params.require(:user).permit(:email, :lastname, :firstname, :lastname_kana, :firstname_kana,
+    params.require(:user).permit(:email, :lastname, :firstname, :lastname_kana, :firstname_kana,
     						     :phonenumber, :postalcode, :address)
   end
 
   def correct_user
    	@user = User.find(params[:id])
    	redirect_to user_path(current_user) unless @user == current_user
-  end
 
-=======
-  def destroy; end
->>>>>>> header,index
+  end
 end

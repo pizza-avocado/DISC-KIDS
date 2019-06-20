@@ -3,7 +3,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: %i[new create index show]
 
-<<<<<<< HEAD
   def new
   	@order = Order.new
   	@carts = current_user.carts
@@ -31,7 +30,7 @@ class OrdersController < ApplicationController
   	cart.destroy
   	end
 
-    redirect_to user_path(current_user)
+    redirect_to orders_path
   end
 
   def index
@@ -42,6 +41,8 @@ class OrdersController < ApplicationController
   	@order = Order.find(params[:id])
   end
 
+
+
   private
 
   def order_params
@@ -49,15 +50,5 @@ class OrdersController < ApplicationController
   end
 
 
-=======
-  def new; end
 
-  def create; end
-
-  def index; end
-
-  def show; end
-
-  def update; end
->>>>>>> header,index
 end

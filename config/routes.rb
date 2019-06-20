@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
 	  get "search" => "users#search",as: 'search'
-	  resources :users,           only:[:index]
+    resources :users,           only:[:index, :show, :edit, :update, :destroy]
     resources :items,           only:[:new, :create, :edit, :update, :destroy, :show, :index]
     resources :artists,         only:[:new, :create, :index, :edit, :update, :destroy]
     resources :labels,          only:[:new, :create, :index, :edit, :update, :destroy]
@@ -22,9 +22,17 @@ Rails.application.routes.draw do
     resources :items,           only:[:new, :create, :edit, :update, :destroy]
   	resources :inquiries,       only:[:index]
   	resources :inquiry_replies, only:[:new, :create, :show]
-  	resources :orders,          only:[:index, :update]
+  	resources :orders,          only:[:index, :show, :update]
  	  resources :reviews,         only:[:destroy]
-  end
+
+
+
+  post "users" => "addresses#create"
+  post "users" => "addresses#update"
+  post "users" => "address_names#create"
+  post "users" => "address_names#update"
+
+end
 
   get "search" => "items#search",as: 'search'
   get "search_items" => "items#search", as:'search_items'
@@ -38,8 +46,8 @@ Rails.application.routes.draw do
   resources :orders,          only:[:new, :create, :show, :index]
  	resources :reviews,         only:[:new, :create, :edit, :update]
 
+  get "user/resign" => "users#resign"
   delete "carts" => "carts#destroy"
-
  	post "users" => "addresses#create"
  	post "users" => "address_names#create"
 

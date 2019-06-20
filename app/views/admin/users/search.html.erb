@@ -10,16 +10,15 @@
 <% end %>
 
 <ul><% @users.each do |user| %>
+  <p><%= link_to "マイページ", admin_users_path(user), class:"user_#{user.id}" %></p>
 
-<%= link_to "マイページ", user_path(user), class:"user_#{user.id}" %>
-  <%= user.lastname %><%= user.firstname %>
+  <p><%= user.lastname %><%= user.firstname %></p>
 
-  <%= user.lastname_kana %><%= user.firstname_kana %>
+  <p><%= user.lastname_kana %><%= user.firstname_kana %></p>
 
-  <%= user.phonenumber %>
+  <p><%= user.phonenumber %></p>
 
-  <%= user.email %>
-
+  <p><%= user.email %></p>
 </ul>
 
 

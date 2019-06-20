@@ -81,13 +81,13 @@
                 <%= link_to "SIGN UP", new_user_registration_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
-              </li>
-              <li>
-                <%= form_tag search_items_path, :method => 'get' do %>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
-                <% end %>
-              </li>
+              <dl class="searchbox">
+                 <%= form_tag search_items_path, :method => 'get' do %>
+                   <%= text_field_tag :search, params[:search] %>
+                   <%= submit_tag "Search", :name => nil %>
+                 <% end %>
+              </dl>
+            </li>
             </nav>
           <% end %>
         </div>
