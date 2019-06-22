@@ -2,4 +2,6 @@
 
 class AddressName < ApplicationRecord
   belongs_to :user
+
+  validates :address_name,     presence: true
 end
