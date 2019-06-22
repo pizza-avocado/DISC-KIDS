@@ -19,9 +19,14 @@ class Item < ApplicationRecord
 
 def self.search(search)
 	if search.present?
-		Item.where(['name LIKE?',"%#{search}%"])
+		Item.joins(:artist).where(['name LIKE? OR artist LIKE?', "%#{search}%","%#{search}%"])
 	else
 		Item.all
 	end
 end
+
+def liked_by?(user)
+	likes.where(user_id: user.id).exists?
+end
+
 end
