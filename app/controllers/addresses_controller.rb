@@ -27,6 +27,9 @@ class AddressesController < ApplicationController
 
 
   def destroy
+    address = Address.find(params[:id])
+    address.destroy
+    redirect_to user_path(current_user)
   end
 
 
