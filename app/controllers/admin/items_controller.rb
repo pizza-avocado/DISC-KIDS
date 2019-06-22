@@ -18,7 +18,7 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
   end
 
   def search
-      @items = Item.search(params[:serch])
+      @items = Item.search(params[:search])
       render :search
   end
 

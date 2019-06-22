@@ -32,12 +32,13 @@ Rails.application.routes.draw do
   get "search" => "items#search",as: 'search'
   get "search_items" => "items#search", as:'search_items'
 	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
-  resources :items,           only:[:index, :show]
+  resources :items,           only:[:index, :show] do
+    resource :likes,           only:[:create, :destroy]
+  end
   resources :addresses,       only:[:new, :create, :show, :edit, :update, :destroy]
   resources :address_names,   only:[:new, :create ,:show, :edit, :update, :destroy]
   resources :carts,           only:[:create, :index, :destroy, :update]
   resources :inquiries,       only:[:new, :create]
-  resources :likes,           only:[:create, :destroy]
   resources :orders,          only:[:new, :create, :show, :index]
  	resources :reviews,         only:[:new, :create, :edit, :update]
 
