@@ -13,9 +13,15 @@ class Admin::LabelsController < ApplicationController
   end
 
   def create
-      label = Label.new(label_params)
-      label.save
-      redirect_to admin_item_path
+      @label = Label.new(label_params)
+      if @label.save
+        flash[:notice] = "レーベル名: " + @label.label + "を追加しました"
+        redirect_to new_admin_item_path
+      else
+        @label = Label.all
+        flash[:notice] = "レーベル追加に失敗しました"
+        render :new
+      end
   end
 
   def edit
@@ -23,10 +29,14 @@ class Admin::LabelsController < ApplicationController
   end
 
   def update
-      label = Label.find(params[:id])
-      label.update(label_params)
-      redirect_to new_admin_artist_path
-
+      @label = Label.find(params[:id])
+      if @label.update(label_params)
+          flash[:notice] = "レーベル名: " + @label.label + "に編集しました"
+          redirect_to new_admin_label_path
+      else
+          flash[:notice] = "レーベル編集に失敗しました"
+          render :edit
+      end
   end
 
   def destroy; end

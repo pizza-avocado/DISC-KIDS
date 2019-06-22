@@ -3,7 +3,7 @@
 
 <h1> 商品詳細ページ</h1>
 
-<div><%= attachment_image_tag @item, :jacket_image,size: '100x100' %></div>
+<div><%= attachment_image_tag @item, :jacket_image, class: "image", fallback: "no_images.png", size: '200x200' %></div>
 <p>商品名: <%= @item.name %> </p>
 <p>アーティスト名: <%= @item.artist.artist %></p>
 <p>ジャンル名: <%= @item.genre.genre %></p>
