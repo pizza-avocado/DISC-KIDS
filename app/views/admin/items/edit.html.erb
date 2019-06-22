@@ -2,7 +2,7 @@
 <%= form_for @item, url: admin_item_path(@item) do |f| %>
 
 <h4> Jacket image</h4>
-    <%= f.label :jacket_image %>
+    <%#= f.label :jacket_image %>
     <%= f.attachment_field :jacket_image %>
 
 <h4> Album</h4>
@@ -36,6 +36,6 @@
 
 
 <%= f.submit "update" %>
-<%= link_to "Destroy", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"} %>
 
 <% end %>
+<%= button_to "Destroy", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"} %>

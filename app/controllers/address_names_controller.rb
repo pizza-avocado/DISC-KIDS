@@ -31,6 +31,9 @@ class AddressNamesController < ApplicationController
   end
 
   def destroy
+    address_name = AddressName.find(params[:id])
+    address_name.destroy
+    redirect_to user_path(current_user)
   end
 
 

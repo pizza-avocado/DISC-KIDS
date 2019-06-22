@@ -20,6 +20,8 @@
 <% @address_names.each do |address_name| %>
 
 <p>宛名： <%= address_name.address_name %> </p>
+<%= link_to "宛名編集", edit_admin_user_address_name_path(@user, address_name) %>
+<%= link_to "宛名削除", admin_user_address_name_path(@user, address_name), method: :delete %>
 
 <% end %>
 
@@ -30,5 +32,8 @@
 
 <p>郵便番号： <%= address.postalcode %> </p>
 <p>住所：<%= address.address %> </p>
+
+<%= link_to "送付先編集", edit_admin_user_address_path(@user, address) %>
+<%= link_to "送付先削除", admin_user_address_path(@user, address), method: :delete %>
 
 <% end %>

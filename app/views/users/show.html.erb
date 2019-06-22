@@ -22,6 +22,7 @@
 <p>宛名： <%= address_name.address_name %> </p>
 
 <%= link_to "宛名編集", edit_address_name_path(address_name) %>
+<%= link_to "宛名削除", address_name_path(address_name), method: :delete %>
 
 <% end %>
 
@@ -34,6 +35,7 @@
 <p>住所：<%= address.address %> </p>
 
 <%= link_to "送付先編集", edit_address_path(address) %>
+<%= link_to "送付先削除", address_path(address), method: :delete %>
 
 <% end %>
 

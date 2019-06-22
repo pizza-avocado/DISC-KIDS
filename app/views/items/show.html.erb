@@ -3,7 +3,7 @@
 
 <h1> 商品詳細ページ</h1>
 
-<div><%= attachment_image_tag @item, :jacket_image,size: '100x100' %></div>
+<div><%= attachment_image_tag @item, :jacket_image, class: "image", fallback: "no_images.png", size: '200x200' %></div>
 <p>商品名: <%= @item.name %> </p>
 <p>アーティスト名: <%= @item.artist.artist %></p>
 <p>ジャンル名: <%= @item.genre.genre %></p>
@@ -30,9 +30,24 @@
 <% end %>
 
 
-<br>
-
-
+<li>
+    <i class="fa fa-calendar"></i><%= @item.created_at.strftime('%Y/%m/%d') %>
+</li>
+<% if @item.liked_by?(current_user) %>
+<li>
+	<%= link_to item_likes_path(@item), method: :delete do %>
+	<i class = "fa fa-heart" aria-hidden = "true" style = "color:red;"></i>
+	<%= @item.likes.count %> いいね
+	<% end %>
+</li>
+<% else %>
+<li>
+	<%= link_to item_likes_path(@item), method: :post do %>
+	<i class = "fa fa-heart-o" aria-hidden = "true"></i>
+	<%= @item.likes.count %> いいね
+	<% end %>
+</li>
+<% end %>
 
 
 
