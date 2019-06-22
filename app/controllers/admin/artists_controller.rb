@@ -13,9 +13,15 @@ class Admin::ArtistsController < ApplicationController
   end
 
   def create
-      artist = Artist.new(artist_params)
-      artist.save
-      redirect_to new_admin_item_path
+      @artist = Artist.new(artist_params)
+      if @artist.save
+        flash[:notice] = "アーティスト名: " + @artist.artist + "を追加しました"
+        redirect_to new_admin_item_path
+      else
+        @artists = Artist.all
+        flash[:notice] = "アーティスト追加に失敗しました"
+        render :new
+      end
   end
 
   def edit
@@ -23,12 +29,21 @@ class Admin::ArtistsController < ApplicationController
   end
 
   def update
-      artist = Artist.find(params[:id])
-      artist.update(artist_params)
-      redirect_to new_admin_artist_path
+      @artist = Artist.find(params[:id])
+      if @artist.update(artist_params)
+        flash[:notice] = "アーティスト名: " + @artist.artist + "に編集しました"
+        redirect_to new_admin_artist_path
+      else
+        flash[:notice] = "アーティスト編集に失敗しました"
+        render :edit
+      end
   end
 
-  def destroy; end
+  def destroy
+      artist = Artist.find(params[:id])
+      artist.destroy
+      redirect_to new_admin_artist_path
+  end
 
   private
   def artist_params
