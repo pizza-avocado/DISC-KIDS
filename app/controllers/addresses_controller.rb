@@ -19,9 +19,14 @@ class AddressesController < ApplicationController
   end
 
   def update
-    address = Address.find(params[:id])
-    if address.update(address_params)
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      flash[:notice] = "送付先を編集しました"
       redirect_to user_path(current_user)
+    else
+      @address = Address.find(params[:id])
+      flash[:notice] = "送付先の編集に失敗しました"
+      render :edit
     end
   end
 
