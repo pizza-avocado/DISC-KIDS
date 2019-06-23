@@ -16,7 +16,7 @@ class CartsController < ApplicationController
   cart.item_id = params[:item_id]
   cart.user_id = current_user.id
 
-  if cart.quantity < cart.item.stock
+  if 0 < cart.item.stock
   	cart.save
     redirect_to carts_path
     flash[:add] = cart.item.name + "をカートに追加しました"
@@ -33,7 +33,7 @@ class CartsController < ApplicationController
 
   def update
   	cart = Cart.find_by(item_id: params[:cart][:item_id], user_id: current_user.id)
-    if params[:cart][:quantity].to_i < cart.item.stock
+    if params[:cart][:quantity].to_i <= cart.item.stock
   	  cart.update(quantity: params[:cart][:quantity])
   	  redirect_to carts_path
       flash[:update] = cart.item.name + "の数量を" + params[:cart][:quantity] +"個に変更しました"

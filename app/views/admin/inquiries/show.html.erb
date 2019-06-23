@@ -1,5 +1,3 @@
-<%= flash[:notice] %>
-
 <h1> お問い合わせ詳細 </h1>
 
 <h4>お問い合わせ日時</h4>
@@ -19,7 +17,7 @@
 	<h4>返信フォーム</h4>
 	<%= form_for @inquiry_reply, url:admin_inquiry_replies_path do |f| %>
 
-	<p><%= f.text_field :reply_content %></p>
+	<p><%= f.text_area :reply_content %></p>
 
 	<%= f.hidden_field :inquiry_id, :value => @inquiry.id %>
 

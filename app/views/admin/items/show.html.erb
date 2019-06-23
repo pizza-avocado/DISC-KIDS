@@ -29,11 +29,11 @@
 
 <br>
 
-<% if 0 < @item.stock %>
-	<%= button_to "カートに追加する", carts_path, params:{ item_id: @item.id } %>
-<% else %>
-	<p>在庫がありません</p>
-<% end %>
+<%# if 0 < @item.stock %>
+	<%#= button_to "カートに追加する", carts_path, params:{ item_id: @item.id } %>
+<%# else %>
+<!-- 	<p>在庫がありません</p>
+ --><%# end %>
 
 
 <%= link_to "商品編集" , edit_admin_item_path %>

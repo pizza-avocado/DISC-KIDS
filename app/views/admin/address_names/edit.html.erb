@@ -1,4 +1,4 @@
-<h1>Address_names#edit</h1>
+<h1>宛名編集</h1>
 
 
 <%= form_for @address_name, url: admin_user_address_name_path do |f| %>
@@ -6,6 +6,6 @@
 <p> 宛名 </p>
 <%= f.text_field :address_name, placeholder:"宛名"%><br>
 
-<%= f.submit "submit" %>
+<%= f.submit "登録する" %>
 
 <% end %>

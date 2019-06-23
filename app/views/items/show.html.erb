@@ -30,23 +30,25 @@
 <% end %>
 
 
-<li>
-    <i class="fa fa-calendar"></i><%= @item.created_at.strftime('%Y/%m/%d') %>
-</li>
-<% if @item.liked_by?(current_user) %>
-<li>
-	<%= link_to item_likes_path(@item), method: :delete do %>
-	<i class = "fa fa-heart" aria-hidden = "true" style = "color:red;"></i>
-	<%= @item.likes.count %> いいね
+<% if user_signed_in? %>
+	<% if @item.liked_by?(current_user) %>
+	<li>
+    	<i class="fa fa-calendar"></i><%= @item.created_at.strftime('%Y/%m/%d') %>
+	</li>
+	<li>
+		<%= link_to item_likes_path(@item), method: :delete do %>
+		<i class = "fa fa-heart" aria-hidden = "true" style = "color:red;"></i>
+		<%= @item.likes.count %> いいね
+		<% end %>
+	</li>
+	<% else %>
+	<li>
+		<%= link_to item_likes_path(@item), method: :post do %>
+		<i class = "fa fa-heart-o" aria-hidden = "true"></i>
+		<%= @item.likes.count %> いいね
+	</li>
 	<% end %>
-</li>
-<% else %>
-<li>
-	<%= link_to item_likes_path(@item), method: :post do %>
-	<i class = "fa fa-heart-o" aria-hidden = "true"></i>
-	<%= @item.likes.count %> いいね
-	<% end %>
-</li>
+<% end %>
 <% end %>
 
 

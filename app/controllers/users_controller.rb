@@ -22,7 +22,8 @@ class UsersController < ApplicationController
       @address = Address.new
       @address_name = AddressName.new
       flash[:notice] = "編集に失敗しました"
-      render :edit
+      redirect_to edit_user_path(current_user)
+      # render :edit
     end
   end
 

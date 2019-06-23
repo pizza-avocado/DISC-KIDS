@@ -27,13 +27,14 @@ Rails.application.routes.draw do
   	resources :inquiry_replies, only:[:new, :create, :show]
   	resources :orders,          only:[:index, :show, :update]
  	  resources :reviews,         only:[:destroy]
+
   end
 
   get "search" => "items#search",as: 'search'
   get "search_items" => "items#search", as:'search_items'
 	resources :users,           only:[:show, :edit, :update, :resign, :destroy]
   resources :items,           only:[:index, :show] do
-    resource :likes,           only:[:create, :destroy]
+  resource :likes,           only:[:create, :destroy]
   end
   resources :addresses,       only:[:new, :create, :show, :edit, :update, :destroy]
   resources :address_names,   only:[:new, :create ,:show, :edit, :update, :destroy]

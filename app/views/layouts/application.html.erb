@@ -58,6 +58,9 @@
                    <%= image_tag "logo.png", class: "logo-image", size: "90x80" %>
                 <% end %>
               </div>
+              <li class = "nav-item">
+                <%#= current_user.lastname + current_user.firstname + "さん" %>
+              </li>
               <li class="nav-item">
                 <%= link_to "MY PAGE", user_path(current_user), :style => "color:white;" %>
               </li>
@@ -96,7 +99,7 @@
                 <%= link_to "SIGN UP", new_user_registration_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
-                <%= link_to "INQUIRY", new_inquiry_path %>
+                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;" %>
               </li>
               <li class="nav-item">
               <dl class="searchbox">

@@ -1,4 +1,4 @@
-<h1>Addresses#edit</h1>
+<h1>送付先編集</h1>
 
 
 <%= form_for @address, url: admin_user_address_path do |f| %>
@@ -9,6 +9,6 @@
 <p> 住所 </p>
 <%= f.text_area :address, placeholder:"住所"%><br>
 
-<%= f.submit "submit" %>
+<%= f.submit "編集する" %>
 
 <% end %>

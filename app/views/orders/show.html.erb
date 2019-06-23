@@ -19,15 +19,15 @@
 <%= @order.shipping_address %>
 
 <h4>ご注文点数</h4>
-<%= sum_q %>
+<%= sum_q %>点
 <h4>小計</h4>
-<%= sum_p %>
+¥<%= sum_p %>
 
 <h4>送料</h4>
 ¥500
 
 <h4>合計金額</h4>
-<%= sum_p + 500 %>
+¥<%= sum_p + 500 %>
 
 <h4>支払方法</h4>
 <%= @order.payment %>
