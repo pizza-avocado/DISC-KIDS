@@ -5,9 +5,13 @@ class InquiriesController < ApplicationController
 
   def create
    inquiry = Inquiry.new(inquiry_params)
-   inquiry.save
-   redirect_to new_inquiry_path
-   flash[:success] = "お問い合わせを送信しました"
+   if inquiry.save
+   	redirect_to new_inquiry_path
+    flash[:notice] = "お問い合わせを送信しました"
+   else
+   	redirect_to new_inquiry_path
+    flash[:notice] = "空欄があります"
+   end
   end
 
   private
