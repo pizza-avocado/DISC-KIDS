@@ -1,0 +1,30 @@
+<%= flash[:notice] %>
+
+<h1> お問い合わせ詳細 </h1>
+
+<h4>お問い合わせ日時</h4>
+<p><%= @inquiry.created_at.strftime('%Y/%m/%d/%H:%M') %></p>
+
+<h4>メールアドレス</h4>
+<p><%= @inquiry.email %></p>
+
+<h4>問い合わせ内容</h4>
+<p><%= @inquiry.inquiry_content %></p>
+
+<% if @inquiry.inquiry_reply.present? %>
+	<h3>返信内容</h3>
+	<p><%= @inquiry.inquiry_reply.reply_content %>
+
+<% else %>
+	<h4>返信フォーム</h4>
+	<%= form_for @inquiry_reply, url:admin_inquiry_replies_path do |f| %>
+
+	<p><%= f.text_field :reply_content %></p>
+
+	<%= f.hidden_field :inquiry_id, :value => @inquiry.id %>
+
+	<%= f.submit "返信する",data: { confirm: "返信しますか？"} %>
+
+	<% end %>
+
+<% end %>

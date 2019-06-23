@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 2019_06_20_163132) do
     t.string "name"
     t.integer "price", null: false
     t.integer "stock", null: false
-
     t.string "status", null: false
     t.string "disctype"
     t.datetime "created_at", null: false
