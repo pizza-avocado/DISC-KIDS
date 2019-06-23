@@ -1,6 +1,6 @@
 <h1> 商品詳細ページ</h1>
 
-<div><%= attachment_image_tag @item, :jacket_image,size: '100x100' %></div>
+<div><%= attachment_image_tag @item, :jacket_image, class: "image", fallback: "no_images.png", size: '200x200' %></div>
 
 <p>商品名: <%= @item.name %> </p>
 <p>アーティスト名: <%= @item.artist.artist %></p>
@@ -28,6 +28,13 @@
 
 
 <br>
+
+<% if 0 < @item.stock %>
+	<%= button_to "カートに追加する", carts_path, params:{ item_id: @item.id } %>
+<% else %>
+	<p>在庫がありません</p>
+<% end %>
+
 
 <%= link_to "商品編集" , edit_admin_item_path %>
 
