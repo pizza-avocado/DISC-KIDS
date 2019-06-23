@@ -4,6 +4,7 @@ class Admin::InquiriesController < ApplicationController
   def index
   	@inquiries = Inquiry.all
   	@inquiry_replies = InquiryReply.all
+  	@inquiries = Inquiry.page(params[:page]).reverse_order
   end
 
   def show

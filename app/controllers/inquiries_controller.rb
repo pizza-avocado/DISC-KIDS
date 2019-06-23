@@ -7,10 +7,10 @@ class InquiriesController < ApplicationController
    inquiry = Inquiry.new(inquiry_params)
    if inquiry.save
    	redirect_to new_inquiry_path
-    flash[:notice] = "お問い合わせを送信しました"
+    flash[:success] = "お問い合わせを送信しました"
    else
    	redirect_to new_inquiry_path
-    flash[:notice] = "空欄があります"
+    flash[:error] = "空欄があります"
    end
   end
 
