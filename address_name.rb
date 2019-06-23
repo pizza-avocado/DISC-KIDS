@@ -1,17 +1,20 @@
-class AddressNamesController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create show update destroy]
+# frozen_string_literal: true
+
+class Admin::AddressNamesController < ApplicationController
+  before_action :authenticate_admin!, only: %i[new create show update destroy]
 
   def new; end
 
   def create
     address_name = AddressName.new(address_name_params)
-    address_name.user_id = current_user.id
+    address_name.user_id = params[:user_id]
     if address_name.save
       flash[:notice] = "宛名を追加しました"
-      redirect_to user_path(current_user)
+      redirect_to admin_user_path
     else
+      address = AddressName.find(params[:id])
       flash[:notice] = "宛名の追加に失敗しました"
-      redirect_to edit_user_path(current_user)
+      redirect_to admin_user_path
     end
   end
 
@@ -24,25 +27,26 @@ class AddressNamesController < ApplicationController
   def update
     @address_name = AddressName.find(params[:id])
     if @address_name.update(address_name_params)
-      flash[:notice] = "宛名を編集しました"
-      redirect_to user_path(current_user)
+       flash[:notice] = "宛名を編集しました"
+       redirect_to admin_user_path
     else
       @address = AddressName.find(params[:id])
       flash[:notice] = "宛名の編集に失敗しました"
-      redirect_to edit_user_path(current_user)
+      redirect_to admin_user_path
     end
   end
 
   def destroy
     address_name = AddressName.find(params[:id])
-    if address_name.destroy
+    if address_name.destroy(address_name_params)
       flash[:notice] = "宛名を削除しました"
-      redirect_to user_path(current_user)
+      redirect_to edit_admin_user_path
     else
-      flash[:notice] = "宛名の削除に失敗しました"
-      redirect_to edit_user_path(current_user)
+      flash[:notice] = "宛名削除に失敗しました"
+      redirect_to edit_admin_user_path
     end
   end
+
 
 
 private
@@ -51,3 +55,4 @@ private
     params.require(:address_name).permit(:address_name)
   end
 end
+

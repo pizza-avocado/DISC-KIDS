@@ -7,10 +7,13 @@ class AddressesController < ApplicationController
     address = Address.new(address_params)
     address.user_id = current_user.id
     if address.save
+      flash[:notice] = "送付先を追加しました"
       redirect_to user_path(current_user)
+    else
+      flash[:notice] = "送付先の追加に失敗しました"
+      redirect_to edit_user_path(current_user)
     end
   end
-
 
   def show; end
 
@@ -30,13 +33,16 @@ class AddressesController < ApplicationController
     end
   end
 
-
   def destroy
     address = Address.find(params[:id])
-    address.destroy
-    redirect_to user_path(current_user)
+    if address.destroy
+      flash[:notice] = "送付先を削除しました"
+      redirect_to user_path(current_user)
+    else
+      flash[:notice] = "送付先の削除に失敗しました"
+      redirect_to edit_user_path(current_user)
+    end
   end
-
 
 
 private
