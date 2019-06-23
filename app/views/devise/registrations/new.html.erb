@@ -25,35 +25,34 @@
     <%= f.text_field :firstname_kana, autofocus: true, autocomplete:"(メイ)" %>
   </div>
 
-  <p>郵便番号</p>
+
   <div class="field">
     <%= f.label :postalcode %><br />
     <%= f.text_field :postalcode, autofocus: true, autocomplete:"郵便番号" %>
   </div>
 
-  <p>住所</p>
+
   <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address, autofocus: true, autocomplete:"住所" %>
   </div>
 
-  <p>電話番号</p>
+
   <div class="field">
     <%= f.label :phonenumber %><br />
     <%= f.text_field :phonenumber, autofocus: true, autocomplete:"電話番号" %>
   </div>
 
-  <p>メールアドレス</p>
+
    <div class="field">
      <%= f.label :email %><br />
      <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
    </div>
 
-  <p>パスワード</p>
    <div class="field">
      <%= f.label :password %><br />
      <% if @minimum_password_length %>
-     <em>(<%= @minimum_password_length %> characters minimum)</em>
+     <em>(<%= @minimum_password_length %> 文字以上)</em>
      <% end %><br />
      <%= f.password_field :password, autocomplete: "new-password" %>
    </div>
