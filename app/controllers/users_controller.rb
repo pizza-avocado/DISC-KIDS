@@ -23,7 +23,6 @@ class UsersController < ApplicationController
       @address_name = AddressName.new
       flash[:notice] = "編集に失敗しました"
       redirect_to edit_user_path(current_user)
-      # render :edit
     end
   end
 
@@ -40,7 +39,7 @@ class UsersController < ApplicationController
 private
   def user_params
     params.require(:user).permit(:email, :lastname, :firstname, :lastname_kana, :firstname_kana,
-    						     :phonenumber, :postalcode, :address)
+    						                 :phonenumber, :postalcode, :address)
   end
 
   def correct_user

@@ -13,8 +13,6 @@ class User < ApplicationRecord
   has_many :reviews, 		    dependent: :destroy
   has_many :likes, 			    dependent: :destroy
 
-  acts_as_paranoid
-
   validates :lastname,       presence: true
   validates :firstname,      presence: true
   validates :lastname_kana,  presence: true
@@ -22,10 +20,10 @@ class User < ApplicationRecord
   validates :postalcode,     presence: true
   validates :address,        presence: true
   validates :phonenumber,    presence: true
+  validates :email,          presence: true, uniqueness: true
 
 
-
-
+  acts_as_paranoid
 
   def self.search(search)
     unless search

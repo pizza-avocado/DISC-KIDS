@@ -1,4 +1,14 @@
 <div class="back">
+<% result = 0 %>
+<% @items.each do |item| %>
+  <% result += 1 %>
+<% end %>
+
+<h5><%= params[:search] %>：の検索結果</h5>
+<h5><%= result %>件のCDが見つかりました</h5>
+
+<% @items.each do |item| %>
+
 <div class="container">
 　<% @items.each do |item| %>
     <div class="row">
@@ -38,3 +48,6 @@
 
 <%= paginate @items %>
 </div>
+    <span class="border-bottom"></span>
+
+<% end %>
