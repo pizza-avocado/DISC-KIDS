@@ -18,9 +18,8 @@ class Admin::LabelsController < ApplicationController
         flash[:notice] = "レーベル名: " + @label.label + "を追加しました"
         redirect_to new_admin_item_path
       else
-        @label = Label.all
         flash[:notice] = "レーベル追加に失敗しました"
-        render :new
+        redirect_to new_admin_item_path
       end
   end
 
@@ -32,10 +31,10 @@ class Admin::LabelsController < ApplicationController
       @label = Label.find(params[:id])
       if @label.update(label_params)
           flash[:notice] = "レーベル名: " + @label.label + "に編集しました"
-          redirect_to new_admin_label_path
+          redirect_to new_admin_item_path
       else
           flash[:notice] = "レーベル編集に失敗しました"
-          render :edit
+          redirect_to edit_admin_label_path
       end
   end
 

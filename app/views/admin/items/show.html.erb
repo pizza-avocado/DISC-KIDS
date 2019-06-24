@@ -1,6 +1,11 @@
 <h1> 商品詳細ページ</h1>
 
-<div><%= attachment_image_tag @item, :jacket_image, class: "image", fallback: "no_images.png", size: '200x200' %></div>
+<div class = "container">
+	<div class = "row">
+<div class = "col-lg-4"><%= attachment_image_tag @item, :jacket_image, class: "image", fallback: "no_images.png", size: '200x200' %>
+	<div class = "link"><%= link_to "商品編集" , edit_admin_item_path, class: "btn btn-primary btn-lg" %></div>
+</div>
+
 
 <p>商品名: <%= @item.name %> </p>
 <p>アーティスト名: <%= @item.artist.artist %></p>
@@ -11,23 +16,20 @@
 <p>販売ステータス: <%= @item.status %></p>
 
 
-
-<br>
-
+<table class = "table">
 <% @item.discs.each do |disc| %>
 <tr>
-	<td>ディスク番号<%= disc.disc_number %> </td>
+	<td>ディスク<%= disc.disc_number %> </td>
+</tr>
 
-
+<tr>
 	<% disc.tracks.each do |track| %>
-	<td>トラック番号<%= track.track_number %> </td>
-	<td>曲名<%= track.track_name %> </td>
+	<td>トラック<%= track.track_number %> </td>
+	<td><%= track.track_name %> </td>
 </tr>
 	<% end %>
 <% end %>
-
-
-<br>
+</table>
 
 <%# if 0 < @item.stock %>
 	<%#= button_to "カートに追加する", carts_path, params:{ item_id: @item.id } %>
@@ -35,7 +37,7 @@
 <!-- 	<p>在庫がありません</p>
  --><%# end %>
 
-
-<%= link_to "商品編集" , edit_admin_item_path %>
+	</div>
+</div>
 
 
