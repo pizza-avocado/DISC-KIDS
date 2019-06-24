@@ -15,8 +15,8 @@
 
 <%= form_for cart do |f| %>
 
-<p><%= attachment_image_tag cart.item, :jacket_image,size: '50x50' %></p>
-<p> 商品名：<%= cart.item.name %> 数量：<%= f.text_field :quantity %></p>
+<p><%= attachment_image_tag cart.item, :jacket_image,size: '50x50', fallback: "no_images.png" %></p>
+<p> 商品名：<%= link_to item_path(cart) do %><%= cart.item.name %> <% end %> 数量：<%= f.text_field :quantity %></p>
 <p>アーティスト名：<%= cart.item.artist.artist %></p>
 <p>在庫数：<%= cart.item.stock %></p>
 <p>金額：<%= cart.item.price %></p>
@@ -40,7 +40,8 @@
 <h5> 小計：¥<%= sum %> </h5>
 
 
-<%= link_to "購入へ進む", new_order_path %>
+<%= link_to "購入へ進む", new_order_path, class: 'btn btn-default'  %>
+<%= link_to "お買い物を続ける", items_path, class: 'btn btn-default'  %>
 
 </div>
 </div>
