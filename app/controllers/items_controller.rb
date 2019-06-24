@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.search(params[:search])
-    render :search
+
   end
 
 

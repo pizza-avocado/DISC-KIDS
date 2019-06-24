@@ -10,7 +10,7 @@
   </div>
 
 <div class= "row">
-  <table class="table cart-content">
+  <table class="table-cart-content">
   	<tr class="table-head">
   		<th></th>
   		<th></th>
@@ -27,22 +27,23 @@
 		<% sum_p += cart.item.price * cart.quantity %>
 		<% sum_q += cart.quantity %>
 
-		<td class="table-delete"><%= form_for cart, method: :delete do |f| %>
+		<td class="table-delete">
+			<%= form_for cart, method: :delete do |f| %>
 				<%= f.submit "削除", class: 'btn btn-danger' %>
 				<%= f.hidden_field :item_id %>
 			<% end %>
 		</td>
 		<%= form_for cart do |f| %>
-			<td class="table-image"><%= attachment_image_tag cart.item, :jacket_image,size: '75x75', fallback: "no_images.png" %></td>
-			<td class="table-name-artist"> <p class= "item-name"><%= link_to item_path(cart.item_id) do %><%= cart.item.name %> <% end %></p>
-				 						   <p><%= cart.item.artist.artist %></p>
-				 						   </td>
-			<td class="table-stock"><%= cart.item.stock %></td>
-			<td class="table-quantity-body"><%= f.text_field :quantity, :size => "3" %></td>
-				<%= f.hidden_field :item_id %>
-			<td><%= f.submit "更新", class: 'btn btn-default' %></td>
+		<td class="table-image"><%= attachment_image_tag cart.item, :jacket_image,size: '75x75', fallback: "no_images.png" %></td>
+		<td class="table-name-artist"> <p class= "item-name"><%= link_to item_path(cart.item_id) do %><%= cart.item.name %> <% end %></p>
+				 					   <p><%= cart.item.artist.artist %></p>
+		</td>
+		<td class="table-stock"><%= cart.item.stock %></td>
+		<td class="table-quantity-body"><%= f.text_field :quantity, :size => "3" %></td>
+										<%= f.hidden_field :item_id %>
+		<td class="reflesh"><%= f.submit "更新", class: 'btn btn-default' %></td>
 		<% end %>
-			<td class="table-price-body">¥<%= cart.item.price %></td>
+		<td class="table-price-body">¥<%= cart.item.price %></td>
 	</tr>
 	<% end %>
   </table>
