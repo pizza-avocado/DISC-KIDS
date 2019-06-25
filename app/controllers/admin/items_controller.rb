@@ -35,9 +35,6 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
 
   def edit
       @item = Item.find(params[:id])
-      @item = Item.new
-      @disc = @item.discs.build
-      @track = @disc.tracks.build
   end
 
   def update
