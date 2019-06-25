@@ -28,15 +28,16 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
         flash[:notice] = "商品名: " + @item.name + "を追加しました"
         redirect_to admin_items_path
       else
-        @disc = @item.discs.build
-        @track = @disc.tracks.build
         flash[:notice] = "商品追加に失敗しました"
-        render :new
+        redirect_to new_admin_item_path
       end
   end
 
   def edit
       @item = Item.find(params[:id])
+      @item = Item.new
+      @disc = @item.discs.build
+      @track = @disc.tracks.build
   end
 
   def update
@@ -49,7 +50,7 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
          redirect_to admin_item_path(@item)
       else
          flash[:notice] = "商品編集に失敗しました"
-         render :edit
+         redirect_to edit_admin_item_path(@item)
       end
   end
 
@@ -59,10 +60,8 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
          flash[:notice] = "商品名: " + @item.name + "を削除しました"
          redirect_to admin_items_path
       else
-        @items = Item.all
-        @items = Item.page(params[:page]).reverse_order
         flash[:notice] = "商品削除に失敗しました"
-        render :index
+        redirect_to edit_admin_item_path(@item)
       end
   end
 
