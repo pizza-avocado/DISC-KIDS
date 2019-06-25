@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Admin::AddressNamesController < ApplicationController
   before_action :authenticate_admin!, only: %i[new create show update destroy]
 
@@ -9,6 +7,11 @@ class Admin::AddressNamesController < ApplicationController
     address_name = AddressName.new(address_name_params)
     address_name.user_id = params[:user_id]
     if address_name.save
+      flash[:notice] = "宛名を追加しました"
+      redirect_to admin_user_path(address_name.user_id)
+    else
+      address_name.user_id = params[:user_id]
+      flash[:notice] = "宛名の追加に失敗しました"
       redirect_to admin_user_path(address_name.user_id)
     end
   end
@@ -22,16 +25,25 @@ class Admin::AddressNamesController < ApplicationController
   def update
     address_name = AddressName.find(params[:id])
     if address_name.update(address_name_params)
+       flash[:notice] = "宛名を編集しました"
        redirect_to admin_user_path(address_name.user_id)
+    else
+      address_name = AddressName.find(params[:id])
+      flash[:notice] = "宛名の編集に失敗しました"
+      redirect_to admin_user_path(address_name.user_id)
     end
   end
 
   def destroy
-    address_name= AddressName.find(params[:id])
-    address_name.destroy
-    redirect_to admin_user_path(address_name.user_id)
+    address_name = AddressName.find(params[:id])
+    if address_name.destroy
+      flash[:notice] = "宛名を削除しました"
+      redirect_to admin_user_path(address_name.user_id)
+    else
+      flash[:notice] = "宛名の削除に失敗しました"
+      redirect_to edit_admin_user_path(address_name.user_id)
+    end
   end
-
 
 
 private
