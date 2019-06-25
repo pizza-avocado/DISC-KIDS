@@ -3,14 +3,15 @@
   <%= form_for @label, url:admin_label_path do |f| %>
     <strong> Label</strong>
     <p><%= f.text_field :label, class:"form-control" %></p>
-    <%= f.hidden_field :id, :value => "params[:id]" %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
     <%= f.submit 'update label', id:"back" %>
   <% end %>
 
 <script>
-	let back = document.getElementById("back")
-	back.addEventListener("click", () => {
-		window.history.back()
-	})
+  $(document).on('turbolinks:load', function(){
+  let back = document.getElementById("back");
+  back.addEventListener("click", () => {
+    window.history.back()
+  };
+  });
 </script>
-</div>
