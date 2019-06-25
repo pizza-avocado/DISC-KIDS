@@ -2,18 +2,17 @@
 
   <%= form_for @user, url: admin_user_path(@user) do |f| %>
 
-<p> last name </p>
-  <%= f.text_field :lastname, placeholder:"lastname"%><br>
+<p> 氏 </p>
+  <%= f.text_field :lastname, placeholder:"氏"%><br>
 
-<p> first name </p>
-  <%= f.text_field :firstname, placeholder:"firstname"%><br>
+<p> 名 </p>
+  <%= f.text_field :firstname, placeholder:"名"%><br>
 
+<p> 氏 カナ</p>
+  <%= f.text_field :lastname_kana, placeholder:"氏　カナ"%><br>
 
-<p> last name カナ</p>
-  <%= f.text_field :lastname_kana, placeholder:"lastname_kana"%><br>
-
-<p> first name カナ</p>
-  <%= f.text_field :firstname_kana, placeholder:"firstname_kana"%><br>
+<p> 名 カナ</p>
+  <%= f.text_field :firstname_kana, placeholder:"名　カナ"%><br>
 
 <p> 郵便番号</p>
   <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
@@ -24,16 +23,15 @@
 <p> 電話番号</p>
   <%= f.text_field :phonenumber, placeholder:"電話番号"%><br>
 
-<p> mail </p>
-  <%= f.text_field :email, placeholder:"email"%><br>
+<p> メールアドレス </p>
+  <%= f.text_field :email, placeholder:"メールアドレス"%><br>
 
 <br>
 <br>
 
-  <%= f.submit "submit" %>
+  <%= f.submit "編集する" %>
 
 <% end %>
-
 
 
 <br>
@@ -46,7 +44,7 @@
 <p> 宛名 </p>
   <%= f.text_field :address_name, placeholder:"宛名"%><br>
 
-  <%= f.submit "submit" %>
+  <%= f.submit "追加する" %>
 
 <% end %>
 
@@ -61,6 +59,6 @@
 <p> 住所 </p>
   <%= f.text_area :address, placeholder:"住所"%><br>
 
-  <%= f.submit "submit" %>
+  <%= f.submit "追加する" %>
 
 <% end %>

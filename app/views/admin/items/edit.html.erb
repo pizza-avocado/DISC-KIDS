@@ -1,3 +1,6 @@
+<div class="back">
+<div class="back-rgba">
+
 <h1> 商品編集</h1>
 <%= form_for @item, url: admin_item_path(@item) do |f| %>
 
@@ -10,7 +13,7 @@
 
 
 <h4> Artist</h4>
-<%= link_to "artist edit", edit_admin_artist_path(@item.artist.id) %>
+<%= link_to "artist edit", edit_admin_item_artist_path(@item.id, @item.artist.id) %>
 <%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
 
 
@@ -18,7 +21,7 @@
 <%= f.text_field :price %>
 
 <h4> Label</h4>
-<%= link_to "label edit", edit_admin_label_path(@item.label.id) %>
+<%= link_to "label edit", edit_admin_item_label_path(@item.id, @item.label.id) %>
 <%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
 
 
@@ -31,11 +34,22 @@
 
 
 <h4> Genre</h4>
-<%= link_to "genre edit", edit_admin_genre_path(@item.genre.id) %>
+<%= link_to "genre edit", edit_admin_item_genre_path(@item.id, @item.genre.id) %>
 <%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
 
-
-<%= f.submit "update" %>
-
+<div class = "discs">
+<%= f.fields_for :discs do |disc| %>
+	<p>ディスク番号 <%= render "disc_fields", f: disc %> </p>
 <% end %>
-<%= button_to "Destroy", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"} %>
+	<div class = "links">
+		<p><%= link_to_add_association "ディスク追加", f,:discs %> </p>
+	</div>
+</div>
+
+<%= f.submit '登録', id:"back" , class: "btn btn-primary btn-lg"%>
+<% end %>
+
+
+<%= button_to "削除", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"},class: "btn btn-primary btn-lg" %>
+</div>
+</div>

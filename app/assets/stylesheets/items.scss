@@ -20,17 +20,26 @@
   margin-bottom: 20px;
 }
 
-image {
+.jacket-image {
   height: 200px;
-  padding-left: 50px;
+  margin-left: 40px;
 }
 
-table {
+.index-table {
   height: 200px;
-  margin-left: 50px;
+}
+
+.index-td {
+  padding: 10px 0;
+  width: 420px;
 }
 
 td {
   padding: 10px 0;
   width: 260px;
+}
+
+
+.link {
+  margin: 20px 0px;
 }

@@ -1,5 +1,8 @@
+<div class="back">
+<div class="back-rgba">
 <h1> 商品追加</h1>
 
+<div class = "container">
 <p><%= link_to "アーティスト追加ページ", new_admin_artist_path %> </p>
 <p><%= link_to "レーベル追加ページ", new_admin_label_path %> </p>
 <p><%= link_to "ジャンル追加ページ", new_admin_genre_path %> </p>
@@ -38,16 +41,20 @@
 	<p>ディスク番号 <%= render "disc_fields", f: disc %> </p>
 <% end %>
 	<div class = "links">
-		<p><%= link_to_add_association "ディスク番号追加", f,:discs %> </p>
+		<p><%= link_to_add_association "ディスク追加", f,:discs %> </p>
 	</div>
 </div>
 
-<%= f.submit '登録', id:"back" %>
+<%= f.submit '登録', id:"back" , class: "btn btn-primary btn-lg"%>
 <% end %>
+</div>
 
-<script>
+</div>
+</div>
+
+<!-- <script>
 	let back = document.getElementById("back")
 	back.addEventListener("click", () => {
 		window.history.back()
 	})
-</script>
+</script> -->

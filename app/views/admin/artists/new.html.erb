@@ -1,11 +1,12 @@
 <%= form_for @artist, url: admin_artists_path do |f| %>
-
+<div class = "container">
+	<div class = 'row'>
 <h1> Artist add</h1>
-　　<p> artist name：</p>
+　　<p class = "text"> artist</p>
 
 　　　　<%= f.text_field :artist %>
 
-　　　　<%= f.submit "add" %>
+　　　　<%= f.submit "add" ,class: "btn btn-default" %>
 <% end %>
 
 
@@ -17,3 +18,5 @@
 
 <% end %>
 
+ </div>
+</div>

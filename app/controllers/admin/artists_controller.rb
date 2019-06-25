@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: true 
 
 class Admin::ArtistsController < ApplicationController
   before_action :authenticate_admin!, only: %i[new create index edit update destroy]
@@ -18,24 +18,24 @@ class Admin::ArtistsController < ApplicationController
         flash[:notice] = "アーティスト名: " + @artist.artist + "を追加しました"
         redirect_to new_admin_item_path
       else
-        @artists = Artist.all
         flash[:notice] = "アーティスト追加に失敗しました"
-        render :new
+        redirect_to new_admin_artist_path
       end
   end
 
   def edit
       @artist = Artist.find(params[:id])
+      @item = Item.find(params[:item_id])
   end
 
   def update
       @artist = Artist.find(params[:id])
       if @artist.update(artist_params)
-        flash[:notice] = "アーティスト名: " + @artist.artist + "に編集しました"
-        redirect_to new_admin_artist_path
+         flash[:notice] = "アーティスト名: " + @artist.artist + "に編集しました"
+         redirect_to edit_admin_item_path(params[:artist][:item_id])
       else
-        flash[:notice] = "アーティスト編集に失敗しました"
-        render :edit
+         flash[:notice] = "アーティスト編集に失敗しました"
+         render :edit
       end
   end
 
