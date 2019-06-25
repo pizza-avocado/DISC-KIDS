@@ -16,14 +16,9 @@ class CartsController < ApplicationController
   cart.item_id = params[:item_id]
   cart.user_id = current_user.id
 
-  if 0 < cart.item.stock
-  	cart.save
-    redirect_to carts_path
-    flash[:add] = cart.item.name + "をカートに追加しました"
-  else
-    redirect_to item_path(cart.item_id)
-    flash[:error] = "在庫数以上の注文はできません"
-  end
+	cart.save
+  redirect_to carts_path
+  flash[:add] = cart.item.name + "をカートに追加しました"
 
   end
 
