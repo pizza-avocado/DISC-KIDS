@@ -1,34 +1,44 @@
 <div class="back">
-<div class="back-rgba">
-<h1>ユーザーリスト</h1>
+  <div class="back-rgba">
+    <div class="container">
+       <h1>ユーザーリスト</h1>
 
 
-<h2>検索</h2>
-  <%= form_tag(admin_search_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :lastname => nil %>
-<% end %>
+         <h2>検索</h2>
+           <%= form_tag(admin_search_path,:method => 'get') do %>
+           <%= text_field_tag :search %>
+           <%= submit_tag 'Search', :lastname => nil %>
+         <% end %>
 
-<p> ------------------- </p>
+       <p> ------------------- </p>
 
 
-<% @users.each do |user| %>
+     <% @users.each do |user| %>
 
-<h4>ユーザー名</h4>
-<p>  <%= user.lastname %><%= user.firstname %></p>
+  <table border="5">
+    <thead>
+      <tr>
+         <th>ユーザー名</th>
+         <th>ユーザー名（カナ）</th>
+         <th>電話番号</th>
+         <th>メールアドレス</th>
+      </tr>
+  </thead>
 
-<h4>ユーザー名（カナ）</h4>
-<p>  <%= user.lastname_kana %><%= user.firstname_kana %></p>
+    <tbody>
+      <tr>
+         <td> <%= user.lastname %><%= user.firstname %></td>
+         <td> <%= user.lastname_kana %><%= user.firstname_kana %></td>
+         <td> <%= user.phonenumber %></td>
+         <td> <%= user.email %></td>
+      </tr>
+    </tbody>
 
-<h4>電話番号</h4>
-<p>  <%= user.phonenumber %></p>
+   <p>  <%= link_to "ユーザー詳細", admin_user_path(user), class:"user_#{user.id}" %></p>
 
-<h4>email</h4>
-<p>  <%= user.email %></p>
+   </table>
 
-<p>  <%= link_to "ユーザー詳細", admin_user_path(user), class:"user_#{user.id}" %></p>
-
-<p> -------------------- </p>
+       <p> -------------------- </p>
 
 <% end %>
 
