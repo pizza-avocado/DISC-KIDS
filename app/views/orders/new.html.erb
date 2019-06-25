@@ -1,51 +1,66 @@
+<div class= "container">
+
+<div class= "title">
 <h1>購入確認画面</h1>
+</div>
 
 <% subtotal = 0 %>
-<% @carts.each do |cart| %>
 
-<p>商品名：<%= cart.item.name %></p>
-<p>単価：¥<%= cart.item.price %></p>
-<p>数量：<%= cart.quantity %>個</p>
+<table class= "order-table-content">
+	<tr class= "order-table-head">
+		<th class= "order-item"></th>
+		<th class= "order-price">価格</th>
+		<th class= "order-quantity">数量</th>
+		<th class= "order-item-sum">小計（商品ごと）</th>
+	</tr>
+	<% @carts.each do |cart| %>
+	<tr>
+		<td><p class= "order-item-name"><%= cart.item.name %></p>
+			<p class= "order-item-artist"><%= cart.item.artist.artist %></p>
+		</td>
+		<td class= "order-price">¥<%= cart.item.price %></td>
+		<td class= "order-quantity"><%= cart.quantity %>点</td>
+		<td class= "order-item-sum"><% result = cart.item.price * cart.quantity %>
+			¥<%= result %> </td>
+	</tr>
+	<% subtotal += result %>
+	<% end %>
+</table>
 
-<% result = cart.item.price * cart.quantity %>
-<p> ¥<%= result %> </p>
-<% subtotal += result %>
-<br>
-<% end %>
+<div class= "order-sum">
+	<p> 小計：<a class="order-subtotal">¥<%= subtotal %></a></p>
+	<p> 送料：¥500 </p>
+	<% total = subtotal + 500 %>
+	<h4> 合計：<a class= "order-sum-integer">¥<%= total %></a> </h4>
+</div>
 
-<p> 小計：¥<%= subtotal %> </p>
-<p> 送料：¥500 </p>
+<div class ="order-address">
+	<h3> 送付先の選択　</h3>
 
-<% total = subtotal + 500 %>
+	<%= form_for @order do |f| %>
 
-<h4> 合計：¥<%= total %> </h4>
+	<% ad_nm = current_user.address_names.map{|an| [an.address_name,an.address_name]} %>
+	<% ad_nm.unshift([current_user.lastname + current_user.firstname , current_user.lastname + current_user.firstname])  %>
 
-<br>
-<br>
-<h3> 送付先の選択　</h3>
+	<% pc_ad = current_user.addresses.map{|pc_ad| [pc_ad.postalcode + pc_ad.address , pc_ad.postalcode + pc_ad.address]} %>
+	<% pc_ad.unshift([current_user.postalcode + current_user.address, current_user.postalcode + current_user.address])  %>
 
-<%= form_for @order do |f| %>
+	<p> 宛名 </p>
+	<p class ="order-address-select"><%= f.select :address_name, ad_nm %></p>
+	<br>
+	<p> 送付先 </p>
+	<p class ="order-address-select"><%= f.select :shipping_address, pc_ad %></p>
 
-<% ad_nm = current_user.address_names.map{|an| [an.address_name,an.address_name]} %>
-<% ad_nm.unshift([current_user.lastname + current_user.firstname , current_user.lastname + current_user.firstname])  %>
+	<div class="order-payment">
+	<p>お支払方法</p>
+	<p class ="order-address-select"><%= f.select :payment,[["クレジットカード","クレジットカード"],["コンビニ支払い","コンビニ支払い"],["着払い","着払い"]] %> </p>
+	</div>
 
-<% pc_ad = current_user.addresses.map{|pc_ad| [pc_ad.postalcode + pc_ad.address , pc_ad.postalcode + pc_ad.address]} %>
-<% pc_ad.unshift([current_user.postalcode + current_user.address, current_user.postalcode + current_user.address])  %>
+	<p class ="order-payment">
+	<%= f.submit "購入する", data:{confirm: "購入してよろしいですか？"}, class: "btn btn-warning btn-lg"%>
+	</p>
 
+	<% end %>
+</div>
 
-
-<p> 宛名 </p>
-<p><%= f.select :address_name, ad_nm %></p>
-<br>
-<p> 送付先 </p>
-<p><%= f.select :shipping_address, pc_ad %></p>
-
-
-<br>
-
-<p>支払方法</p>
-<p><%= f.select :payment,[["クレジットカード","クレジットカード"],["コンビニ支払い","コンビニ支払い"],["着払い","着払い"]] %> </p>
-
-<%= f.submit "購入する", data: { confirm: "購入してよろしいですか？"} %>
-
-<% end %>
+</div>
