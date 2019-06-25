@@ -1,3 +1,74 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order-table-content{
+	margin: auto auto;
+	width: 70%;
+}
+
+.order-table-head{
+	background-color: gray;
+}
+
+
+.order-item{
+	width: 40%;
+}
+
+.order-item-name{
+	font-size: 20px;
+	padding-left: 5px;
+}
+
+.order-item-artist{
+	font-size: 12px;
+	padding-left: 10px;
+	color: #a9a9a9;
+}
+
+.order-price{
+	width: 10%;
+	text-align: right;
+}
+
+.order-quantity{
+	width: 8%;
+	text-align: right;
+}
+
+.order-item-sum{
+	width: 15%;
+	text-align: right;
+}
+
+
+
+.order-sum{
+	margin: auto auto;
+	width: 70%;
+	text-align: right;
+}
+
+.order-subtotal{
+	color: #cd5c5c;
+}
+
+.order-sum-integer{
+	font-size: 30px;
+	color: #800000;
+}
+
+
+.order-address{
+	margin: auto auto;
+	width: 70%;
+}
+
+.order-address-select{
+	color: black;
+}
+
+.order-payment{
+	text-align: right;
+}

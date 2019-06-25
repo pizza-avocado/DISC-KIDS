@@ -5,16 +5,17 @@
 
 <h1>お問い合わせ </h1>
 
-
+<div class = "container">
 <%= form_for @inquiry do |f| %>
 
 <p>メールアドレス</p>
-<p><%= f.email_field :email %></p>
+<p><%= f.text_field :email %></p>
 
 <p>お問い合わせ内容</p>
 <p><%= f.text_area :inquiry_content %></p>
 
 
-<%= f.submit "送信",data: { confirm: "お問い合わせを送信しますか？"} %>
+<%= f.submit "送信",data: { confirm: "お問い合わせを送信しますか？"} , class: "btn btn-primary btn-lg" %>
 
 <% end %>
+</div>

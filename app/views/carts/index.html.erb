@@ -1,46 +1,65 @@
 <div class= "container">
+
+	<p class= "flash"><%= flash[:add] %></p>
+	<p class= "flash"><%= flash[:update] %></p>
+	<p class= "flash"><%= flash[:remove] %></p>
+	<p class= "flash"><%= flash[:error] %></p>
+
+  <div class= "title">
+	<h1>ショッピングカート</h1>
+  </div>
+
 <div class= "row">
+  <table class="table-cart-content">
+  	<tr class="table-head">
+  		<th></th>
+  		<th></th>
+  		<th></th>
+  		<th class="table-stock">在庫数</th>
+  		<th class="table-quantity-head">数量</th>
+  		<th></th>
+  		<th class="table-price-head">価格</th>
+  	</tr>
+		<% sum_p = 0 %>
+		<% sum_q = 0 %>
+	<% @carts.each do |cart| %>
+	<tr class= "table-body">
+		<% sum_p += cart.item.price * cart.quantity %>
+		<% sum_q += cart.quantity %>
 
-<%= flash[:add] %>
-<%= flash[:update] %>
-<%= flash[:remove] %>
-<%= flash[:error] %>
-
-
-<h1>カート内容</h1>
-
-<% sum = 0 %>
-<% @carts.each do |cart| %>
-<% sum += cart.item.price * cart.quantity %>
-
-<%= form_for cart do |f| %>
-
-<p><%= attachment_image_tag cart.item, :jacket_image,size: '50x50' %></p>
-<p> 商品名：<%= cart.item.name %> 数量：<%= f.text_field :quantity %></p>
-<p>アーティスト名：<%= cart.item.artist.artist %></p>
-<p>在庫数：<%= cart.item.stock %></p>
-<p>金額：<%= cart.item.price %></p>
-
-
-<%= f.hidden_field :item_id %>
-
-<%= f.submit "更新" %>
-<% end %>
-
-<%= form_for cart, method: :delete do |f| %>
-<%= f.submit "削除" %>
-<%= f.hidden_field :item_id %>
-<% end %>
-
-<p>-------------------------</p>
-<% end %>
-
-
-
-<h5> 小計：¥<%= sum %> </h5>
-
-
-<%= link_to "購入へ進む", new_order_path %>
-
+		<td class="table-delete">
+			<%= form_for cart, method: :delete do |f| %>
+				<%= f.submit "削除", class: 'btn btn-danger' %>
+				<%= f.hidden_field :item_id %>
+			<% end %>
+		</td>
+		<%= form_for cart do |f| %>
+		<td class="table-image"><%= attachment_image_tag cart.item, :jacket_image,size: '75x75', fallback: "no_images.png" %></td>
+		<td class="table-name-artist"> <p class= "item-name"><%= link_to item_path(cart.item_id) do %><%= cart.item.name %> <% end %></p>
+				 					   <p><%= cart.item.artist.artist %></p>
+		</td>
+		<td class="table-stock"><%= cart.item.stock %></td>
+		<td class="table-quantity-body"><%= f.text_field :quantity, :size => "3" %></td>
+										<%= f.hidden_field :item_id %>
+		<td class="reflesh"><%= f.submit "更新", class: 'btn btn-default' %></td>
+		<% end %>
+		<td class="table-price-body">¥<%= cart.item.price %></td>
+	</tr>
+	<% end %>
+  </table>
 </div>
+
+<div class= "row">
+	<div class="sum">
+	<h5 class="sum-font"> 小計：（<%= sum_q %>点の商品）¥<%= sum_p %></h5>
+	</div>
+
+	<div class="button-reg">
+	<%= link_to "購入へ進む", new_order_path, class: 'btn btn-warning btn-lg' %>
+	</div>
+	<div class="button-con">
+	<%= link_to "お買い物を続ける", items_path, class: 'btn btn-default' %>
+	</div>
+</div>
+
 </div>

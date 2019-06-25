@@ -1,10 +1,10 @@
+<div class = "container">
 <%= form_for @label, url: admin_labels_path do |f| %>
 
 <h1> Lebel add</h1>
 <p> label</p>
 
     <%= f.text_field :label %>
-    <%= f.hidden_field :id, :value => "params[:id]" %>
 
     <%= f.submit "add" %>
 
@@ -13,14 +13,7 @@
 <h1> Label index</h1>
 
 <% @labels.each do |label| %>
-
-  <p> <%= label.label %></p>
+<p> <%= label.id %>::<%= label.label %></p>
 
 <% end %>
-
-<script>
-	let back = document.getElementById("back")
-	back.addEventListener("click", () => {
-		window.history.back()
-	})
-</script>
+</div>

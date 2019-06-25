@@ -1,10 +1,10 @@
+<div class = "container">
 <%= form_for @genre, url: admin_genres_path do |f| %>
 
 <h1> Genre add</h1>
   <p> genre</p>
 
     <%= f.text_field :genre %>
-    <%= f.hidden_field :id, :value => "params[:id]" %>
 
     <%= f.submit "add" %>
 
@@ -13,14 +13,7 @@
 <h1> Genre index</h1>
 
 <% @genres.each do |genre| %>
-
-  <p> <%= genre.genre %></p>
+<p> <%= genre.id %>::<%= genre.genre %></p>
 
 <% end %>
-
-<script>
-	let back = document.getElementById("back")
-	back.addEventListener("click", () => {
-		window.history.back()
-	})
-</script>
+</div>
