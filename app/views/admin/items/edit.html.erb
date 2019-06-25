@@ -30,7 +30,7 @@
 
 
 <h4> Status</h4>
-<%= f.select :status,[["Sale","Sale"],["Sold out","Sold out"],["Stop selling","Stop selling"]] %>
+<%= f.select :status,[["在庫あり","在庫あり"],["売り切れ","売り切れ"],["販売停止中","販売停止中"]] %>
 
 
 <h4> Genre</h4>
@@ -49,7 +49,7 @@
 <%= f.submit '登録', class: "btn btn-primary btn-lg"%>
 <% end %>
 
-
-<%= button_to "削除", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"},class: "btn btn-primary btn-lg" %>
+<!-- 商品を削除する必要がある時のみ使用 -->
+<%#= button_to "削除", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"},class: "btn btn-primary btn-lg" %>
 </div>
 </div>
