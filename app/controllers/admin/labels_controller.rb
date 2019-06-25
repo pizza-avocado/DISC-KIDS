@@ -18,9 +18,8 @@ class Admin::LabelsController < ApplicationController
         flash[:notice] = "レーベル名: " + @label.label + "を追加しました"
         redirect_to new_admin_item_path
       else
-        @label = Label.all
         flash[:notice] = "レーベル追加に失敗しました"
-        render :new
+        redirect_to new_admin_item_path
       end
   end
 
