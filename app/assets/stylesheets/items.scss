@@ -14,7 +14,7 @@
 
 .border-bottom {
   height: 1px;
-  width: 85%;
+  /*width: 85%;*/
   background-color: black;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -30,16 +30,25 @@
 }
 
 .index-td {
-  padding: 10px 0;
+  padding: 10px 40px;
   width: 420px;
+}
+
+table {
+  text-align: center;
+  width: 50px;
 }
 
 td {
   padding: 10px 0;
-  width: 260px;
+  width: 130px;
 }
 
 
 .link {
   margin: 20px 0px;
+}
+
+.width{
+  width: 80%;
 }
