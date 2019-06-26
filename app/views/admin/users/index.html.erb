@@ -1,20 +1,22 @@
 <div class="container">
   <div class="back-rgba">
-       <h1>ユーザーリスト</h1>
+    <div class="user-index-title">
+      <p>会員一覧</p>
+    </div>
+
+    <div class="user-index-search">
+        <%= form_tag(admin_search_users_path,:method => 'get') do %>
+          <%= text_field_tag :search, "", size: "40" %>
+          <%= submit_tag '検索', :lastname => nil, class:"btn btn-default" %>
+        <% end %>
+    </div>
 
 
-         <h2>検索</h2>
-           <%= form_tag(admin_search_path,:method => 'get') do %>
-           <%= text_field_tag :search %>
-           <%= submit_tag 'Search', :lastname => nil %>
-         <% end %>
-
-       <p> ------------------- </p>
 
 
      <% @users.each do |user| %>
 
-  <table border="5">
+  <table border="5", class="user-index-table">
     <thead>
       <tr>
          <th>ユーザー名</th>
@@ -32,12 +34,10 @@
          <td> <%= user.email %></td>
       </tr>
     </tbody>
-
-   <p>  <%= link_to "ユーザー詳細", admin_user_path(user), class:"user_#{user.id}" %></p>
-
    </table>
+   <p class="user-index-detail">  <%= link_to "ユーザー詳細", admin_user_path(user), class:"btn btn-primary" %></p>
 
-       <p> -------------------- </p>
+
 
 <% end %>
 

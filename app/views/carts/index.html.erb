@@ -1,67 +1,65 @@
 <div class= "container">
 	<div class="back-rgba">
-	<p class= "flash"><%= flash[:add] %></p>
-	<p class= "flash"><%= flash[:update] %></p>
-	<p class= "flash"><%= flash[:remove] %></p>
-	<p class= "flash"><%= flash[:error] %></p>
+		<div class ="cart-flash" >
+			<%= flash[:add] %>
+			<%= flash[:update] %>
+			<%= flash[:remove] %>
+			<%= flash[:error] %>
+		</div>
 
-  <div class= "title">
-	<h1>ショッピングカート</h1>
-  </div>
+	  	<div class= "cart-title">
+			<p>ショッピングカート</p>
+	  	</div>
 
-<div class= "row">
-  <table class="table-cart-content">
-  	<tr class="table-head">
-  		<th></th>
-  		<th></th>
-  		<th></th>
-  		<th class="table-stock">在庫数</th>
-  		<th class="table-quantity-head">数量</th>
-  		<th></th>
-  		<th class="table-price-head">価格</th>
-  	</tr>
-		<% sum_p = 0 %>
-		<% sum_q = 0 %>
-	<% @carts.each do |cart| %>
-	<tr class= "table-body">
-		<% sum_p += cart.item.price * cart.quantity %>
-		<% sum_q += cart.quantity %>
 
-		<td class="table-delete">
-			<%= form_for cart, method: :delete do |f| %>
-				<%= f.submit "削除", class: 'btn btn-danger' %>
-				<%= f.hidden_field :item_id %>
+		<table class="table-cart-content">
+		  	<tr class="table-head">
+		  		<th></th>
+		  		<th></th>
+		  		<th></th>
+		  		<th class="table-stock">在庫数</th>
+		  		<th class="table-quantity-head">数量</th>
+		  		<th></th>
+		  		<th class="table-price-head">価格</th>
+		  	</tr>
+				<% sum_p = 0 %>
+				<% sum_q = 0 %>
+			<% @carts.each do |cart| %>
+			<tr class= "table-body">
+				<% sum_p += cart.item.price * cart.quantity %>
+				<% sum_q += cart.quantity %>
+
+				<td class="table-delete">
+					<%= form_for cart, method: :delete do |f| %>
+						<%= f.submit "削除", class: 'btn btn-danger' %>
+						<%= f.hidden_field :item_id %>
+					<% end %>
+				</td>
+				<%= form_for cart do |f| %>
+				<td class="table-image"><%= attachment_image_tag cart.item, :jacket_image,size: '75x75', fallback: "no_images.png" %></td>
+				<td class="table-name-artist"> <p class= "item-name"><%= link_to item_path(cart.item_id) do %><%= cart.item.name %> <% end %></p>
+						 					   <p><%= cart.item.artist.artist %></p>
+				</td>
+				<td class="table-stock"><%= cart.item.stock %></td>
+				<td class="table-quantity-body"><%= f.text_field :quantity, :size => "3" %></td>
+												<%= f.hidden_field :item_id %>
+				<td class="reflesh"><%= f.submit "更新", class: 'btn btn-default' %></td>
+				<% end %>
+				<td class="table-price-body">¥<%= cart.item.price %></td>
+			</tr>
 			<% end %>
-		</td>
-		<%= form_for cart do |f| %>
-		<td class="table-image"><%= attachment_image_tag cart.item, :jacket_image,size: '75x75', fallback: "no_images.png" %></td>
-		<td class="table-name-artist"> <p class= "item-name"><%= link_to item_path(cart.item_id) do %><%= cart.item.name %> <% end %></p>
-				 					   <p><%= cart.item.artist.artist %></p>
-		</td>
-		<td class="table-stock"><%= cart.item.stock %></td>
-		<td class="table-quantity-body"><%= f.text_field :quantity, :size => "3" %></td>
-										<%= f.hidden_field :item_id %>
-		<td class="reflesh"><%= f.submit "更新", class: 'btn btn-default' %></td>
-		<% end %>
-		<td class="table-price-body">¥<%= cart.item.price %></td>
-	</tr>
-	<% end %>
-  </table>
-</div>
+		</table>
 
-<div class= "row">
-	<div class="sum">
-	<h5 class="sum-font"> 小計：（<%= sum_q %>点の商品）¥<%= sum_p %></h5>
+		<div class="sum">
+		<h5 class="sum-font"> 小計：（<%= sum_q %>点の商品）¥<%= sum_p %></h5>
+		</div>
+
+		<div class="button-reg">
+		<%= link_to "購入へ進む", new_order_path, class: 'btn btn-warning btn-lg' %>
+		</div>
+		<div class="button-con">
+		<%= link_to "お買い物を続ける", items_path, class: 'btn btn-default' %>
+		</div>
+
 	</div>
-
-	<div class="button-reg">
-	<%= link_to "購入へ進む", new_order_path, class: 'btn btn-warning btn-lg' %>
-	</div>
-	<div class="button-con">
-	<%= link_to "お買い物を続ける", items_path, class: 'btn btn-default' %>
-	</div>
-</div>
-
-
-</div>
 </div>
