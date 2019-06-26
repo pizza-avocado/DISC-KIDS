@@ -1,12 +1,15 @@
-<h1>宛名編集</h1>
+<div class="back">
+  <div class="back-rgba">
+    <div class="container">
 
+   <h1>宛名編集</h1>
 
-  <%= form_for(@address_name) do |f| %>
+     <%= form_for(@address_name) do |f| %>
 
-<p> 宛名 </p>
-  <%= f.text_area :address_name, placeholder:"宛名"%>
+   <p> 宛名 </p>
+     <%= f.text_area :address_name, placeholder:"宛名"%>
 
-<br>
+   <br>
 
   <%= f.submit "登録する" %>
 
