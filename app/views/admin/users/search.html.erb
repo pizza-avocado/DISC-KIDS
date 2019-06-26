@@ -1,28 +1,46 @@
-<h1>検索結果</h1>
+<div class="back">
+  <div class="back-rgba">
+    <div class="container">
 
-<%= link_to "logout", destroy_admin_session_path, method: :delete %>
+　　　　<h1>検索結果</h1>
 
+　　　　　<%= link_to "logout", destroy_admin_session_path, method: :delete %>
 
-<p>検索</p>
-  <%= form_tag(admin_search_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :lastname => nil %>
+　　　　　　　<p>検索</p>
+              <%= form_tag(admin_search_path,:method => 'get') do %>
+              <%= text_field_tag :search %>
+              <%= submit_tag 'Search', :lastname => nil %>
+　　　　　　　<% end %>
+
+　　　　　<ul><% @users.each do |user| %>
+
+	　　　<table border="5">
+           <thead>
+             <tr>
+              <th>ユーザー名</th>
+              <th>ユーザー名（カナ）</th>
+              <th>電話番号</th>
+              <th>メールアドレス</th>
+             </tr>
+           </thead>
+
+        <tbody>
+            <tr>
+              <td> <%= user.lastname %><%= user.firstname %></td>
+              <td> <%= user.lastname_kana %><%= user.firstname_kana %></td>
+              <td> <%= user.phonenumber %></td>
+              <td> <%= user.email %></td>
+            </tr>
+        </tbody>
+
+       <p>  <%= link_to "ユーザー詳細", admin_user_path(user), class:"user_#{user.id}" %></p>
+
+      </table>
+
+       <p> -------------------- </p>
+
 <% end %>
 
-<ul><% @users.each do |user| %>
-  <p><%= link_to "マイページ", admin_users_path(user), class:"user_#{user.id}" %></p>
-
-  <p><%= user.lastname %><%= user.firstname %></p>
-
-  <p><%= user.lastname_kana %><%= user.firstname_kana %></p>
-
-  <p><%= user.phonenumber %></p>
-
-  <p><%= user.email %></p>
-</ul>
-
-
-<% end %>
-
-
-
+<%= paginate @users %>
+</div>
+</div>

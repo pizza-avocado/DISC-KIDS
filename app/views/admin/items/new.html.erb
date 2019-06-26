@@ -1,55 +1,54 @@
-<div class="back">
-<div class="back-rgba">
-<h1> 商品追加</h1>
-
 <div class = "container">
-<p><%= link_to "アーティスト追加ページ", new_admin_artist_path %> </p>
-<p><%= link_to "レーベル追加ページ", new_admin_label_path %> </p>
-<p><%= link_to "ジャンル追加ページ", new_admin_genre_path %> </p>
+	<div class="back-rgba">
+		<div class="wrapper">
+			<h1> 商品追加</h1>
+			<p><%= link_to "アーティスト追加ページ", new_admin_artist_path %> </p>
+			<p><%= link_to "レーベル追加ページ", new_admin_label_path %> </p>
+			<p><%= link_to "ジャンル追加ページ", new_admin_genre_path %> </p>
 
 
-<%= form_for @item, url: admin_items_path do |f| %>
+			<%= form_for @item, url: admin_items_path do |f| %>
 
-<%= f.attachment_field :jacket_image %>
+			<%= f.attachment_field :jacket_image %>
 
-<h4> アルバム名</h4>
-<%= f.text_field :name %>
+			<h4> アルバム名</h4>
+			<%= f.text_field :name %>
 
-<h4> アーティスト追加</h4>
-<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
+			<h4> アーティスト追加</h4>
+			<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
 
-<h4> 価格</h4>
-<%= f.text_field :price %>
+			<h4> 価格</h4>
+			<%= f.text_field :price %>
 
-<h4> レーベル名</h4>
-<%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
+			<h4> レーベル名</h4>
+			<%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
 
-<h4> 在庫数</h4>
-<%= f.text_field :stock %>
+			<h4> 在庫数</h4>
+			<%= f.text_field :stock %>
 
-<h4> 販売ステータス</h4>
-<%= f.select :status,[["在庫あり","在庫あり"],["売り切れ","売り切れ"],["販売停止中","販売停止中"]] %>
-
-
-<h4> ジャンル名</h4>
-<%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
+			<h4> 販売ステータス</h4>
+			<%= f.select :status,[["在庫あり","在庫あり"],["売り切れ","売り切れ"],["販売停止中","販売停止中"]] %>
 
 
+			<h4> ジャンル名</h4>
+			<%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
 
-<div class = "discs">
-<%= f.fields_for :discs do |disc| %>
-	<p>ディスク番号 <%= render "disc_fields", f: disc %> </p>
-<% end %>
-	<div class = "links">
-		<p><%= link_to_add_association "ディスク追加", f,:discs %> </p>
+
+
+			<div class = "discs">
+			<%= f.fields_for :discs do |disc| %>
+				<p>ディスク番号 <%= render "disc_fields", f: disc %> </p>
+			<% end %>
+				<div class = "links">
+					<p><%= link_to_add_association "ディスク追加", f,:discs %> </p>
+				</div>
+			</div>
+
+			<%= f.submit '登録', id:"back" , class: "btn btn-primary btn-lg"%>
+			<% end %>
+		</div>
+
 	</div>
-</div>
-
-<%= f.submit '登録', id:"back" , class: "btn btn-primary btn-lg"%>
-<% end %>
-</div>
-
-</div>
 </div>
 
 <!-- <script>

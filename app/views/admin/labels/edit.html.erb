@@ -1,17 +1,22 @@
 <div class = "container">
-<h2> Editing Label</h2>
-  <%= form_for @label, url:admin_label_path do |f| %>
-    <strong> Label</strong>
-    <p><%= f.text_field :label, class:"form-control" %></p>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.submit 'update label', id:"back" %>
-  <% end %>
+  <div class="back-rgba">
+    <div class = 'wrapper'>
+      <h2> Editing Label</h2>
+        <%= form_for @label, url:admin_label_path do |f| %>
+          <strong> Label</strong>
+          <p><%= f.text_field :label, class:"form-control" %></p>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit 'update label', id:"back" %>
+        <% end %>
 
-<script>
-  $(document).on('turbolinks:load', function(){
-  let back = document.getElementById("back");
-  back.addEventListener("click", () => {
-    window.history.back()
-  };
-  });
-</script>
+      <!-- <script>
+        $(document).on('turbolinks:load', function(){
+        let back = document.getElementById("back");
+        back.addEventListener("click", () => {
+          window.history.back()
+        };
+        });
+      </script> -->
+    </div>
+  </div>
+</div>

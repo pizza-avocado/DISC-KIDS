@@ -1,3 +1,9 @@
+<%= flash[:success] %>
+
+<div class="back">
+<div class="back-rgba">
+<div class="container">
+
 <h1>注文履歴</h1>
 
 
@@ -10,7 +16,7 @@
 	<% sum_p += order_item.purchaced_price * order_item.quantity %>
 	<% end %>
 
-<p>注文者：<%= order.user.lastname %> <%= order.user.firstname %> </p>
+
 <p>注文日時：<%= order.created_at.strftime('%Y/%m/%d/%H:%M') %></p>
 <p>購入点数：<%= sum_q %></p>
 <p>購入合計金額：¥<%= sum_p + 500 %></p>
