@@ -1,6 +1,5 @@
-<div class="back">
+<div class="container">
   <div class="back-rgba">
-    <div class="container">
       <% result = 0 %>
       <% @items.each do |item| %>
         <% result += 1 %>
@@ -8,9 +7,8 @@
         <h5><%= params[:search] %>：の検索結果</h5>
         <h5><%= result %>件のCDが見つかりました</h5>
 　        <% @items.each do |item| %>
-            <div class="row">
               <div class="col-xs-1"></div>
-                <div class="col-xs-3"
+                <div class="col-xs-3">
 
                   <%= link_to admin_item_path(item) do %>
                     <%= attachment_image_tag item, :jacket_image, class: "jacket-image", fallback: "no_images.png", size: '200x200' %>
@@ -40,6 +38,5 @@
                     </div>
             </div>
           <% end %>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
