@@ -14,7 +14,7 @@
 
 
 			<h4> アーティスト</h4>
-			<%= link_to "artist edit", edit_admin_item_artist_path(@item.id, @item.artist.id) %>
+			<%= link_to "アーティスト編集", edit_admin_item_artist_path(@item.id, @item.artist.id) %>
 			<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
 
 
@@ -22,7 +22,7 @@
 			<%= f.text_field :price %>
 
 			<h4> レーベル</h4>
-			<%= link_to "label edit", edit_admin_item_label_path(@item.id, @item.label.id) %>
+			<%= link_to "レーベル編集", edit_admin_item_label_path(@item.id, @item.label.id) %>
 			<%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
 
 
@@ -35,7 +35,7 @@
 
 
 			<h4> ジャンル</h4>
-			<%= link_to "genre edit", edit_admin_item_genre_path(@item.id, @item.genre.id) %>
+			<%= link_to "ジャンル編集", edit_admin_item_genre_path(@item.id, @item.genre.id) %>
 			<%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
 
 			<div class = "discs">
