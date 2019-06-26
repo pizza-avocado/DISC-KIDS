@@ -1,57 +1,47 @@
 <div class = "container">
 	<div class="back-rgba">
-		<div class="wrapper">
-			<div class = "row">
-				<div class = "col-lg-4"><%= attachment_image_tag @item, :jacket_image, class: "image", fallback: "no_images.png", size: '200x200' %>
-					<div class = "link"><%= link_to "商品編集" , edit_admin_item_path, class: "btn btn-primary btn-lg" %></div>
-				</div>
-
-
-					<p>商品名: <%= @item.name %> </p>
-					<p>アーティスト名: <%= @item.artist.artist %></p>
-					<p>ジャンル名: <%= @item.genre.genre %></p>
-					<p>レーベル名: <%= @item.label.label %></p>
-					<p>価格: <%= @item.price %></p>
-					<p>在庫数: <%= @item.stock %></p>
-					<p>販売ステータス: <%= @item.status %></p>
-
-
-				</div>
-				<div class="row">
-					<div class="wrapper">
-						<table class="table col-lg-4">
-
-							<thead>
-								<tr>
-									<th>楽曲リスト</th>
-
-								</tr>
-							</thead>
-							<tbody>
-								<% @item.discs.each do |disc| %>
-								<tr>
-									<td>ディスク<%= disc.disc_number %> </td>
-								</tr>
-
-									<% disc.tracks.each do |track| %>
-								<tr>
-
-									<td>トラック<%= track.track_number %> </td>
-									<td><%= track.track_name %> </td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-									<% end %>
-								<% end %>
-							</tbody>
-						</table>
-					</div>
-
-				</div>
+		<div class = "item-show-jacket-box">
+			<div class= "item-show-jacket">
+				<%= attachment_image_tag @item, :jacket_image, fallback: "no_images.png", size: '300x300' %>
 			</div>
+		    <div class = "item-show-jacket"><%= link_to "商品編集" , edit_admin_item_path, class: "btn btn-primary btn-lg" %>
+    		</div>
+    	</div>
+
+    	<div class = "item-show-info">
+			<h2><%= @item.name %> </h2>
+			<p><%= @item.artist.artist %></p>
+			<p class="item-show-price">¥<%= @item.price.to_s(:delimited) %></p>
+			<p>販売ステータス: <%= @item.status %></p>
+			<p>在庫:  残り<%= @item.stock %></p>
+			<p>ジャンル: <%= @item.genre.genre %></p>
+			<p><%= @item.label.label %></p>
 		</div>
+
+		<table class="item-show-track">
+			<thead>
+				<tr>
+					<th>楽曲リスト</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @item.discs.each do |disc| %>
+				<tr>
+					<td class="item-show-disc-number">ディスク<%= disc.disc_number %> </td>
+				</tr>
+				<% disc.tracks.each do |track| %>
+				<tr>
+					<td class="item-show-track-number"><%= track.track_number %>.</td>
+					<td class="item-show-track-name"><%= track.track_name %> </td>
+				</tr>
+				<% end %>
+				<% end %>
+			</tbody>
+		</table>
 	</div>
 </div>
+
+
 
 

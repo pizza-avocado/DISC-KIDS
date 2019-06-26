@@ -20,9 +20,22 @@
   margin-bottom: 20px;
 }
 
-.jacket-image {
+.item-index-item-box{
+  display: inline-block;
+  margin: 20px 35px auto;
+}
+
+.item-index-jacket-image {
   height: 200px;
-  margin-left: 40px;
+  margin: auto auto;
+}
+
+.item-index-name{
+  color: black;
+}
+
+.item-index-price{
+  color: #990000;
 }
 
 .index-table {
@@ -49,9 +62,56 @@ td {
   margin: 20px 0px;
 }
 
+.item-show-jacket-box{
+  width: 33%;
+  float: left;
+}
+
+.item-show-jacket{
+  padding: 30px 50px 0;
+}
+
+.item-show-like{
+  margin-left: 50px;
+}
+
+
+.item-show-info{
+  width: 20%;
+  float: left;
+  margin-top: 30px;
+  margin-left: 50px;
+
+}
+
+.item-show-price{
+  color: #990000;
+  font-size: 20px;
+}
+
+.item-show-track{
+  width: 45%;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.item-show-disc-number{
+  width: 20%;
+}
+
+.item-show-track-number{
+  width: 20%;
+  text-align: right;
+  padding-right: 8px;
+}
+
+.item-show-track-name{
+  text-align: left;
+}
+
 .wrapper{
   margin: 30px 50px 30px 50px;
 }
-
 
 
