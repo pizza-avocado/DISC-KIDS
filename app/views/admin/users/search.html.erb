@@ -1,46 +1,46 @@
-<div class="back">
+<div class="container">
   <div class="back-rgba">
-    <div class="container">
+    <div class="user-index-title">
+      <p>会員一覧:検索結果</p>
+    </div>
 
-　　　　<h1>検索結果</h1>
+    <div class="user-index-search">
+        <%= form_tag(admin_search_users_path,:method => 'get') do %>
+          <%= text_field_tag :search, "", size: "40" %>
+          <%= submit_tag '検索', :lastname => nil, class:"btn btn-default" %>
+        <% end %>
+    </div>
 
-　　　　　<%= link_to "logout", destroy_admin_session_path, method: :delete %>
 
-　　　　　　　<p>検索</p>
-              <%= form_tag(admin_search_path,:method => 'get') do %>
-              <%= text_field_tag :search %>
-              <%= submit_tag 'Search', :lastname => nil %>
-　　　　　　　<% end %>
 
-　　　　　<ul><% @users.each do |user| %>
 
-	　　　<table border="5">
-           <thead>
-             <tr>
-              <th>ユーザー名</th>
-              <th>ユーザー名（カナ）</th>
-              <th>電話番号</th>
-              <th>メールアドレス</th>
-             </tr>
-           </thead>
+     <% @users.each do |user| %>
 
-        <tbody>
-            <tr>
-              <td> <%= user.lastname %><%= user.firstname %></td>
-              <td> <%= user.lastname_kana %><%= user.firstname_kana %></td>
-              <td> <%= user.phonenumber %></td>
-              <td> <%= user.email %></td>
-            </tr>
-        </tbody>
+  <table border="5", class="user-index-table">
+    <thead>
+      <tr>
+         <th>ユーザー名</th>
+         <th>ユーザー名（カナ）</th>
+         <th>電話番号</th>
+         <th>メールアドレス</th>
+      </tr>
+  </thead>
 
-       <p>  <%= link_to "ユーザー詳細", admin_user_path(user), class:"user_#{user.id}" %></p>
+    <tbody>
+      <tr>
+         <td> <%= user.lastname %><%= user.firstname %></td>
+         <td> <%= user.lastname_kana %><%= user.firstname_kana %></td>
+         <td> <%= user.phonenumber %></td>
+         <td> <%= user.email %></td>
+      </tr>
+    </tbody>
+   </table>
+   <p class="user-index-detail">  <%= link_to "ユーザー詳細", admin_user_path(user), class:"btn btn-primary" %></p>
 
-      </table>
 
-       <p> -------------------- </p>
 
 <% end %>
 
-<%= paginate @users %>
-</div>
+<%= paginate @users_page %>
+  </div>
 </div>

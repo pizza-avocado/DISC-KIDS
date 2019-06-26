@@ -42,7 +42,8 @@ class Admin::UsersController < ApplicationController
 
   def search
     @users = User.search(params[:search])
-    @users = User.page(params[:page]).reverse_order
+    @users_page = User.page(params[:page]).reverse_order
+    render :search
   end
 
 private

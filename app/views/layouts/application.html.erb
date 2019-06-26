@@ -37,7 +37,7 @@
             <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag admin_search_items_path, :method => 'get' do %>
-                   <%= text_field_tag :search, params[:search] %>
+                   <%= text_field_tag :search %>
                    <%= submit_tag "Search", :name => nil %>
                  <% end %>
               </dl>

@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .order-title{
-	width: 80%;
+	font-size: 36px;
 	margin: auto auto;
+	width: 80%;
 }
 
 .order-table-content{
@@ -29,7 +30,7 @@
 .order-item-artist{
 	font-size: 12px;
 	padding-left: 10px;
-	color: #a9a9a9;
+	color: #666666;
 }
 
 .order-price{
@@ -64,6 +65,7 @@
 
 .order-address{
 	margin: auto auto;
+	padding-bottom: 60px;
 	width: 70%;
 }
 
