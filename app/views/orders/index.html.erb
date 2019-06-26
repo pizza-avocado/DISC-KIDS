@@ -1,57 +1,57 @@
 <div class= "container">
+	<div class="back-rgba">
+		<p class="flash"><%= flash[:success] %></p>
 
-<p class="flash"><%= flash[:success] %></p>
+		<div class="order-title">
+		<h1>注文履歴</h1>
+		</div>
 
-<div class="order-title">
-<h1>注文履歴</h1>
-</div>
+		<div class= "order-index-box">
+		<% @orders.each do |order| %>
+			<table class="table", border ="1">
+			<% sum_q = 0 %>
+			<% sum_p = 0 %>
 
-<div class= "order-index-box">
-<% @orders.each do |order| %>
-	<table class="table", border ="1">
-	<% sum_q = 0 %>
-	<% sum_p = 0 %>
+				<% order.order_items.each do |order_item| %>
+				<% sum_q += order_item.quantity %>
+				<% sum_p += order_item.purchaced_price * order_item.quantity %>
+				<% end %>
 
-		<% order.order_items.each do |order_item| %>
-		<% sum_q += order_item.quantity %>
-		<% sum_p += order_item.purchaced_price * order_item.quantity %>
-		<% end %>
+				<tr>
+				 <td class="order_index_image" rowspan="6">
+				 	<% if OrderItem.exists?(order_id: order.id) %>
+				 		<%= attachment_image_tag order.order_items.last.item, :jacket_image ,size: '220x220', fallback: "no_images.png" %>
+				 	<% end %>
+				 </td>
+				 <td class="order-table-info">注文日時</td>
+				 <td><%= order.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+				</tr>
+				<tr>
+				 <td class="order-table-info">購入点数</td>
+				 <td><%= sum_q %></td>
+				</tr>
+				<tr>
+				 <td class="order-table-info">購入合計金額</td>
+				 <td>¥<%= sum_p + 500 %></td>
+				</tr>
+				<tr>
+				 <td class="order-table-info">注文ステータス</td>
+				 <td><%= order.order_status %></td>
+				</tr>
+				<tr>
+				 <td class="order-table-info">送付先住所</td>
+				 <td><%= order.shipping_address %></td>
+				</tr>
+				<tr>
+				 <td></td>
+				 <td><%= link_to"詳細を確認する", order_path(order), class: 'btn btn-primary' %></td>
+				</tr>
 
-		<tr>
-		 <td class="order_index_image" rowspan="6">
-		 	<% if OrderItem.exists?(order_id: order.id) %>
-		 		<%= attachment_image_tag order.order_items.last.item, :jacket_image ,size: '220x220', fallback: "no_images.png" %>
-		 	<% end %>
-		 </td>
-		 <td class="order-table-info">注文日時</td>
-		 <td><%= order.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
-		</tr>
-		<tr>
-		 <td class="order-table-info">購入点数</td>
-		 <td><%= sum_q %></td>
-		</tr>
-		<tr>
-		 <td class="order-table-info">購入合計金額</td>
-		 <td>¥<%= sum_p + 500 %></td>
-		</tr>
-		<tr>
-		 <td class="order-table-info">注文ステータス</td>
-		 <td><%= order.order_status %></td>
-		</tr>
-		<tr>
-		 <td class="order-table-info">送付先住所</td>
-		 <td><%= order.shipping_address %></td>
-		</tr>
-		<tr>
-		 <td></td>
-		 <td><%= link_to"詳細を確認する", order_path(order), class: 'btn btn-primary' %></td>
-		</tr>
-
-	</table>
-	<% end %>
-</div>
-
-<%= paginate @orders %>
-
-
+			</table>
+			<% end %>
+		</div>
+		<div class="user-order-index-page">
+		<%= paginate @orders_page %>
+		</div>
+	</div>
 </div>
