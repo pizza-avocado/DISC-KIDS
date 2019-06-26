@@ -40,7 +40,7 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
   def update
       @item = Item.find(params[:id])
       if params[:item][:stock].to_i == 0
-        params[:item][:status] = "Sold out"
+        params[:item][:status] = "売り切れ"
       end
       if @item.update(item_params)
          flash[:notice] = "商品名: " + @item.name + "を編集しました"

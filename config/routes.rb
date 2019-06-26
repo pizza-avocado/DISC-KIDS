@@ -14,14 +14,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
 	  get "search" => "users#search",as: 'search'
+    get "search_items" => "items#search", as:'search_items'
     resources :users,             only:[:index, :show, :edit, :update, :destroy] do
-      resources :addresses,       only:[:new, :create, :show, :edit, :update, :destroy]
-      resources :address_names,   only:[:new, :create ,:show, :edit, :update, :destroy]
+    resources :addresses,       only:[:new, :create, :show, :edit, :update, :destroy]
+    resources :address_names,   only:[:new, :create ,:show, :edit, :update, :destroy]
     end
     resources :items,           only:[:new, :create, :edit, :update, :destroy, :show, :index] do
-      resources :artists,       only:[:edit]
-      resources :labels,        only:[:edit]
-      resources :genres,        only:[:edit]
+    resources :artists,       only:[:edit]
+    resources :labels,        only:[:edit]
+    resources :genres,        only:[:edit]
     end
     resources :artists,         except:[:edit]
     resources :labels,          except:[:edit]
@@ -31,7 +32,6 @@ Rails.application.routes.draw do
   	resources :inquiry_replies, only:[:new, :create, :show]
   	resources :orders,          only:[:index, :show, :update]
  	  resources :reviews,         only:[:destroy]
-
   end
 
   get "search" => "items#search",as: 'search'
