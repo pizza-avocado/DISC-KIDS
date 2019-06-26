@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DISC_KIDS</title>
+    <title>DISC-KIDS</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <div class="social">
@@ -24,10 +24,13 @@
           <% end %>
         </div>
             <li class="nav-item">
+              <%= link_to "ODER LIST", admin_orders_path, :style => "color:white;" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "USER LIST", admin_users_path, :style => "color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "DISC INDEX",admin_items_path, :style => "color:white;" %>
+              <%= link_to "ALL DISCS",admin_items_path, :style => "color:white;" %>
             </li>
             <li class="nav-item">
               <%= link_to "ADD DISC",new_admin_item_path, :style => "color:white;" %>
@@ -54,8 +57,8 @@
                    <%= image_tag "logo.png", class: "logo-image", size: "110x100" %>
                 <% end %>
               </div>
-              <li class = "nav-item">
-                <%#= current_user.lastname + current_user.firstname + "さん" %>
+              <li class = "header-username">
+                <%= current_user.lastname + current_user.firstname + "さん" %>
               </li>
               <li class="nav-item">
                 <%= link_to "MY PAGE", user_path(current_user), :style => "color:white;" %>
