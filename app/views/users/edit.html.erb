@@ -32,10 +32,10 @@
 
         <br>
         <br>
-      <%= f.submit "編集する" %>
+      <%= f.submit "編集する", class: 'btn btn-success' %>
     <% end %>
-
-  <%= link_to "退会する" , user_resign_path, class: 'btn btn-default' %>
+    <br>
+  <%= link_to "退会する" , user_resign_path, class: 'btn btn-danger' %>
 
   <br>
 <p> ----------------------------------</p>
@@ -46,8 +46,8 @@
 
       <p> 宛名 </p>
         <%= f.text_field :address_name, placeholder:"宛名"%><br>
-
-        <%= f.submit "追加する" %>
+        <br>
+        <%= f.submit "追加する" ,class: "btn btn-primary" %>
 
       <% end %>
 
@@ -61,7 +61,7 @@
 
           <p> 住所 </p>
             <%= f.text_area :address, placeholder:"住所"%><br>
-
-          <%= f.submit "追加する" %>
+            <br>
+          <%= f.submit "追加する", class: 'btn btn-primary' %>
 
 <% end %>
