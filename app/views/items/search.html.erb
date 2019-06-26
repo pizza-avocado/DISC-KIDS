@@ -15,24 +15,31 @@
                   <% end %>
                 </div>
                     <div class="col-xs-8">
-                      <table class="index-table">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>アルバム名</th>
+                            <th>価格</th>
+                            <th>アーティスト</th>
+                            <th>在庫</th>
+                            <th>レーベル</th>
+                            <th>ステータス</th>
+                            <th>ジャンル</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
                         <tr>
-                          <td class="index-td"><%= link_to admin_item_path(item) do %>
+                          <td><%= link_to admin_item_path(item) do %>
                             <strong><%= item.name %></strong>
                           <% end %></td>
-                          <td class="index-td">Price. ¥<%= item.price %></td>
-                        </tr>
-                        <tr>
-                          <td class="index-td">Artist. <%= item.artist.artist %></td>
-                          <td class="index-td">Stock. <%= item.stock %></td>
-                        </tr>
-                        <tr>
-                          <td class="index-td">Label. <%= item.label.label %></td>
-                          <td class="index-td">Status. <%= item.status %></td>
-                        </tr>
-                        <tr>
-                          <td class="index-td">Genre. <%= item.genre.genre %></td>
-                          <td class="index-td"></td>
+                          <td>¥<%= item.price %></td>
+                          <td><%= item.artist.artist %></td>
+                          <td><%= item.stock %></td>
+                          <td><%= item.label.label %></td>
+                          <td><%= item.status %></td>
+                          <td><%= item.genre.genre %></td>
+                          <td></td>
                         </tr>
                       </table>
                     </div>
