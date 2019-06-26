@@ -7,12 +7,11 @@
 <% end %>
 
 
+<div class="back">
+<div class="back-rgba">
+<div class="container">
 
 <h1>ご注文詳細</h1>
-
-<h4>注文者名</h4>
-<%= @order.user.lastname %> <%= @order.user.firstname %>
-
 <h4>ご注文日時</h4>
 <%= @order.created_at.strftime('%Y/%m/%d') %>
 
@@ -23,25 +22,20 @@
 <%= @order.shipping_address %>
 
 <h4>ご注文点数</h4>
-<%= sum_q %>
+<%= sum_q %>点
 <h4>小計</h4>
-<%= sum_p %>
+¥<%= sum_p %>
 
 <h4>送料</h4>
 ¥500
 
 <h4>合計金額</h4>
-<%= sum_p + 500 %>
+¥<%= sum_p + 500 %>
 
 <h4>支払方法</h4>
 <%= @order.payment %>
 
 <h4>注文ステータス</h4>
-<%= form_for @order, url:admin_order_path(@order) do |f| %>
-<%= f.select :order_status,[["注文受付済","注文受付済"],["発送準備中","発送準備中"],["発送済","発送済"],["お届け済","お届け済"]] %>
-<%= f.submit"更新" %>
-<% end %>
-
 <%= @order.order_status %>
 
 <br>
