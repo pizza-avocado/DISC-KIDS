@@ -1,28 +1,24 @@
-<div class="container">
-  <div class="back-rgba">
-      <% result = 0 %>
-      <% @items.each do |item| %>
-        <% result += 1 %>
-      <% end %>
+<% result = 0 %>
+<% @items.each do |item| %>
+  <% result += 1 %>
+<% end %>
 
-        <h5><%= params[:search] %>：の検索結果</h5>
-        <h5><%= result %>件のCDが見つかりました</h5>
+<h5><%= params[:search] %>：の検索結果</h5>
+<h5><%= result %>件のCDが見つかりました</h5>
 
-　    <% @items.each do |item| %>
-        <div class="item-index-item-box clearfix">
-          <%= link_to admin_item_path(item) do %>
-            <%= attachment_image_tag item, :jacket_image, class: "item-index-jacket-image", fallback: "no_images.png", size: '200x200' %>
-          <% end %>
-          <p class="item-index-name"><%= link_to admin_item_path(item) do %>
-              <h4><%= item.name %></h4>
-           <% end %>
-          </p>
-          <p><%= item.artist.artist %></p>
-          <p class ="item-index-price">¥<%= item.price.to_s(:delimited) %></p>
-          <p><%= item.label.label %></p>
-          <p><%= item.status %></p>
-          <p><%= item.genre.genre %></p>
-        </div>
-      <% end %>
-    </div>
+<% @items.each do |item| %>
+  <div class="item-index-item-box clearfix">
+    <%= link_to admin_item_path(item) do %>
+      <%= attachment_image_tag item, :jacket_image, class: "item-index-jacket-image", fallback: "no_images.png", size: '200x200' %>
+    <% end %>
+    <p class="item-index-name"><%= link_to admin_item_path(item) do %>
+        <h4><%= item.name %></h4>
+     <% end %>
+    </p>
+    <p><%= item.artist.artist %></p>
+    <p class ="item-index-price">¥<%= item.price.to_s(:delimited) %></p>
+    <p><%= item.label.label %></p>
+    <p><%= item.status %></p>
+    <p><%= item.genre.genre %></p>
   </div>
+<% end %>

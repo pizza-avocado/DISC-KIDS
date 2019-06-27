@@ -1,21 +1,17 @@
-<div class="container">
-    <div class="back-rgba">
-　    <% @items.each do |item| %>
-            <div class="item-index-item-box clearfix">
-              <%= link_to item_path(item) do %>
-                <%= attachment_image_tag item, :jacket_image, class: "item-index-jacket-image", fallback: "no_images.png", size: '200x200' %>
-              <% end %>
-                      <p class="item-index-name"><%= link_to item_path(item) do %>
-                          <h4><%= item.name %></h4>
-                         <% end %>
-                      </p>
-                      <p><%= item.artist.artist %></p>
-                      <p class ="item-index-price">¥<%= item.price.to_s(:delimited) %></p>
-                      <p><%= item.label.label %></p>
-                      <p><%= item.status %></p>
-                      <p><%= item.genre.genre %></p>
-            </div>
-      <% end %>
-     <%= paginate @items %>
+<% @items.each do |item| %>
+  <div class="item-index-item-box clearfix">
+    <%= link_to item_path(item) do %>
+      <%= attachment_image_tag item, :jacket_image, class: "item-index-jacket-image", fallback: "no_images.png", size: '200x200' %>
+    <% end %>
+            <p class="item-index-name"><%= link_to item_path(item) do %>
+                <h4><%= item.name %></h4>
+               <% end %>
+            </p>
+            <p><%= item.artist.artist %></p>
+            <p class ="item-index-price">¥<%= item.price.to_s(:delimited) %></p>
+            <p><%= item.label.label %></p>
+            <p><%= item.status %></p>
+            <p><%= item.genre.genre %></p>
   </div>
-</div>
+<% end %>
+<%= paginate @items %>

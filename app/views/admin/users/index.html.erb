@@ -1,46 +1,42 @@
-<div class="container">
-  <div class="back-rgba">
-    <div class="user-index-title">
-      <p>会員一覧</p>
-    </div>
+<div class="user-index-title">
+  <p>会員一覧</p>
+</div>
 
-    <div class="user-index-search">
-        <%= form_tag(admin_search_users_path,:method => 'get') do %>
-          <%= text_field_tag :search, "", size: "40" %>
-          <%= submit_tag '検索', :lastname => nil, class:"btn btn-default" %>
-        <% end %>
-    </div>
+<div class="user-index-search">
+    <%= form_tag(admin_search_users_path,:method => 'get') do %>
+      <%= text_field_tag :search, "", size: "40" %>
+      <%= submit_tag '検索', :lastname => nil, class:"btn btn-default" %>
+    <% end %>
+</div>
 
 
 
 
-     <% @users.each do |user| %>
+ <% @users.each do |user| %>
 
-  <table border="5", class="user-index-table">
-    <thead>
-      <tr>
-         <th>ユーザー名</th>
-         <th>ユーザー名（カナ）</th>
-         <th>電話番号</th>
-         <th>メールアドレス</th>
-      </tr>
-  </thead>
+<table border="5", class="user-index-table">
+<thead>
+  <tr>
+     <th>ユーザー名</th>
+     <th>ユーザー名（カナ）</th>
+     <th>電話番号</th>
+     <th>メールアドレス</th>
+  </tr>
+</thead>
 
-    <tbody>
-      <tr>
-         <td> <%= user.lastname %><%= user.firstname %></td>
-         <td> <%= user.lastname_kana %><%= user.firstname_kana %></td>
-         <td> <%= user.phonenumber %></td>
-         <td> <%= user.email %></td>
-      </tr>
-    </tbody>
-   </table>
-   <p class="user-index-detail">  <%= link_to "ユーザー詳細", admin_user_path(user), class:"btn btn-primary" %></p>
+<tbody>
+  <tr>
+     <td> <%= user.lastname %><%= user.firstname %></td>
+     <td> <%= user.lastname_kana %><%= user.firstname_kana %></td>
+     <td> <%= user.phonenumber %></td>
+     <td> <%= user.email %></td>
+  </tr>
+</tbody>
+</table>
+<p class="user-index-detail">  <%= link_to "ユーザー詳細", admin_user_path(user), class:"btn btn-primary" %></p>
 
 
 
 <% end %>
 
 <%= paginate @users %>
-  </div>
-</div>
