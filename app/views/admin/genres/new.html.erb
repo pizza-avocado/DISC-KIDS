@@ -3,7 +3,7 @@
 		<div class = 'wrapper'>
 			<%= form_for @genre, url: admin_genres_path do |f| %>
 
-			<h1> Genre add</h1>
+			<h1> ジャンル追加</h1>
 			  <p> genre</p>
 
 			    <%= f.text_field :genre %>
@@ -12,7 +12,7 @@
 
 			<% end %>
 
-			<h1> Genre index</h1>
+			<h1> ジャンル一覧</h1>
 
 			<% @genres.each do |genre| %>
 			<p> <%= genre.id %>::<%= genre.genre %></p>

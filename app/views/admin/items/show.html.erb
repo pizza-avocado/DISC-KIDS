@@ -12,6 +12,7 @@
 			<h2><%= @item.name %> </h2>
 			<p><%= @item.artist.artist %></p>
 			<p class="item-show-price">¥<%= @item.price.to_s(:delimited) %></p>
+			<p>CD形式: <%= @item.disctype %></p>
 			<p>販売ステータス: <%= @item.status %></p>
 			<p>在庫:  残り<%= @item.stock %></p>
 			<p>ジャンル: <%= @item.genre.genre %></p>
