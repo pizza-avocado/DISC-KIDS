@@ -61,7 +61,7 @@ before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destr
 
   private
   def item_params
-      params.require(:item).permit(:name, :price, :stock, :status, :jacket_image, :artist_id, :label_id, :genre_id,
+      params.require(:item).permit(:name, :disctype, :price, :stock, :status, :jacket_image, :artist_id, :label_id, :genre_id,
       discs_attributes: [:id, :disc_id, :disc_number, :_destroy,
       tracks_attributes: [:id, :track_id, :track_number, :track_name, :_destroy]])
   end

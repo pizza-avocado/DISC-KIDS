@@ -1,8 +1,9 @@
 <div class = 'wrapper'>
 	<%= form_for @label, url: admin_labels_path do |f| %>
 
-	<h1> Lebel add</h1>
-	<p> label</p>
+			<h1> レーベル追加</h1>
+			<p> label</p>
+
 
 	    <%= f.text_field :label %>
 
@@ -10,7 +11,7 @@
 
 	<% end %>
 
-	<h1> Label index</h1>
+			<h1> レーベル一覧</h1>
 
 	<% @labels.each do |label| %>
 	<p> <%= label.id %>::<%= label.label %></p>
