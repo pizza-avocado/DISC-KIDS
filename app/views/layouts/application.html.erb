@@ -40,7 +40,7 @@
             <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag admin_search_items_path, :method => 'get' do %>
-                   <%= text_field_tag :search %>
+                   <%= text_field_tag :search, "", size: "40" %>
                    <%= submit_tag "Search", :name => nil %>
                  <% end %>
               </dl>
@@ -64,18 +64,18 @@
                 <%= link_to "MY PAGE", user_path(current_user), :style => "color:white;" %>
               </li>
               <li class="nav-item">
-                <%= link_to "INQUIRY", new_inquiry_path, :style => "color:white;" %>
+                <%= link_to "CART", carts_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
                 <dl class="searchbox">
                   <%= form_tag search_items_path, :method => 'get' do %>
-                    <%= text_field_tag :search, params[:search] %>
+                    <%= text_field_tag :search, params[:search], size: "40"  %>
                     <%= submit_tag "Search", :name => nil %>
                   <% end %>
                 </dl>
               </li>
               <li class="nav-item">
-                <%= link_to "CART", carts_path, :style => "color:white;" %>
+                <%= link_to "INQUIRY", new_inquiry_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
                 <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, :style => "color:white;" %>
@@ -96,16 +96,16 @@
                 <%= link_to "SIGN UP", new_user_registration_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
-                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;" %>
-              </li>
-              <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag search_items_path, :method => 'get' do %>
-                   <%= text_field_tag :search, params[:search] %>
+                   <%= text_field_tag :search, params[:search], size: "40" %>
                    <%= submit_tag "Search", :name => nil %>
                  <% end %>
               </dl>
-            </li>
+              </li>
+              <li class="nav-item">
+                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;" %>
+              </li>
             </nav>
           <% end %>
         </div>
@@ -115,11 +115,15 @@
     <div class='margin'></div>
   </div>
 
-  <main>
-      <% if flash[:notice] %>
-      <p><%= flash[:notice] %></p>
-      <% end %>
-    <%= yield %>
-  </main>
-    </body>
-  </html>
+    <main>
+      <div class="container">
+        <div class="back-rgba">
+          <% if flash[:notice] %>
+            <p><%= flash[:notice] %></p>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

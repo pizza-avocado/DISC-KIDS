@@ -1,24 +1,19 @@
-<div class = "container">
-	<div class="back-rgba">
-		<div class = 'wrapper'>
-			<%= form_for @artist, url: admin_artists_path do |f| %>
-			<h1> Artist add</h1>
-			　　<p class = "text"> artist</p>
+<div class = 'wrapper'>
+	<%= form_for @artist, url: admin_artists_path do |f| %>
+	<h1> Artist add</h1>
+	　　<p class = "text"> artist</p>
 
-			　　　　<%= f.text_field :artist %>
+	　　　　<%= f.text_field :artist %>
 
-			　　　　<%= f.submit "add" ,class: "btn btn-default" %>
-			<% end %>
+	　　　　<%= f.submit "add" ,class: "btn btn-default" %>
+	<% end %>
 
 
 
-			<h1> Artist index</h1>
+	<h1> Artist index</h1>
 
-			<% @artists.each do |artist| %>
-			<p> <%= artist.id %>::<%= artist.artist %></p>
+	<% @artists.each do |artist| %>
+	<p> <%= artist.id %>::<%= artist.artist %></p>
 
-			<% end %>
-		</div>
-
- 	</div>
+	<% end %>
 </div>
