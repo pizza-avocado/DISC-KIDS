@@ -1,62 +1,58 @@
-<div class="container">
-	<div class="back-rgba">
-		<div class="wrapper">
+<div class="wrapper">
 
-			<h1> 商品編集</h1>
-			<%= form_for @item, url: admin_item_path(@item) do |f| %>
+	<h1> 商品編集</h1>
+	<%= form_for @item, url: admin_item_path(@item) do |f| %>
 
-			<h4> イメージ</h4>
-			    <%#= f.label :jacket_image %>
-			    <%= f.attachment_field :jacket_image %>
+	<h4> イメージ</h4>
+	    <%#= f.label :jacket_image %>
+	    <%= f.attachment_field :jacket_image %>
 
 
-			<h4> アルバム</h4>
+	<h4> アルバム</h4>
 			<%= f.text_field :name %>
 
 
-			<h4> ディスクタイプ</h4>
+	<h4> ディスクタイプ</h4>
 			<%= f.select :disctype,[["アルバム","アルバム"],["シングル","シングル"],["その他","その他"]] %>
 
 
-			<h4> アーティスト</h4>
-			<%= link_to "artist edit", edit_admin_item_artist_path(@item.id, @item.artist.id) %>
+	<h4> アーティスト</h4>
+			<%= link_to "アーティスト編集", edit_admin_item_artist_path(@item.id, @item.artist.id) %>
 			<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
 
 
-			<h4> 価格</h4>
-			<%= f.text_field :price %>
+	<h4> 価格</h4>
+	<%= f.text_field :price %>
 
-			<h4> レーベル</h4>
-			<%= link_to "label edit", edit_admin_item_label_path(@item.id, @item.label.id) %>
-			<%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
-
-
-			<h4> 在庫</h4>
-			<%= f.text_field :stock %>
+	<h4> レーベル</h4>
+	<%= link_to "レーベル編集", edit_admin_item_label_path(@item.id, @item.label.id) %>
+	<%= f.select :label_id, Label.all.map{|l| [l.label, l.id] } %>
 
 
-			<h4> ステータス</h4>
-			<%= f.select :status,[["在庫あり","在庫あり"],["売り切れ","売り切れ"],["販売停止中","販売停止中"]] %>
+	<h4> 在庫</h4>
+	<%= f.text_field :stock %>
 
 
-			<h4> ジャンル</h4>
-			<%= link_to "genre edit", edit_admin_item_genre_path(@item.id, @item.genre.id) %>
-			<%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
+	<h4> ステータス</h4>
+	<%= f.select :status,[["在庫あり","在庫あり"],["売り切れ","売り切れ"],["販売停止中","販売停止中"]] %>
 
-			<div class = "discs">
-			<%= f.fields_for :discs do |disc| %>
-				<p>ディスク番号 <%= render "disc_fields", f: disc %> </p>
-			<% end %>
-				<div class = "links">
-					<p><%= link_to_add_association "ディスク追加", f,:discs %> </p>
-				</div>
-			</div>
 
-			<%= f.submit '登録', class: "btn btn-primary btn-lg"%>
-			<% end %>
+	<h4> ジャンル</h4>
+	<%= link_to "ジャンル編集", edit_admin_item_genre_path(@item.id, @item.genre.id) %>
+	<%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
+
+	<div class = "discs">
+	<%= f.fields_for :discs do |disc| %>
+		<p>ディスク番号 <%= render "disc_fields", f: disc %> </p>
+	<% end %>
+		<div class = "links">
+			<p><%= link_to_add_association "ディスク追加", f,:discs %> </p>
+		</div>
+	</div>
+
+	<%= f.submit '登録', class: "btn btn-primary btn-lg"%>
+	<% end %>
 
 <!-- 商品を削除する必要がある時のみ使用 -->
 <%#= button_to "削除", admin_item_path(@item), method: :delete,  data: {confirm: "本当に削除しますか？"},class: "btn btn-primary btn-lg" %>
-		</div>
-	</div>
 </div>

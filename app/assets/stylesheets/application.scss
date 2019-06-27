@@ -29,22 +29,6 @@
   color: black;
 }
 
-a{
-  color: #006699;
-  text-decoration: none;
-}
-
-li {
-  font-family: 'Abril Fatface', cursive;
-  font-family: 'Patua One', cursive;
-  list-style: none;
-}
-
-header {
-  height: 100px;
-  width: 100%;
-}
-
 body {
   background-color: #151515;
   color: #000000;
@@ -55,10 +39,25 @@ body {
   background-color: black;
 }
 
+a{
+  color: #006699;
+}
+
+a:hover{
+　text-decoration: none;
+}
+
 li {
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Patua One', cursive;
+  list-style: none;
   margin-right: 10px;
   margin-top: 30px;
+}
 
+header {
+  height: 100px;
+  width: 100%;
 }
 
 .clearfix::after {
@@ -115,6 +114,12 @@ li {
   width: 100%;
 }
 
+.header-username{
+  color: white;
+  float: right;
+  margin-top: 33px;
+  padding-left: 40px;
+}
 
 .margin {
   margin-top: 100px;

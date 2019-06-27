@@ -2,10 +2,11 @@
 <% sum_p = 0 %>
 
 <% @order.order_items.each do |order_item| %>
-<% sum_q += order_item.quantity %>
-<% sum_p += order_item.purchaced_price * order_item.quantity %>
+	<% sum_q += order_item.quantity %>
+	<% sum_p += order_item.purchaced_price * order_item.quantity %>
 <% end %>
 
+<% sum_p + 500 %>
 
 
 <h1>ご注文詳細</h1>
@@ -21,13 +22,13 @@
 <h4>ご注文点数</h4>
 <%= sum_q %>点
 <h4>小計</h4>
-¥<%= sum_p %>
+¥<%= sum_p.to_s(:delimited) %>
 
 <h4>送料</h4>
 ¥500
 
 <h4>合計金額</h4>
-<p class="order-show-price">¥<%= sum_p + 500 %></p>
+<p class="order-show-price">¥<%= sum_p.to_s(:delimited) %></p>
 
 <h4>支払方法</h4>
 <%= @order.payment %>
@@ -41,24 +42,24 @@
 
 <% @order.order_items.each do |order_item| %>
 
-<h4>商品名</h4>
-<p> <%= order_item.item.name %></p>
+	<h4>商品名</h4>
+	<p> <%= order_item.item.name %></p>
 
-<h4>アーティスト名</h4>
-<p><%= order_item.item.artist.artist %></p>
+	<h4>アーティスト名</h4>
+	<p><%= order_item.item.artist.artist %></p>
 
-<h4>レーベル名</h4>
-<p><%= order_item.item.label.label %></p>
+	<h4>レーベル名</h4>
+	<p><%= order_item.item.label.label %></p>
 
-<h4>ジャンル名</h4>
-<p><%= order_item.item.genre.genre %></p>
+	<h4>ジャンル名</h4>
+	<p><%= order_item.item.genre.genre %></p>
 
-<h4>購入時金額（一枚あたり）</h4>
-<p>¥<%= order_item.purchaced_price %></p>
+	<h4>購入時金額（一枚あたり）</h4>
+	<p>¥<%= order_item.purchaced_price.to_s(:delimited) %></p>
 
-<h4>数量</h4>
-<p><%= order_item.quantity %>個</p>
+	<h4>数量</h4>
+	<p><%= order_item.quantity %>個</p>
 
-<br>
-<p>--------------------------</p>
+	<br>
+	<p>--------------------------</p>
 <% end %>

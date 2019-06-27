@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DISC_KIDS</title>
+    <title>DISC-KIDS</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <div class="social">
@@ -24,10 +24,13 @@
           <% end %>
         </div>
             <li class="nav-item">
+              <%= link_to "ODER LIST", admin_orders_path, :style => "color:white;" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "USER LIST", admin_users_path, :style => "color:white;" %>
             </li>
             <li class="nav-item">
-              <%= link_to "DISC INDEX",admin_items_path, :style => "color:white;" %>
+              <%= link_to "ALL DISCS",admin_items_path, :style => "color:white;" %>
             </li>
             <li class="nav-item">
               <%= link_to "ADD DISC",new_admin_item_path, :style => "color:white;" %>
@@ -37,7 +40,7 @@
             <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag admin_search_items_path, :method => 'get' do %>
-                   <%= text_field_tag :search %>
+                   <%= text_field_tag :search, "", size: "40" %>
                    <%= submit_tag "Search", :name => nil %>
                  <% end %>
               </dl>
@@ -54,25 +57,25 @@
                    <%= image_tag "logo.png", class: "logo-image", size: "110x100" %>
                 <% end %>
               </div>
-              <li class = "nav-item">
-                <%#= current_user.lastname + current_user.firstname + "さん" %>
+              <li class = "header-username">
+                <%= current_user.lastname + current_user.firstname + "さん" %>
               </li>
               <li class="nav-item">
                 <%= link_to "MY PAGE", user_path(current_user), :style => "color:white;" %>
               </li>
               <li class="nav-item">
-                <%= link_to "INQUIRY", new_inquiry_path, :style => "color:white;" %>
+                <%= link_to "CART", carts_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
                 <dl class="searchbox">
                   <%= form_tag search_items_path, :method => 'get' do %>
-                    <%= text_field_tag :search, params[:search] %>
+                    <%= text_field_tag :search, params[:search], size: "40"  %>
                     <%= submit_tag "Search", :name => nil %>
                   <% end %>
                 </dl>
               </li>
               <li class="nav-item">
-                <%= link_to "CART", carts_path, :style => "color:white;" %>
+                <%= link_to "INQUIRY", new_inquiry_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
                 <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, :style => "color:white;" %>
@@ -93,16 +96,16 @@
                 <%= link_to "SIGN UP", new_user_registration_path, :style => "color:white;" %>
               </li>
               <li class="nav-item">
-                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;" %>
-              </li>
-              <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag search_items_path, :method => 'get' do %>
-                   <%= text_field_tag :search, params[:search] %>
+                   <%= text_field_tag :search, params[:search], size: "40" %>
                    <%= submit_tag "Search", :name => nil %>
                  <% end %>
               </dl>
-            </li>
+              </li>
+              <li class="nav-item">
+                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;" %>
+              </li>
             </nav>
           <% end %>
         </div>
@@ -112,11 +115,15 @@
     <div class='margin'></div>
   </div>
 
-  <main>
-      <% if flash[:notice] %>
-      <p><%= flash[:notice] %></p>
-      <% end %>
-    <%= yield %>
-  </main>
-    </body>
-  </html>
+    <main>
+      <div class="container">
+        <div class="back-rgba">
+          <% if flash[:notice] %>
+            <p><%= flash[:notice] %></p>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

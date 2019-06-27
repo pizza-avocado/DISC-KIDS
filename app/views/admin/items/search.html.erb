@@ -1,12 +1,10 @@
-<div class="container">
-  <div class="back-rgba">
-      <% result = 0 %>
-      <% @items.each do |item| %>
-        <% result += 1 %>
-      <% end %>
+<% result = 0 %>
+<% @items.each do |item| %>
+  <% result += 1 %>
+<% end %>
 
-        <h5><%= params[:search] %>：の検索結果</h5>
-        <h5><%= result %>件のCDが見つかりました</h5>
+<h5><%= params[:search] %>：の検索結果</h5>
+<h5><%= result %>件のCDが見つかりました</h5>
 
 　    <% @items.each do |item| %>
         <div class="item-index-item-box clearfix">

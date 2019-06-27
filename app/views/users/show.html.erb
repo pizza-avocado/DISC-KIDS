@@ -1,31 +1,31 @@
-<div class="back">
-  <div class="back-rgba">
-    <div class="container">
+<div class="wrapper">
 
-      <h1>マイページ</h1>
-         <p>名前： <%= current_user.lastname %>  <%= current_user.firstname %> </p>
-         <p>名前(カナ)： <%= current_user.lastname_kana %>  <%= current_user.firstname_kana %></p>
-         <p> 郵便番号 : <%= current_user.postalcode %> </p>
-         <p> 住所 : <%= current_user.address %> </p>
-         <p> email : <%= current_user.email %> </p>
-         <p> 電話番号 : <%= current_user.phonenumber %> </p>
+  <h1>マイページ</h1>
+     <p>名前： <%= current_user.lastname %>  <%= current_user.firstname %> </p>
+     <p>名前(カナ)： <%= current_user.lastname_kana %>  <%= current_user.firstname_kana %></p>
+     <p> 郵便番号 : <%= current_user.postalcode %> </p>
+     <p> 住所 : <%= current_user.address %> </p>
+     <p> email : <%= current_user.email %> </p>
+     <p> 電話番号 : <%= current_user.phonenumber %> </p>
 
-           <h2>宛名一覧</h2>
-             <% @address_names.each do |address_name| %>
-             <p>宛名： <%= address_name.address_name %> </p>
-             <%= link_to "宛名編集", edit_address_name_path(address_name) %>
-             <%= link_to "宛名削除", address_name_path(address_name), method: :delete %>
-           <% end %>
+       <h2>宛名一覧</h2>
+         <% @address_names.each do |address_name| %>
+         <p>宛名： <%= address_name.address_name %> </p>
+         <%= link_to "宛名編集", edit_address_name_path(address_name) %>
+         <%= link_to "宛名削除", address_name_path(address_name), method: :delete %>
+       <% end %>
 
-         <h2>送付先一覧</h2>
-            <% @addresses.each do |address| %>
-              <p>郵便番号： <%= address.postalcode %> </p>
-              <p>住所：<%= address.address %> </p>
-              <%= link_to "送付先編集", edit_address_path(address) %>
-              <%= link_to "送付先削除", address_path(address), method: :delete %>
-            <% end %>
+     <h2>送付先一覧</h2>
+        <% @addresses.each do |address| %>
+          <p>郵便番号： <%= address.postalcode %> </p>
+          <p>住所：<%= address.address %> </p>
+          <%= link_to "送付先編集", edit_address_path(address) %>
+          <%= link_to "送付先削除", address_path(address), method: :delete %>
+        <% end %>
 
-          <br>
-        <br>
-      <p> <%= link_to"プロフィール編集　宛名・送付先追加", edit_user_path(current_user), class: 'btn btn-primary' %> </p>
-    <p> <%= link_to"購入履歴", orders_path, class: 'btn btn-success' %> </p>
+      <br>
+    <br>
+  <p> <%= link_to"プロフィール編集　宛名・送付先追加", edit_user_path(current_user), class: 'btn btn-primary' %> </p>
+  <p> <%= link_to"購入履歴", orders_path, class: 'btn btn-success' %> </p>
+
+</div>

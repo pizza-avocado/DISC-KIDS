@@ -3,6 +3,7 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!, only: %i[index show update]
 
   def index
+    if 
   	@orders = Order.all
   end
 

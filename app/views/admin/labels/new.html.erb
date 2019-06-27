@@ -1,23 +1,20 @@
-<div class = "container">
-	<div class="back-rgba">
-		<div class = 'wrapper'>
-			<%= form_for @label, url: admin_labels_path do |f| %>
+<div class = 'wrapper'>
+	<%= form_for @label, url: admin_labels_path do |f| %>
 
 			<h1> レーベル追加</h1>
 			<p> label</p>
 
-			    <%= f.text_field :label %>
 
-			    <%= f.submit "add" %>
+	    <%= f.text_field :label %>
 
-			<% end %>
+	    <%= f.submit "add" %>
+
+	<% end %>
 
 			<h1> レーベル一覧</h1>
 
-			<% @labels.each do |label| %>
-			<p> <%= label.id %>::<%= label.label %></p>
+	<% @labels.each do |label| %>
+	<p> <%= label.id %>::<%= label.label %></p>
 
-			<% end %>
-		</div>
-	</div>
+	<% end %>
 </div>

@@ -1,23 +1,19 @@
-<div class = "container">
-	<div class="back-rgba">
-		<div class = 'wrapper'>
-			<%= form_for @genre, url: admin_genres_path do |f| %>
+<div class = 'wrapper'>
+	<%= form_for @genre, url: admin_genres_path do |f| %>
 
 			<h1> ジャンル追加</h1>
 			  <p> genre</p>
 
-			    <%= f.text_field :genre %>
+	    <%= f.text_field :genre %>
 
-			    <%= f.submit "add" %>
+	    <%= f.submit "add" %>
 
-			<% end %>
+	<% end %>
 
 			<h1> ジャンル一覧</h1>
 
-			<% @genres.each do |genre| %>
-			<p> <%= genre.id %>::<%= genre.genre %></p>
+	<% @genres.each do |genre| %>
+	<p> <%= genre.id %>::<%= genre.genre %></p>
 
-			<% end %>
-		</div>
-	</div>
+	<% end %>
 </div>

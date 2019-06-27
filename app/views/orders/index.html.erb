@@ -1,6 +1,6 @@
-<div class= "container">
-
-<p class="flash"><%= flash[:success] %></p>
+<p class="order-index-flash">
+	<%= flash[:success] %>
+</p>
 
 <div class="order-title">
 <h1>注文履歴</h1>
@@ -17,6 +17,8 @@
 		<% sum_p += order_item.purchaced_price * order_item.quantity %>
 		<% end %>
 
+	<% sum_p += 500 %>
+
 		<tr>
 		 <td class="order_index_image" rowspan="6">
 		 	<% if OrderItem.exists?(order_id: order.id) %>
@@ -28,11 +30,11 @@
 		</tr>
 		<tr>
 		 <td class="order-table-info">購入点数</td>
-		 <td><%= sum_q %></td>
+		 <td><%= sum_q %>点</td>
 		</tr>
 		<tr>
 		 <td class="order-table-info">購入合計金額</td>
-		 <td>¥<%= sum_p + 500 %></td>
+		 <td>¥<%= sum_p.to_s(:delimited) %></td>
 		</tr>
 		<tr>
 		 <td class="order-table-info">注文ステータス</td>
@@ -50,8 +52,6 @@
 	</table>
 	<% end %>
 </div>
-
-<%= paginate @orders %>
-
-
+<div class="user-order-index-page">
+<%= paginate @orders_page %>
 </div>
