@@ -1,4 +1,4 @@
-<div class= "order-title">
+<div class="order-new-title">
 	<p>購入確認画面</p>
 </div>
 
@@ -9,7 +9,7 @@
 		<th class= "order-item"></th>
 		<th class= "order-price">価格</th>
 		<th class= "order-quantity">数量</th>
-		<th class= "order-item-sum">小計（商品ごと）</th>
+		<th class= "order-item-sum">小計</th>
 	</tr>
 	<% @carts.each do |cart| %>
 		<tr>
@@ -26,10 +26,10 @@
 </table>
 
 <div class= "order-sum">
-	<p> 小計：<a class="order-subtotal">¥<%= subtotal.to_s(:delimited) %></a></p>
+	<p> 小計：<i class="order-subtotal">¥<%= subtotal.to_s(:delimited) %></i></p>
 	<p> 送料：¥500 </p>
 	<% total = subtotal + 500 %>
-	<h4> 合計：<a class= "order-sum-integer">¥<%= total.to_s(:delimited) %></a> </h4>
+	<h4> 合計：<i class= "order-sum-integer">¥<%= total.to_s(:delimited) %></i> </h4>
 </div>
 
 <div class ="order-address">

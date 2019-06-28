@@ -17,10 +17,6 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-/*@font-face {
-  font-family: "foge"
-  src: font-url('disclaimer-classic.ttf') format('truetype');
- }*/
 
 * {
   margin: 0;
@@ -48,8 +44,8 @@ a:hover{
 }
 
 li {
-  font-family: 'Abril Fatface', cursive;
-  font-family: 'Patua One', cursive;
+/*  font-family: 'Abril Fatface', cursive;
+  font-family: 'Patua One', cursive;*/
   list-style: none;
   margin-right: 10px;
   margin-top: 30px;
@@ -145,4 +141,21 @@ header {
 
 .registration-actions{
   padding-top: 10px;
+}
+
+.login-box{
+  width: 60%;
+  margin: auto auto;
+}
+
+.login-login{
+  margin-top: 20px;
+  float: left;
+  width: 20%;
+}
+
+.login-signup{
+  margin-top: 20px;
+  float: left;
+  width: 30%;
 }

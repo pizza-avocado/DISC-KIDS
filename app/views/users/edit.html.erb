@@ -1,68 +1,81 @@
-<div class="wrapper">
+<h1>ユーザー情報編集</h1>
+
+<%= form_for(@user) do |f| %>
+
+  <h4>ユーザー名</h4>
+  <table>
+    <tr>
+      <td><%= f.label :lastname %></td>
+      <td><%= f.text_field :lastname, placeholder:"氏"%></td>
+      <td><%= f.label :lastname_kana %></td>
+      <td><%= f.text_field :lastname_kana, placeholder:"氏　カナ"%></td>
+    </tr>
+    <tr>
+      <td><%= f.label :firstname %></td>
+      <td><%= f.text_field :firstname, placeholder:"名"%></td>
+      <td><%= f.label :firstname_kana %></td>
+      <td><%= f.text_field :firstname_kana, placeholder:"名　カナ"%></td>
+    </tr>
+  </table>
+
+  <h4>お届け先情報</h4>
+  <table>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postalcode, placeholder:"郵便番号", size: "10"%></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, placeholder:"住所", size: "50" %></td>
+    </tr>
+  </table>
+
+  <h4>連絡先情報</h4>
+  <table>
+    <tr>
+      <td>電話番号</td>
+      <td><%= f.text_field :phonenumber, placeholder:"電話番号"%></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.text_field :email, placeholder:"メールアドレス"%></td>
+    </tr>
+  </table>
 
 
-  <h1>ユーザー情報編集</h1>
+  <%= f.submit "確定", class: 'btn btn-success' %>
 
-  <%= form_for(@user) do |f| %>
-
-    <p> 氏 </p>
-      <%= f.text_field :lastname, placeholder:"氏"%><br>
-
-    <p> 名 </p>
-      <%= f.text_field :firstname, placeholder:"名"%><br>
-
-    <p> 氏 カナ</p>
-      <%= f.text_field :lastname_kana, placeholder:"氏　カナ"%><br>
-
-    <p> 名 カナ</p>
-      <%= f.text_field :firstname_kana, placeholder:"名　カナ"%><br>
-
-    <p> 郵便番号</p>
-      <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
-
-    <p> 住所</p>
-      <%= f.text_field :address, placeholder:"住所"%><br>
-
-    <p> 電話番号</p>
-      <%= f.text_field :phonenumber, placeholder:"電話番号"%><br>
-
-    <p> メールアドレス </p>
-      <%= f.text_field :email, placeholder:"メールアドレス"%><br>
-
-    <br>
-    <br>
-  <%= f.submit "編集する", class: 'btn btn-success' %>
 <% end %>
-<br>
-<%= link_to "退会する" , user_resign_path, class: 'btn btn-danger' %>
-
-<br>
-<p> ----------------------------------</p>
-<br>
-
-<h2> 宛名を追加する </h2>
-  <%= form_for(@address_name) do |f| %>
-
-  <p> 宛名 </p>
-    <%= f.text_field :address_name, placeholder:"宛名"%><br>
-    <br>
-    <%= f.submit "追加する" ,class: "btn btn-primary" %>
-
-  <% end %>
 
 
-    <h2> 送付先を追加する </h2>
+  <%= link_to "退会" , user_resign_path, class: 'btn btn-danger' %>
 
-      <%= form_for(@address) do |f| %>
 
-      <p> 郵便番号 </p>
-        <%= f.text_field :postalcode, placeholder:"郵便番号"%><br>
+<h2>宛名の追加</h2>
 
-      <p> 住所 </p>
-        <%= f.text_area :address, placeholder:"住所"%><br>
-        <br>
-      <%= f.submit "追加する", class: 'btn btn-primary' %>
+<%= form_for(@address_name) do |f| %>
+  <table>
+    <tr>
+      <td> <h5> 宛名 </h5> </td>
+      <td><%= f.text_field :address_name %></td>
+      <td> <%= f.submit "追加" ,class: "btn btn-primary" %></td>
+    </tr>
+  </table>
+<% end %>
 
-  <% end %>
+<h2>送付先の追加</h2>
 
-</div>
+<%= form_for(@address) do |f| %>
+  <table>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postalcode %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, size:"50" %></td>
+      <td><%= f.submit "追加", class: 'btn btn-primary' %></td>
+    </tr>
+  </table>
+<% end %>

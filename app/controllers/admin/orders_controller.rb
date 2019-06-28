@@ -1,10 +1,8 @@
-
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!, only: %i[index show update]
 
   def index
-    if 
-  	@orders = Order.all
+    @orders = Order.page(params[:page])
   end
 
   def show
@@ -15,6 +13,7 @@ class Admin::OrdersController < ApplicationController
   	order = Order.find(params[:id])
   	order.update(order_params)
   	redirect_to admin_order_path(order)
+    flash[:notice] = "注文ステータスを[" + order.order_status + "]に変更しました"
   end
 
 private
@@ -22,4 +21,6 @@ private
   def order_params
   params.require(:order).permit(:order_status)
   end
+
+
 end

@@ -1,34 +1,57 @@
-<%= flash[:success] %>
+<p class="order-index-flash">
+	<%= flash[:success] %>
+</p>
 
-<div class="container">
-<div class="back-rgba">
-
+<div class="order-title">
 <h1>注文履歴</h1>
-
-
-<% @orders.each do |order| %>
-<% sum_q = 0 %>
-<% sum_p = 0 %>
-
-	<% order.order_items.each do |order_item| %>
-	<% sum_q += order_item.quantity %>
-	<% sum_p += order_item.purchaced_price * order_item.quantity %>
-	<% end %>
-
-<% sum_p + 500 %>
-
-<p>注文日時：<%= order.created_at.strftime('%Y/%m/%d/%H:%M') %></p>
-<p>購入点数：<%= sum_q %></p>
-<p>購入合計金額：¥<%= sum_p.to_s(:delimited) %></p>
-<p>注文ステータス：<%= order.order_status %></p>
-<p>送付先住所：<%= order.shipping_address %></p>
-
-
-<p> <%= link_to"詳細を確認する", admin_order_path(order) %></p>
-
-<br>
-<p> -------------------------------- </p>
-<% end %>
-
 </div>
+
+<div class= "order-index-box">
+<% @orders.each do |order| %>
+	<table class="table", border ="1">
+	<% sum_q = 0 %>
+	<% sum_p = 0 %>
+
+		<% order.order_items.each do |order_item| %>
+		<% sum_q += order_item.quantity %>
+		<% sum_p += order_item.purchaced_price * order_item.quantity %>
+		<% end %>
+
+	<% sum_p += 500 %>
+
+		<tr>
+		 <td class="order_index_image" rowspan="6">
+		 	<% if OrderItem.exists?(order_id: order.id) %>
+		 		<%= attachment_image_tag order.order_items.last.item, :jacket_image ,size: '220x220', fallback: "no_images.png" %>
+		 	<% end %>
+		 </td>
+		 <td class="order-table-info">注文日時</td>
+		 <td><%= order.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+		</tr>
+		<tr>
+		 <td class="order-table-info">購入点数</td>
+		 <td><%= sum_q %>点</td>
+		</tr>
+		<tr>
+		 <td class="order-table-info">購入合計金額</td>
+		 <td>¥<%= sum_p.to_s(:delimited) %></td>
+		</tr>
+		<tr>
+		 <td class="order-table-info">注文ステータス</td>
+		 <td><%= order.order_status %></td>
+		</tr>
+		<tr>
+		 <td class="order-table-info">送付先住所</td>
+		 <td><%= order.shipping_address %></td>
+		</tr>
+		<tr>
+		 <td></td>
+		 <td><%= link_to"詳細を確認する", admin_order_path(order), class: 'btn btn-primary' %></td>
+		</tr>
+
+	</table>
+	<% end %>
+</div>
+<div class="user-order-index-page">
+<%= paginate @orders %>
 </div>

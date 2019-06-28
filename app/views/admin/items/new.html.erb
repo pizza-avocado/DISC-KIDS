@@ -9,14 +9,14 @@
 
 	<%= f.attachment_field :jacket_image %>
 
-			<h4> タイトル</h4>
-			<%= f.text_field :name %>
+	<h4> タイトル</h4>
+	<%= f.text_field :name %>
 
-			<h4> CD形式</h4>
-			<%= f.select :disctype,[["アルバム","アルバム"],["シングル","シングル"],["その他","その他"]] %>
+	<h4> CD形式</h4>
+	<%= f.select :disctype,[["アルバム","アルバム"],["シングル","シングル"],["その他","その他"]] %>
 
-			<h4> アーティスト</h4>
-			<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
+	<h4> アーティスト</h4>
+	<%= f.select :artist_id, Artist.all.map{|a| [a.artist, a.id] } %>
 
 	<h4> 価格</h4>
 	<%= f.text_field :price %>
