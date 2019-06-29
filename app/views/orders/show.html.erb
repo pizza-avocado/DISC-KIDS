@@ -10,56 +10,78 @@
 
 
 <h1>ご注文詳細</h1>
-<h4>ご注文日時</h4>
-<%= @order.created_at.strftime('%Y/%m/%d') %>
 
-<h4>宛名</h4>
-<%= @order.address_name %>
 
-<h4>お届け先住所</h4>
-<%= @order.shipping_address %>
+<table class="order-show-infobox", border="1">
+	<tr>
+		<td class="order-show-info-title">ご注文日時</td>
+		<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">宛名</td>
+		<td><%= @order.address_name %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">お届け先住所</td>
+		<td><%= @order.shipping_address %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">ご注文点数</td>
+		<td><%= sum_q %>点</td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">小計</td>
+		<td>¥<%= sum_p.to_s(:delimited) %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">送料</td>
+		<td>¥500</td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">合計金額</td>
+		<td class="order-show-price">¥<%= sum_p.to_s(:delimited) %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">支払方法</td>
+		<td><%= @order.payment %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">注文ステータス</td>
+		<td><%= @order.order_status %></td>
+	</tr>
+</table>
 
-<h4>ご注文点数</h4>
-<%= sum_q %>点
-<h4>小計</h4>
-¥<%= sum_p.to_s(:delimited) %>
 
-<h4>送料</h4>
-¥500
-
-<h4>合計金額</h4>
-<p class="order-show-price">¥<%= sum_p.to_s(:delimited) %></p>
-
-<h4>支払方法</h4>
-<%= @order.payment %>
-
-<h4>注文ステータス</h4>
-<%= @order.order_status %>
-
-<br>
-<p>==============================</p>
 <h3> 注文商品一覧　</h3>
 
 <% @order.order_items.each do |order_item| %>
-
-	<h4>商品名</h4>
-	<p> <%= order_item.item.name %></p>
-
-	<h4>アーティスト名</h4>
-	<p><%= order_item.item.artist.artist %></p>
-
-	<h4>レーベル名</h4>
-	<p><%= order_item.item.label.label %></p>
-
-	<h4>ジャンル名</h4>
-	<p><%= order_item.item.genre.genre %></p>
-
-	<h4>購入時金額（一枚あたり）</h4>
-	<p>¥<%= order_item.purchaced_price.to_s(:delimited) %></p>
-
-	<h4>数量</h4>
-	<p><%= order_item.quantity %>個</p>
-
-	<br>
-	<p>--------------------------</p>
+<table class="order-show-itembox", border="1">
+	<tr>
+		<td class="order-show-itembox-title">商品名</td>
+		<td><%= order_item.item.name %></td>
+		<td class="order-show-itembox-jacket", rowspan="6">
+		<%= attachment_image_tag order_item.item, :jacket_image ,size: '120x120', fallback: "no_images.png" %>
+		</td>
+	</tr>
+	<tr>
+		<td>アーティスト名</td>
+		<td><%= order_item.item.artist.artist %></td>
+	</tr>
+	<tr>
+		<td>レーベル名</td>
+		<td><%= order_item.item.label.label %></td>
+	</tr>
+	<tr>
+		<td>ジャンル名</td>
+		<td><%= order_item.item.genre.genre %></td>
+	</tr>
+	<tr>
+		<td>購入時価格（一枚あたり）</td>
+		<td>¥<%= order_item.purchaced_price.to_s(:delimited) %></td>
+	</tr>
+	<tr>
+		<td>数量</td>
+		<td><%= order_item.quantity %>点</td>
+	</tr>
+</table>
 <% end %>

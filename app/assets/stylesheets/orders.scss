@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.order-title{
+.order-new-title{
 	font-size: 36px;
 	margin: auto auto;
 	width: 80%;
@@ -18,9 +18,6 @@
 }
 
 
-.order-item{
-	width: 40%;
-}
 
 .order-item-name{
 	font-size: 20px;
@@ -96,10 +93,42 @@
 	width: 200px;
 }
 
+.order-show-infobox{
+	width: 80%;
+	font-size: 16px;
+}
+
+.order-show-info-title{
+	width: 20%;
+	text-align: center;
+}
+
+.order-show-itembox-jacket{
+	text-align: center;
+}
+
 .order-show-price{
 	color: #cd5c5c;
 }
 
 .user-order-index-page{
+	text-align: center;
+}
+
+.order-show-itembox{
+	width: 60%;
+	margin-bottom: 10px;
+}
+
+.order-show-itembox-title{
+	width: 30%;
+}
+
+.order-show-itembox-body{
+
+}
+
+.order-show-itembox-jacket{
+	width: 25%;
 	text-align: center;
 }

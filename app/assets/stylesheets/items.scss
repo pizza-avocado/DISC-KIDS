@@ -14,7 +14,6 @@
 
 .border-bottom {
   height: 1px;
-  /*width: 85%;*/
   background-color: black;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -22,7 +21,7 @@
 
 .item-index-item-box{
   display: inline-block;
-  margin: 20px 35px auto;
+  margin: 20px 28px auto;
   height: 420px;
 }
 
@@ -108,6 +107,7 @@ td {
 
 .wrapper{
   margin: 30px 50px 30px 50px;
+  width: 95%;
 }
 
 .item-show-track-name {

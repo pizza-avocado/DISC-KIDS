@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -22,6 +20,7 @@ class User < ApplicationRecord
   validates :phonenumber,    presence: true
   validates :email,          presence: true, uniqueness: true
 
+  default_scope -> { order(lastname_kana: :desc) }
 
   acts_as_paranoid
 

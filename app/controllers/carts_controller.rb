@@ -18,7 +18,7 @@ class CartsController < ApplicationController
 
 	cart.save
   redirect_to carts_path
-  flash[:add] = cart.item.name + "をカートに追加しました"
+  flash[:add] = "[" + cart.item.name + "]をカートに追加しました"
 
   end
 
@@ -34,7 +34,7 @@ class CartsController < ApplicationController
       flash[:update] = cart.item.name + "の数量を" + params[:cart][:quantity] +"個に変更しました"
     else
       redirect_to carts_path
-      flash[:error] = cart.item.name + "の在庫数以上はカートに追加できません"
+      flash[:error] = "[" + cart.item.name + "]の在庫数以上はカートに追加できません"
     end
   end
 
@@ -42,7 +42,7 @@ class CartsController < ApplicationController
   	cart = Cart.find_by(item_id: params[:cart][:item_id], user_id: current_user.id)
   	cart.destroy
   	redirect_to carts_path
-    flash[:remove] = cart.item.name + "をカートから削除しました"
+    flash[:remove] = "[" + cart.item.name + "]をカートから削除しました"
   end
 
   private

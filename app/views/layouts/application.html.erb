@@ -11,6 +11,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -20,27 +22,27 @@
           <% if admin_signed_in? %>
           <div class="logo">
           <%= link_to admin_items_path do %>
-             <%= image_tag "logo.png", class: "logo-image", size: "110x100" %>
+             <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
           <% end %>
         </div>
             <li class="nav-item">
-              <%= link_to "ODER LIST", admin_orders_path, :style => "color:white;" %>
+              <%= link_to "注文リスト", admin_orders_path, :style => "color:white;", :class =>"fas fa-file-alt" %>
             </li>
             <li class="nav-item">
-              <%= link_to "USER LIST", admin_users_path, :style => "color:white;" %>
+              <%= link_to "会員リスト", admin_users_path, :style => "color:white;", :class =>"fas fa-users" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ALL DISCS",admin_items_path, :style => "color:white;" %>
+              <%= link_to "全商品",admin_items_path, :style => "color:white;", :class =>"fas fa-compact-disc" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ADD DISC",new_admin_item_path, :style => "color:white;" %>
+              <%= link_to "商品追加",new_admin_item_path, :style => "color:white;", :class =>"fas fa-plus-square" %>
             <li class="nav-item">
-              <%= link_to "INQUIRY", admin_inquiries_path, :style => "color:white;" %>
+              <%= link_to "問い合わせ", admin_inquiries_path, :style => "color:white;", :class =>"fas fa-question-circle" %>
             </li>
             <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag admin_search_items_path, :method => 'get' do %>
-                   <%= text_field_tag :search, "", size: "40" %>
+                   <%= text_field_tag :search, "", size: "40",placeholder: "商品名/アーティスト名" %>
                    <%= submit_tag "Search", :name => nil %>
                  <% end %>
               </dl>
@@ -54,31 +56,31 @@
             <nav>
               <div class="logo">
                 <%= link_to items_path do %>
-                   <%= image_tag "logo.png", class: "logo-image", size: "110x100" %>
+                   <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
                 <% end %>
               </div>
               <li class = "header-username">
                 <%= current_user.lastname + current_user.firstname + "さん" %>
               </li>
               <li class="nav-item">
-                <%= link_to "MY PAGE", user_path(current_user), :style => "color:white;" %>
+                <%= link_to "MY PAGE", user_path(current_user), :style => "color:white;", :class =>"fas fa-user" %>
               </li>
               <li class="nav-item">
-                <%= link_to "CART", carts_path, :style => "color:white;" %>
+                <%= link_to "CART", carts_path, :style => "color:white;", :class =>"fas fa-shopping-cart" %>
               </li>
               <li class="nav-item">
                 <dl class="searchbox">
                   <%= form_tag search_items_path, :method => 'get' do %>
-                    <%= text_field_tag :search, params[:search], size: "40"  %>
+                    <%= text_field_tag :search, params[:search], size: "40",placeholder: "商品名/アーティスト名"  %>
                     <%= submit_tag "Search", :name => nil %>
                   <% end %>
                 </dl>
               </li>
               <li class="nav-item">
-                <%= link_to "INQUIRY", new_inquiry_path, :style => "color:white;" %>
+                <%= link_to "INQUIRY", new_inquiry_path, :style => "color:white;", :class =>"fas fa-question-circle" %>
               </li>
               <li class="nav-item">
-                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, :style => "color:white;" %>
+                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, :style => "color:white;", :class =>"fas fa-sign-out-alt" %>
               </li>
             </nav>
 
@@ -86,25 +88,25 @@
             <nav>
               <div class="logo">
                 <%= link_to items_path do %>
-                   <%= image_tag "logo.png", class: "logo-image", size: "110x100" %>
+                   <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
                 <% end %>
               </div>
               <li class="nav-item">
-                <%= link_to "LOG IN", new_user_session_path, :style => "color:white;" %>
+                <%= link_to "LOG IN", new_user_session_path, :style => "color:white;", :class =>"fas fa-sign-in-alt" %>
               </li>
               <li class="nav-item">
-                <%= link_to "SIGN UP", new_user_registration_path, :style => "color:white;" %>
+                <%= link_to "SIGN UP", new_user_registration_path, :style => "color:white;", :class =>"fas fa-user-plus" %>
               </li>
               <li class="nav-item">
               <dl class="searchbox">
                  <%= form_tag search_items_path, :method => 'get' do %>
-                   <%= text_field_tag :search, params[:search], size: "40" %>
+                   <%= text_field_tag :search, params[:search], size: "40",placeholder: "商品名/アーティスト名" %>
                    <%= submit_tag "Search", :name => nil %>
                  <% end %>
               </dl>
               </li>
               <li class="nav-item">
-                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;" %>
+                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;", :class =>"fas fa-question-circle" %>
               </li>
             </nav>
           <% end %>
@@ -118,10 +120,12 @@
     <main>
       <div class="container">
         <div class="back-rgba">
-          <% if flash[:notice] %>
-            <p><%= flash[:notice] %></p>
-          <% end %>
-          <%= yield %>
+          <div class="wrapper">
+            <% if flash[:notice] %>
+              <p><%= flash[:notice] %></p>
+            <% end %>
+            <%= yield %>
+          </div>
         </div>
       </div>
     </main>
