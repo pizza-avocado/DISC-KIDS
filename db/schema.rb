@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_09_091351) do
+ActiveRecord::Schema.define(version: 2019_06_25_081340) do
 
   create_table "address_names", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_06_09_091351) do
 
   create_table "inquiry_replies", force: :cascade do |t|
     t.integer "inquiry_id", null: false
-    t.integer "administrator_id", null: false
+    t.integer "admin_id", null: false
     t.text "reply_content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,11 +93,11 @@ ActiveRecord::Schema.define(version: 2019_06_09_091351) do
     t.string "name"
     t.integer "price", null: false
     t.integer "stock", null: false
-    t.text "jacket_image"
     t.string "status", null: false
     t.string "disctype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "jacket_image_id"
     t.index ["name"], name: "index_items_on_name"
   end
 
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 2019_06_09_091351) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.string "item_id", null: false
-    t.string "order_id", null: false
+    t.integer "item_id", null: false
+    t.integer "order_id", null: false
     t.integer "purchaced_price", null: false
     t.integer "quantity", default: 1, null: false
     t.datetime "created_at", null: false
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 2019_06_09_091351) do
     t.string "order_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postalcode"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -163,6 +164,15 @@ ActiveRecord::Schema.define(version: 2019_06_09_091351) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "lastname"
+    t.string "firstname"
+    t.string "lastname_kana"
+    t.string "firstname_kana"
+    t.string "phonenumber"
+    t.string "postalcode"
+    t.text "address"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,2 +1,81 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>ユーザー情報編集</h1>
+
+<%= form_for(@user) do |f| %>
+
+  <h4>ユーザー名</h4>
+  <table>
+    <tr>
+      <td><%= f.label :lastname %></td>
+      <td><%= f.text_field :lastname, placeholder:"氏"%></td>
+      <td><%= f.label :lastname_kana %></td>
+      <td><%= f.text_field :lastname_kana, placeholder:"氏　カナ"%></td>
+    </tr>
+    <tr>
+      <td><%= f.label :firstname %></td>
+      <td><%= f.text_field :firstname, placeholder:"名"%></td>
+      <td><%= f.label :firstname_kana %></td>
+      <td><%= f.text_field :firstname_kana, placeholder:"名　カナ"%></td>
+    </tr>
+  </table>
+
+  <h4>お届け先情報</h4>
+  <table>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postalcode, placeholder:"郵便番号", size: "10"%></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, placeholder:"住所", size: "50" %></td>
+    </tr>
+  </table>
+
+  <h4>連絡先情報</h4>
+  <table>
+    <tr>
+      <td>電話番号</td>
+      <td><%= f.text_field :phonenumber, placeholder:"電話番号"%></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.text_field :email, placeholder:"メールアドレス"%></td>
+    </tr>
+  </table>
+
+
+  <%= f.submit "確定", class: 'btn btn-success' %>
+
+<% end %>
+
+
+  <%= link_to "退会" , user_resign_path, class: 'btn btn-danger' %>
+
+
+<h2>宛名の追加</h2>
+
+<%= form_for(@address_name) do |f| %>
+  <table>
+    <tr>
+      <td> <h5> 宛名 </h5> </td>
+      <td><%= f.text_field :address_name %></td>
+      <td> <%= f.submit "追加" ,class: "btn btn-primary" %></td>
+    </tr>
+  </table>
+<% end %>
+
+<h2>送付先の追加</h2>
+
+<%= form_for(@address) do |f| %>
+  <table>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postalcode %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, size:"50" %></td>
+      <td><%= f.submit "追加", class: 'btn btn-primary' %></td>
+    </tr>
+  </table>
+<% end %>

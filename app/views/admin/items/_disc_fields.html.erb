@@ -1,0 +1,15 @@
+<div class="nested-fields">
+	<div class="form-group">
+    <%= f.number_field :disc_number %>
+    <%= link_to_remove_association "削除", f %>
+  	</div>
+
+  <div class = "tracks">
+  	<%= f.fields_for :tracks do |track| %>
+	<p><%= render "track_fields", f: track %> </p>
+	<% end %>
+	<div class = "links">
+	<%= link_to_add_association "トラック追加", f,:tracks %>
+	</div>
+  </div>
+</div>

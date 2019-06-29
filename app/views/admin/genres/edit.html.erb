@@ -1,0 +1,19 @@
+<div class = 'wrapper'>
+  <h2> ジャンル編集</h2>
+  <%= form_for @genre, url:admin_genre_path do |f| %>
+    <strong> ジャンル</strong>
+    <p><%= f.text_field :genre, class:"form-control" %></p>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.submit 'update genre', id:"back" %>
+  <% end %>
+
+
+  <!-- <script>
+    $(document).on('turbolinks:load', function(){
+    let back = document.getElementById("back");
+    back.addEventListener("click", () => {
+      window.history.back()
+    };
+    });
+  </script> -->
+</div>

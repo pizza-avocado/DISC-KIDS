@@ -1,58 +1,18 @@
-
-<!-- <div class="item-box">
-  <div class="image"></div>
-  <TABLE border="1">
-  	<tr>
-      <td>ＣＤ名：</td><td>金額：</td>
-  	</tr>
-  	<tr>
-  	  <td>アーティスト名：</td><td>在庫数：</td>
-  	</tr>
-  	<tr>
-  	  <td>レーベル名：</td><td>ステータス：</td>
-  	</tr>
-  	<tr>
-  	  <td>ジャンル名：</td><td></td>
-  	</tr>
-</div>
-
-<%# @items.each do |item| %>
-
-<%#= f.attachment_field :image %>
-<div class="item">
-  <div class="image"></div>
-  <div class="date"></div>
-</div>
-
-<%# end %> -->
-
 <% @items.each do |item| %>
-	<div class="row">
-      <div class="col-xs-1"></div>
-
-	      <div class="col-xs-1"></div>
-            <div class="col-xs-6">
-	          <table border="1">
-			    <tr>
-			      <td><%= item.name %></td>
-			      <td><%= item.price %></td>
-			    </tr>
-			    <tr>
-	              <td><%= item.artist_id %></td>
-                  <td><%= item.stock %></td>
-                </tr>
-                <tr>
-                  <td><%= item.label_id %></td>
-                  <td><%= item.status %></td>
-                </tr>
-                <tr>
-                  <td><%= item.genre_id %></td>
-                  <td></td>
-                </tr>
-                <div class="col-xs-1"></div>
-              </table>
-            </div>
-    </div>
-	  <span class="border-bottom"></span>
+  <div class="item-index-item-box clearfix">
+    <%= link_to item_path(item) do %>
+      <%= attachment_image_tag item, :jacket_image, class: "item-index-jacket-image", fallback: "no_images.png", size: '200x200' %>
+    <% end %>
+            <p class="item-index-name"><%= link_to item_path(item) do %>
+                <h4><%= item.name %></h4>
+               <% end %>
+            </p>
+            <p><%= item.artist.artist %></p>
+            <p class ="item-index-price">¥<%= item.price.to_s(:delimited) %></p>
+            <p><%= item.disctype %></p>
+            <p><%= item.label.label %></p>
+            <p><%= item.status %></p>
+            <p><%= item.genre.genre %></p>
+  </div>
 <% end %>
 <%= paginate @items %>

@@ -8,25 +8,118 @@
   box-sizing: border-box;
 }
 
-/*.item-box {
-  width: 100%;
-  height: 300px;
-  border-bottom: 1px solid black;
-  padding: 25px 150px;
+.row {
+  height: 250px;
 }
 
-.image {
-  width: 250px;
-  height: 250px;
-  border: double black;
+.border-bottom {
+  height: 1px;
+  background-color: black;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.item-index-item-box{
+  display: inline-block;
+  margin: 20px 28px auto;
+  height: 420px;
+}
+
+.item-index-jacket-image {
+  height: 200px;
+  margin: auto auto;
+}
+
+.item-index-name{
+  color: black;
+}
+
+.item-index-price{
+  color: #990000;
+}
+
+.index-table {
+  height: 200px;
+}
+
+.index-td {
+  padding: 10px 40px;
+  width: 420px;
+}
+
+td {
+  padding: 10px 0;
+  width: 130px;
+}
+
+
+.link {
+  margin: 20px 0px;
+}
+
+.item-show-jacket-box{
+  width: 33%;
   float: left;
-  margin-right: 50px;
 }
 
-TABLE {
-  height: 250px;
+.item-show-jacket{
+  padding: 30px 50px 0;
 }
 
-TABLE td {
-  padding: 10px 300px 10px 0;
-}*/
+.item-show-like{
+  margin-left: 50px;
+}
+
+
+.item-show-info{
+  width: 40%;
+  float: left;
+  margin-top: 30px;
+  margin-left: 50px;
+
+}
+
+.item-show-price{
+  color: #990000;
+  font-size: 20px;
+}
+
+.item-show-track{
+  width: 45%;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.item-show-disc-number{
+  width: 20%;
+}
+
+.item-show-track-number{
+  width: 20%;
+  text-align: right;
+  padding-right: 8px;
+}
+
+.item-show-track-name{
+  text-align: left;
+}
+
+.wrapper{
+  margin: 30px 50px 30px 50px;
+  width: 95%;
+}
+
+.item-show-track-name {
+  font-size: 20px;
+}
+
+.track-list {
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+
+.album-title {
+  color: #000080;
+}
+

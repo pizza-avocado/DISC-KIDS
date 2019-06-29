@@ -1,2 +1,62 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="order-new-title">
+	<p>購入確認画面</p>
+</div>
+
+<% subtotal = 0 %>
+
+<table class= "order-table-content">
+	<tr class= "order-table-head">
+		<th class= "order-item"></th>
+		<th class= "order-price">価格</th>
+		<th class= "order-quantity">数量</th>
+		<th class= "order-item-sum">小計</th>
+	</tr>
+	<% @carts.each do |cart| %>
+		<tr>
+			<td><p class= "order-item-name"><%= cart.item.name %></p>
+				<p class= "order-item-artist"><%= cart.item.artist.artist %></p>
+			</td>
+			<td class= "order-price">¥<%= cart.item.price.to_s(:delimited) %></td>
+			<td class= "order-quantity"><%= cart.quantity %>点</td>
+			<td class= "order-item-sum"><% result = cart.item.price * cart.quantity %>
+				¥<%= result.to_s(:delimited) %> </td>
+		</tr>
+		<% subtotal += result %>
+	<% end %>
+</table>
+
+<div class= "order-sum">
+	<p> 小計：<i class="order-subtotal">¥<%= subtotal.to_s(:delimited) %></i></p>
+	<p> 送料：¥500 </p>
+	<% total = subtotal + 500 %>
+	<h4> 合計：<i class= "order-sum-integer">¥<%= total.to_s(:delimited) %></i> </h4>
+</div>
+
+<div class ="order-address">
+	<h3> 送付先の選択　</h3>
+
+	<%= form_for @order do |f| %>
+
+		<% ad_nm = current_user.address_names.map{|an| [an.address_name,an.address_name]} %>
+		<% ad_nm.unshift([current_user.lastname + current_user.firstname , current_user.lastname + current_user.firstname])  %>
+
+		<% pc_ad = current_user.addresses.map{|pc_ad| [pc_ad.postalcode + pc_ad.address , pc_ad.postalcode + pc_ad.address]} %>
+		<% pc_ad.unshift([current_user.postalcode + current_user.address, current_user.postalcode + current_user.address])  %>
+
+		<p> 宛名 </p>
+		<p class ="order-address-select"><%= f.select :address_name, ad_nm %></p>
+		<br>
+		<p> 送付先 </p>
+		<p class ="order-address-select"><%= f.select :shipping_address, pc_ad %></p>
+
+		<div class="order-payment">
+			<p>お支払方法</p>
+			<p class ="order-address-select"><%= f.select :payment,[["クレジットカード","クレジットカード"],["コンビニ支払い","コンビニ支払い"],["着払い","着払い"]] %> </p>
+		</div>
+
+		<div class="order-payment">
+			<%= f.submit "購入する", data:{confirm: "購入してよろしいですか？"}, class: "btn btn-warning btn-lg"%>
+		</div>
+
+	<% end %>
+</div>

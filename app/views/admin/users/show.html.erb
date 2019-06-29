@@ -1,2 +1,64 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1 class="fas fa-user">会員詳細</h1>
+
+
+<h3>ユーザー情報</h3>
+<table>
+  <tr>
+    <td>名前</td>
+    <td><%= @user.lastname %>  <%= @user.firstname %></td>
+  </tr>
+  <tr>
+    <td>名前(カナ)</td>
+    <td><%= @user.lastname_kana %>  <%= @user.firstname_kana %></td>
+  </tr>
+  <tr>
+    <td>郵便番号</td>
+    <td><%= @user.postalcode %></td>
+  </tr>
+  <tr>
+    <td>住所</td>
+    <td><%= @user.address %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td>電話番号</td>
+    <td><%= @user.phonenumber %></td>
+  </tr>
+</table>
+
+<h3>宛名一覧</h3>
+<table>
+  <% @address_names.each do |address_name| %>
+    <tr>
+      <td class="mypage-address-name"><%= address_name.address_name %></td>
+      <td><%= link_to "編集", edit_admin_user_address_name_path(@user, address_name), class:"btn btn-primary" %></td>
+      <td><%= link_to "削除", admin_user_address_name_path(@user, address_name), method: :delete, class:"btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>送付先一覧</h3>
+<table>
+  <% @addresses.each do |address| %>
+    <tr>
+      <th>郵便番号</th>
+      <th class="mypage-address">住所</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%= address.postalcode %></td>
+      <td><%= address.address %></td>
+      <td><%= link_to "編集", edit_admin_user_address_path(@user, address), class:"btn btn-primary" %></td>
+      <td><%= link_to "削除", admin_user_address_path(@user, address), method: :delete , class:"btn btn-danger"%></td>
+    </tr>
+  <% end %>
+</table>
+
+    <br>
+  <br>
+<p> <%= link_to"プロフィール編集　宛名・送付先追加", edit_admin_user_path(@user), class: 'btn btn-primary' %> </p>

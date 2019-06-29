@@ -1,19 +1,20 @@
-<%= form_for @label, url: admin_labels_path do |f| %>
+<div class = 'wrapper'>
+	<%= form_for @label, url: admin_labels_path do |f| %>
 
-<h1> レーベル作成</h1>
-<p>レーベル名</p>
-<%= f.text_field :label %>
-
-<%= f.submit "登録" %>
-<% end %>
+			<h1> レーベル追加</h1>
+			<p> label</p>
 
 
-<h1> レーベル一覧</h1>
+	    <%= f.text_field :label %>
 
-<% @labels.each do |label| %>
+	    <%= f.submit "add" %>
 
-	<p><%= label.label %> </p>
 	<% end %>
 
+			<h1> レーベル一覧</h1>
 
+	<% @labels.each do |label| %>
+	<p> <%= label.id %>::<%= label.label %></p>
 
+	<% end %>
+</div>

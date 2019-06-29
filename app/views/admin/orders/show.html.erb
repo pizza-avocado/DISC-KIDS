@@ -1,2 +1,91 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<% sum_q = 0 %>
+<% sum_p = 0 %>
+
+<% @order.order_items.each do |order_item| %>
+	<% sum_q += order_item.quantity %>
+	<% sum_p += order_item.purchaced_price * order_item.quantity %>
+<% end %>
+
+<% sum_p + 500 %>
+
+
+<h1>ご注文詳細</h1>
+
+
+<table class="order-show-infobox", border="1">
+	<tr>
+		<td class="order-show-info-title">ご注文日時</td>
+		<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">宛名</td>
+		<td><%= @order.address_name %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">お届け先住所</td>
+		<td><%= @order.shipping_address %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">ご注文点数</td>
+		<td><%= sum_q %>点</td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">小計</td>
+		<td>¥<%= sum_p.to_s(:delimited) %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">送料</td>
+		<td>¥500</td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">合計金額</td>
+		<td class="order-show-price">¥<%= sum_p.to_s(:delimited) %></td>
+	</tr>
+	<tr>
+		<td class="order-show-info-title">支払方法</td>
+		<td><%= @order.payment %></td>
+	</tr>
+	<%= form_for @order, url:admin_order_path(@order) do |f| %>
+	<tr>
+		<td class="order-show-info-title">注文ステータス</td>
+		<td><%= f.select :order_status,[["注文受付済","注文受付済"],["発送準備中","発送準備中"],["発送済","発送済"],["お届け済","お届け済"]] %>
+			<%= f.submit"更新", class:"btn btn-primary btn-md" %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+
+<h3> 注文商品一覧　</h3>
+
+<% @order.order_items.each do |order_item| %>
+<table class="order-show-itembox", border="1">
+	<tr>
+		<td class="order-show-itembox-title">商品名</td>
+		<td><%= order_item.item.name %></td>
+		<td class="order-show-itembox-jacket", rowspan="6">
+		<%= attachment_image_tag order_item.item, :jacket_image ,size: '120x120', fallback: "no_images.png" %>
+		</td>
+	</tr>
+	<tr>
+		<td>アーティスト名</td>
+		<td><%= order_item.item.artist.artist %></td>
+	</tr>
+	<tr>
+		<td>レーベル名</td>
+		<td><%= order_item.item.label.label %></td>
+	</tr>
+	<tr>
+		<td>ジャンル名</td>
+		<td><%= order_item.item.genre.genre %></td>
+	</tr>
+	<tr>
+		<td>購入時価格（一枚あたり）</td>
+		<td>¥<%= order_item.purchaced_price.to_s(:delimited) %></td>
+	</tr>
+	<tr>
+		<td>数量</td>
+		<td><%= order_item.quantity %>点</td>
+	</tr>
+</table>
+<% end %>

@@ -1,3 +1,103 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.cart-flash{
+	color: #ff9933;
+	padding-left: 30px;
+}
+
+
+.cart-title{
+	font-size: 36px;
+}
+
+.cart-no-item{
+	font-size: 20px;
+	width: 35%;
+}
+
+.table-cart-content{
+	margin: auto auto;
+	width: 95%;
+}
+
+.table-head{
+	height: 10%;
+	background-color: gray;
+}
+
+.table-body{
+	height: 80px;
+}
+
+.table-delete{
+	width: 7%;
+}
+
+.table-image {
+	width: 10%;
+}
+
+.table-name-artist{
+	width: 40%;
+}
+
+.table-stock{
+	width: 10%;
+	text-align: right;
+}
+
+.table-quantity-head{
+	width: 10%;
+	text-align: right;
+}
+
+.table-quantity-body{
+	width: 10%;
+	text-align: right;
+	color: black;
+}
+
+.reflesh{
+	padding-left: 10px;
+}
+
+.table-price-head{
+	padding-right: 20px;
+	text-align: right;
+}
+
+.table-price-body{
+	padding-right: 20px;
+	text-align: right;
+	font-size: 20px
+}
+
+.item-name{
+	font-size: 20px;
+}
+
+.sum{
+	width: 95%;
+	margin: 50px auto 40px;
+	text-align: right;
+}
+
+.sum-font{
+	border-top: 3px double white;
+	padding: 10px 0;
+	color: #a52a2a;
+	font-size: 30px
+}
+
+.button-reg{
+	text-align: right;
+	margin:0 30px 10px 0;
+}
+
+.button-con{
+	text-align: right;
+	margin:0 30px 10px 0;
+}

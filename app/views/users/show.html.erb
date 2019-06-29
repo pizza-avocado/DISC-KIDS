@@ -1,2 +1,65 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1 class="fas fa-user">マイページ</h1>
+
+
+<h3>ユーザー情報</h3>
+<table class="mypage-infobox", border="1">
+  <tr>
+    <td class="mypage-infobox-title">名前</td>
+    <td class="mypage-infobox-body"><%= current_user.lastname %>  <%= current_user.firstname %></td>
+  </tr>
+  <tr>
+    <td class="mypage-infobox-title">名前(カナ)</td>
+    <td><%= current_user.lastname_kana %>  <%= current_user.firstname_kana %></td>
+  </tr>
+  <tr>
+    <td class="mypage-infobox-title">郵便番号</td>
+    <td><%= current_user.postalcode %></td>
+  </tr>
+  <tr>
+    <td class="mypage-infobox-title">住所</td>
+    <td><%= current_user.address %></td>
+  </tr>
+  <tr>
+    <td class="mypage-infobox-title">メールアドレス</td>
+    <td><%= current_user.email %></td>
+  </tr>
+  <tr>
+    <td class="mypage-infobox-title">電話番号</td>
+    <td><%= current_user.phonenumber %></td>
+  </tr>
+</table>
+
+<h3>宛名一覧</h3>
+<table>
+  <% @address_names.each do |address_name| %>
+    <tr>
+      <td class="mypage-address-name"><%= address_name.address_name %></td>
+      <td><%= link_to "編集", edit_address_name_path(address_name), class:"btn btn-primary" %></td>
+      <td><%= link_to "削除", address_name_path(address_name), method: :delete, class:"btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>送付先一覧</h3>
+<table>
+  <% @addresses.each do |address| %>
+    <tr>
+      <th>郵便番号</th>
+      <th class="mypage-address">住所</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%= address.postalcode %></td>
+      <td><%= address.address %></td>
+      <td><%= link_to "編集", edit_address_path(address), class:"btn btn-primary" %></td>
+      <td><%= link_to "削除", address_path(address), method: :delete , class:"btn btn-danger"%></td>
+    </tr>
+  <% end %>
+</table>
+
+    <br>
+  <br>
+<p> <%= link_to"プロフィール編集　宛名・送付先追加", edit_user_path(current_user), class: 'btn btn-primary' %> </p>
+<p> <%= link_to"購入履歴", orders_path, class: 'btn btn-info' %> </p>

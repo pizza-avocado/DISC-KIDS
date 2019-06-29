@@ -1,103 +1,133 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DISCKids</title>
+    <title>DISC-KIDS</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <div class="social">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    </div>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <nav>
-      <% if admin_signed_in? %>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">ユーザー一覧</a>
-          </li>
-          <li class="nav-item">
-           <%= link_to "商品一覧",items_path %>
-           </li>
-          <li class="nav-item">
-            <%= link_to "商品追加",new_admin_item_path %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">問い合わせ</a>
-          </li>
-          <li class="nav-item">
-               <dl class="searchbox">
-                  <%= form_tag search_items_path, :method => 'post' do %>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
-                  <% end %>
-                </dl>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-
-          </li>
-        </ul>
-    </nav>
-
-  <% elsif user_signed_in? %>
-    <nav>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">マイページ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">問い合わせ</a>
-           </li>
-          <li class="nav-item">
+    <header class="navbar navbar-fixed-top">
+      <div class="container">
+        <nav>
+          <% if admin_signed_in? %>
+          <div class="logo">
+          <%= link_to admin_items_path do %>
+             <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+          <% end %>
+        </div>
+            <li class="nav-item">
+              <%= link_to "注文リスト", admin_orders_path, :style => "color:white;", :class =>"fas fa-file-alt" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "会員リスト", admin_users_path, :style => "color:white;", :class =>"fas fa-users" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "全商品",admin_items_path, :style => "color:white;", :class =>"fas fa-compact-disc" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "商品追加",new_admin_item_path, :style => "color:white;", :class =>"fas fa-plus-square" %>
+            <li class="nav-item">
+              <%= link_to "問い合わせ", admin_inquiries_path, :style => "color:white;", :class =>"fas fa-question-circle" %>
+            </li>
+            <li class="nav-item">
               <dl class="searchbox">
-                <%= form_tag search_items_path, :method => 'post' do %>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>
+                 <%= form_tag admin_search_items_path, :method => 'get' do %>
+                   <%= text_field_tag :search, "", size: "40",placeholder: "商品名/アーティスト名" %>
+                   <%= submit_tag "Search", :name => nil %>
+                 <% end %>
+              </dl>
+            </li>
+            <li class="nav-item">
+              <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete, :style => "color:white;" %>
+            </li>
+        </nav>
+
+          <% elsif user_signed_in? %>
+            <nav>
+              <div class="logo">
+                <%= link_to items_path do %>
+                   <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+                <% end %>
+              </div>
+              <li class = "header-username">
+                <%= current_user.lastname + current_user.firstname + "さん" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "MY PAGE", user_path(current_user), :style => "color:white;", :class =>"fas fa-user" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "CART", carts_path, :style => "color:white;", :class =>"fas fa-shopping-cart" %>
+              </li>
+              <li class="nav-item">
+                <dl class="searchbox">
+                  <%= form_tag search_items_path, :method => 'get' do %>
+                    <%= text_field_tag :search, params[:search], size: "40",placeholder: "商品名/アーティスト名"  %>
+                    <%= submit_tag "Search", :name => nil %>
                   <% end %>
                 </dl>
+              </li>
+              <li class="nav-item">
+                <%= link_to "INQUIRY", new_inquiry_path, :style => "color:white;", :class =>"fas fa-question-circle" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, :style => "color:white;", :class =>"fas fa-sign-out-alt" %>
+              </li>
+            </nav>
 
+          <% else %>
+            <nav>
+              <div class="logo">
+                <%= link_to items_path do %>
+                   <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+                <% end %>
+              </div>
+              <li class="nav-item">
+                <%= link_to "LOG IN", new_user_session_path, :style => "color:white;", :class =>"fas fa-sign-in-alt" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "SIGN UP", new_user_registration_path, :style => "color:white;", :class =>"fas fa-user-plus" %>
+              </li>
+              <li class="nav-item">
+              <dl class="searchbox">
+                 <%= form_tag search_items_path, :method => 'get' do %>
+                   <%= text_field_tag :search, params[:search], size: "40",placeholder: "商品名/アーティスト名" %>
+                   <%= submit_tag "Search", :name => nil %>
+                 <% end %>
+              </dl>
+              </li>
+              <li class="nav-item">
+                <%= link_to "INQUIRY", new_inquiry_path , :style => "color:white;", :class =>"fas fa-question-circle" %>
+              </li>
+            </nav>
+          <% end %>
+        </div>
+    </header>
 
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">カート</a>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <div class='body'>
+    <div class='margin'></div>
+  </div>
 
-          </li>
-        </ul>
-    </nav>
-
-
-
-
-  <% else %>
-    <nav>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">問い合わせ</a>
-        </li>
-        <li>
-          <%= form_tag search_items_path, :method => 'post' do %>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil %>
+    <main>
+      <div class="container">
+        <div class="back-rgba">
+          <div class="wrapper">
+            <% if flash[:notice] %>
+              <p><%= flash[:notice] %></p>
             <% end %>
-        </li>
-      </ul>
-    </div>
-    </nav>
-
-  <% end %>
-
-  <main>
-    <%= yield %>
-  </main>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

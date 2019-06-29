@@ -1,3 +1,134 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order-new-title{
+	font-size: 36px;
+	margin: auto auto;
+	width: 80%;
+}
+
+.order-table-content{
+	margin: auto auto;
+	width: 70%;
+}
+
+.order-table-head{
+	background-color: gray;
+}
+
+
+
+.order-item-name{
+	font-size: 20px;
+	padding-left: 5px;
+}
+
+.order-item-artist{
+	font-size: 12px;
+	padding-left: 10px;
+	color: #666666;
+}
+
+.order-price{
+	width: 10%;
+	text-align: right;
+}
+
+.order-quantity{
+	width: 8%;
+	text-align: right;
+}
+
+.order-item-sum{
+	width: 15%;
+	text-align: right;
+}
+
+.order-sum{
+	margin: auto auto;
+	width: 70%;
+	text-align: right;
+}
+
+.order-subtotal{
+	color: #cd5c5c;
+}
+
+.order-sum-integer{
+	font-size: 30px;
+	color: #800000;
+}
+
+.order-address{
+	margin: auto auto;
+	padding-bottom: 60px;
+	width: 70%;
+}
+
+.order-address-select{
+	color: black;
+}
+
+.order-payment{
+	text-align: right;
+}
+
+.order-index-flash{
+	padding-left: 60px;
+}
+
+.order-index-box{
+	width: 80%;
+	margin:0 auto 30px;
+}
+
+.order-table-info{
+	width:20%;
+	text-align: center;
+}
+
+.order_index_image{
+	text-align: center;
+	width: 200px;
+}
+
+.order-show-infobox{
+	width: 80%;
+	font-size: 16px;
+}
+
+.order-show-info-title{
+	width: 20%;
+	text-align: center;
+}
+
+.order-show-itembox-jacket{
+	text-align: center;
+}
+
+.order-show-price{
+	color: #cd5c5c;
+}
+
+.user-order-index-page{
+	text-align: center;
+}
+
+.order-show-itembox{
+	width: 60%;
+	margin-bottom: 10px;
+}
+
+.order-show-itembox-title{
+	width: 30%;
+}
+
+.order-show-itembox-body{
+
+}
+
+.order-show-itembox-jacket{
+	width: 25%;
+	text-align: center;
+}
